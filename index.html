@@ -36,6 +36,24 @@ body {
   background-attachment: fixed;
 }
 
+/* ANIMATION EN ARRIERE-PLAN */
+#luxury-particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Le site reste au-dessus des particules */
+header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
 a {
   color: inherit;
 }
@@ -136,7 +154,7 @@ nav a:hover {
   color: #e3d0ff;
 }
 
-/* CHROME METALLIQUE AVEC REFLETS VIOLETS */
+/* CHROME METALLIQUE */
 h1 {
   margin: 0;
   font-size: clamp(36px, 9vw, 90px);
@@ -214,6 +232,33 @@ section.content {
   color: #f4eaff;
   box-shadow: inset 0 0 18px #8b5cff0a;
   transition: border-color .25s, box-shadow .25s, transform .25s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* REFLET CHROME AU SURVOL */
+.category::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 45%;
+  height: 200%;
+  transform: rotate(25deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ffffff12,
+    #d8c8ff55,
+    #ffffff30,
+    transparent
+  );
+  transition: left .8s ease;
+  pointer-events: none;
+}
+
+.category:hover::after {
+  left: 150%;
 }
 
 .category:hover {
@@ -341,6 +386,7 @@ footer {
   }
 }
 
+/* ACCESSIBILITE */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -349,11 +395,18 @@ footer {
   *, *::before, *::after {
     transition-duration: .01ms !important;
   }
+
+  #luxury-particles {
+    display: none;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- PARTICULES VIOLETTES ET ETOILES FILANTES CHROME -->
+<canvas id="luxury-particles" aria-hidden="true"></canvas>
 
 <!-- INTRO VIDEO : garder 1000050603.mp4 à côté de index.html -->
 <div class="intro" id="intro">
@@ -423,6 +476,7 @@ footer {
 <footer>OG LUXURY · Collections homme</footer>
 
 <script>
+/* GESTION DE L'INTRO VIDEO */
 (function() {
   const intro = document.getElementById('intro');
   const video = document.getElementById('introVideo');
@@ -450,6 +504,206 @@ footer {
   }
 
   setTimeout(closeIntro, 15000);
+})();
+
+/* PARTICULES VIOLETTES + ETOILES FILANTES CHROME */
+(function() {
+  const canvas = document.getElementById('luxury-particles');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  let width = 0;
+  let height = 0;
+  let particles = [];
+  let shootingStars = [];
+  let animationFrame = null;
+  let lastStarTime = 0;
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    /* Densité adaptée à la taille de l'écran */
+    const count = Math.min(
+      100,
+      Math.max(30, Math.floor(width * height / 11000))
+    );
+
+    particles = Array.from({ length: count }, function() {
+      return {
+        x: random(0, width),
+        y: random(0, height),
+        radius: random(0.5, 1.8),
+        speed: random(0.12, 0.42),
+        phase: random(0, Math.PI * 2),
+        drift: random(-0.12, 0.12),
+        chrome: Math.random() > 0.84
+      };
+    });
+  }
+
+  function createShootingStar() {
+    /* Départ parfois hors écran pour un passage naturel */
+    const fromLeft = Math.random() > 0.5;
+
+    shootingStars.push({
+      x: fromLeft ? random(-width * 0.15, width * 0.65) : width + 30,
+      y: random(0, height * 0.65),
+      vx: fromLeft ? random(5, 8) : -random(5, 8),
+      vy: random(2, 4),
+      length: random(65, 125),
+      life: 1,
+      decay: random(0.009, 0.016),
+      width: random(1, 2)
+    });
+  }
+
+  function drawParticle(p, time) {
+    p.y -= p.speed;
+    p.x += p.drift;
+
+    if (p.y < -5) {
+      p.y = height + 5;
+      p.x = random(0, width);
+    }
+
+    if (p.x < -5) p.x = width + 5;
+    if (p.x > width + 5) p.x = -5;
+
+    const glow = 0.3 + 0.7 *
+      (0.5 + 0.5 * Math.sin(time * 0.0015 + p.phase));
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+
+    ctx.fillStyle = p.chrome
+      ? 'rgba(242,235,255,' + glow + ')'
+      : 'rgba(171,112,255,' + glow + ')';
+
+    ctx.shadowBlur = p.chrome ? 12 : 8;
+    ctx.shadowColor = p.chrome ? '#f0e6ff' : '#9b5cff';
+    ctx.fill();
+  }
+
+  function drawShootingStar(star) {
+    const tailX = star.x - star.vx * star.length / 9;
+    const tailY = star.y - star.vy * star.length / 9;
+
+    const gradient = ctx.createLinearGradient(
+      star.x, star.y, tailX, tailY
+    );
+
+    gradient.addColorStop(0, 'rgba(255,255,255,' + star.life + ')');
+    gradient.addColorStop(0.18, 'rgba(226,210,255,' + star.life + ')');
+    gradient.addColorStop(0.55, 'rgba(153,91,255,' + (star.life * 0.65) + ')');
+    gradient.addColorStop(1, 'rgba(139,92,255,0)');
+
+    ctx.save();
+    ctx.globalAlpha = star.life;
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = star.width;
+    ctx.lineCap = 'round';
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = '#c9a4ff';
+
+    ctx.beginPath();
+    ctx.moveTo(star.x, star.y);
+    ctx.lineTo(tailX, tailY);
+    ctx.stroke();
+
+    /* Petit éclat chrome à la pointe */
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowBlur = 18;
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.width * 1.3, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+
+    star.x += star.vx;
+    star.y += star.vy;
+    star.life -= star.decay;
+  }
+
+  function draw(time) {
+    animationFrame = null;
+
+    if (document.hidden) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    for (const p of particles) {
+      drawParticle(p, time);
+    }
+
+    /* Apparition irrégulière : environ toutes les 4 à 9 secondes */
+    if (time - lastStarTime > random(4000, 9000)) {
+      if (shootingStars.length < 2) {
+        createShootingStar();
+      }
+      lastStarTime = time;
+    }
+
+    shootingStars = shootingStars.filter(function(star) {
+      return star.life > 0 &&
+        star.x > -200 &&
+        star.x < width + 200 &&
+        star.y < height + 200;
+    });
+
+    for (const star of shootingStars) {
+      drawShootingStar(star);
+    }
+
+    ctx.shadowBlur = 0;
+    animationFrame = requestAnimationFrame(draw);
+  }
+
+  function startAnimation() {
+    if (document.hidden || animationFrame !== null) return;
+    animationFrame = requestAnimationFrame(draw);
+  }
+
+  function stopAnimation() {
+    if (animationFrame !== null) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = null;
+    }
+  }
+
+  window.addEventListener('resize', function() {
+    resize();
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      stopAnimation();
+    } else {
+      startAnimation();
+    }
+  });
+
+  resize();
+  startAnimation();
 })();
 </script>
 
