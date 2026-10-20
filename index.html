@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08060d">
-  <title>OG LUXURY | Boutique homme</title>
-
-  <script>
+  <title>OG LUXURY | Boutique homme</title>  <script>
     try {
       if (localStorage.getItem("ogLuxuryIntroSeen") === "yes") {
         document.documentElement.classList.add("intro-seen");
       }
     } catch (e) {}
-  </script>
-
-  <style>
+  </script>  <style>
     :root {
       --bg: #08060d;
       --purple: #a855f7;
@@ -281,11 +276,20 @@
       box-shadow: 0 10px 35px #7c3aed20, 0 0 20px #a855f718;
     }
 
+    /* NOUVELLES SILHOUETTES VIOLETTES */
+
     .category-icon {
       width: 48px;
       height: 48px;
+      color: #bd83ff;
+      fill: currentColor;
+      filter: drop-shadow(0 0 7px #a855f733);
+      transition: color 0.3s ease, filter 0.3s ease;
+    }
+
+    .category-card:hover .category-icon {
       color: #d8b4fe;
-      filter: drop-shadow(0 0 9px #a855f74d);
+      filter: drop-shadow(0 0 10px #a855f766);
     }
 
     .category-card h3 {
@@ -426,145 +430,115 @@
         transition: none !important;
       }
     }
-  </style>
-</head>
-
-<body>
-  <canvas id="stars" aria-hidden="true"></canvas>
-
-  <!-- INTRO VIDEO -->
-  <div class="intro" id="intro">
+  </style></head><body>
+  <canvas id="stars" aria-hidden="true"></canvas>  <!-- INTRO VIDEO -->  <div class="intro" id="intro">
     <video id="introVideo" autoplay muted playsinline preload="auto">
       <source src="1000050603.mp4" type="video/mp4">
     </video>
     <button class="skip-intro" id="skipIntro" type="button">
       PASSER L’INTRO
     </button>
-  </div>
-
-  <div class="page">
+  </div>  <div class="page">
     <header>
       <div class="mini-logo">OG LUXURY</div>
-    </header>
+    </header><main>
+  <section class="hero">
+    <p class="eyebrow">WELCOME TO</p>
+    <h1>OG LUXURY</h1>
+    <p class="hero-description">
+      Découvrez notre univers et explorez nos différentes collections
+      en qualité boutique 1.1
+    </p>
+    <div class="hero-line"></div>
+  </section>
 
-    <main>
-      <section class="hero">
-        <p class="eyebrow">WELCOME TO</p>
-        <h1>OG LUXURY</h1>
-        <p class="hero-description">
-          Découvrez notre univers et explorez nos différentes collections
-          en qualité boutique 1.1
-        </p>
-        <div class="hero-line"></div>
-      </section>
+  <section class="collections">
+    <div class="section-heading">
+      <h2>NOS COLLECTIONS</h2>
+      <p>Explorez notre sélection</p>
+    </div>
 
-      <section class="collections">
-        <div class="section-heading">
-          <h2>NOS COLLECTIONS</h2>
-          <p>Explorez notre sélection</p>
-        </div>
+    <div class="category-grid">
 
-        <div class="category-grid">
+      <!-- VÊTEMENTS : SILHOUETTE DE T-SHIRT -->
+      <a class="category-card" href="vetements.html">
+        <svg class="category-icon" viewBox="0 0 48 48"
+          aria-hidden="true">
+          <path d="M15 7 5 13l5 10 6-3v21h16V20l6 3 5-10L33 7c-2 4-5 6-9 6s-7-2-9-6Z"/>
+        </svg>
+        <h3>VÊTEMENTS</h3>
+        <span class="card-arrow">↗</span>
+      </a>
 
-          <!-- VÊTEMENTS : ICÔNE CINTRE -->
-          <a class="category-card" href="vetements.html">
-            <svg class="category-icon" viewBox="0 0 48 48"
-              fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"
-              aria-hidden="true">
-              <path d="M21 12a3 3 0 1 1 4 2.83V18"/>
-              <path d="M25 18 42 30a2 2 0 0 1-1.15 3.63H7.15A2 2 0 0 1 6 30l18-12"/>
-            </svg>
-            <h3>VÊTEMENTS</h3>
-            <span class="card-arrow">↗</span>
-          </a>
+      <!-- SNEAKERS : SILHOUETTE DE BASKET -->
+      <a class="category-card" href="sneakers.html">
+        <svg class="category-icon" viewBox="0 0 48 48"
+          aria-hidden="true">
+          <path d="M5 29c5 0 9-4 12-12l7 6c3 2 6 3 10 4l7 2c3 1 4 3 4 7v2H8c-4 0-6-2-6-5 0-2 1-3 3-4Z"/>
+        </svg>
+        <h3>SNEAKERS</h3>
+        <span class="card-arrow">↗</span>
+      </a>
 
-          <!-- SNEAKERS : PROFIL DE CHAUSSURE -->
-          <a class="category-card" href="sneakers.html">
-            <svg class="category-icon" viewBox="0 0 48 48"
-              fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"
-              aria-hidden="true">
-              <path d="M5 30c5 0 9-4 12-11l7 5c3 2 6 3 10 4l7 2c2 1 3 3 3 6H7c-3 0-4-2-4-4s1-2 2-2Z"/>
-              <path d="m17 20 5 4"/>
-              <path d="m15 24 6 3"/>
-              <path d="m22 27 6 1"/>
-              <path d="M5 32h6"/>
-              <path d="M4 36h40"/>
-            </svg>
-            <h3>SNEAKERS</h3>
-            <span class="card-arrow">↗</span>
-          </a>
+      <!-- CASQUETTES : SILHOUETTE SIMPLE -->
+      <a class="category-card" href="casquettes.html">
+        <svg class="category-icon" viewBox="0 0 48 48"
+          aria-hidden="true">
+          <path d="M6 28a18 18 0 0 1 36 0H6Z"/>
+          <path d="M6 28c-3 1-4 4-1 6 5 3 17 2 27-1 6-2 10-4 10-6-10-3-25-3-36 1Z"/>
+        </svg>
+        <h3>CASQUETTES</h3>
+        <span class="card-arrow">↗</span>
+      </a>
 
-          <!-- CASQUETTES : ICÔNE CASQUETTE -->
-          <a class="category-card" href="casquettes.html">
-            <svg class="category-icon" viewBox="0 0 48 48"
-              fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"
-              aria-hidden="true">
-              <path d="M7 29a17 17 0 0 1 34 0"/>
-              <path d="M7 29c8-4 22-4 32 0"/>
-              <path d="M7 29c-4 1-5 4-2 6 5 3 17 2 26-1 5-2 8-4 8-6"/>
-              <path d="M24 13v10"/>
-              <path d="M19 18h10"/>
-            </svg>
-            <h3>CASQUETTES</h3>
-            <span class="card-arrow">↗</span>
-          </a>
+      <!-- MAROQUINERIE : SILHOUETTE DE SAC -->
+      <a class="category-card" href="maroquineries.html">
+        <svg class="category-icon" viewBox="0 0 48 48"
+          aria-hidden="true">
+          <path d="M8 17h32l3 25H5l3-25Z"/>
+          <path d="M16 18v-5a8 8 0 0 1 16 0v5h-4v-5a4 4 0 0 0-8 0v5h-4Z"/>
+        </svg>
+        <h3>MAROQUINERIE</h3>
+        <span class="card-arrow">↗</span>
+      </a>
 
-          <!-- MAROQUINERIE : SAC À POIGNÉES -->
-          <a class="category-card" href="maroquineries.html">
-            <svg class="category-icon" viewBox="0 0 48 48"
-              fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"
-              aria-hidden="true">
-              <path d="M8 19h32l3 23H5l3-23Z"/>
-              <path d="M16 19v-5a8 8 0 0 1 16 0v5"/>
-              <path d="M8 25h32"/>
-              <path d="M21 25v5h6v-5"/>
-            </svg>
-            <h3>MAROQUINERIE</h3>
-            <span class="card-arrow">↗</span>
-          </a>
+    </div>
+  </section>
 
-        </div>
-      </section>
+  <section class="contact">
+    <div class="contact-panel">
+      <div class="contact-brand">OG LUXURY</div>
 
-      <section class="contact">
-        <div class="contact-panel">
-          <div class="contact-brand">OG LUXURY</div>
+      <h2>CONTACT TELEGRAM</h2>
+      <p>
+        Les prix sont communiqués sur demande. Contactez-nous
+        pour connaître les tarifs et les disponibilités.
+      </p>
 
-          <h2>CONTACT TELEGRAM</h2>
-          <p>
-            Les prix sont communiqués sur demande. Contactez-nous
-            pour connaître les tarifs et les disponibilités.
-          </p>
+      <a class="telegram-button"
+         href="https://t.me/og_luxury"
+         target="_blank"
+         rel="noopener noreferrer">
+        CONTACTER @OG_LUXURY ↗
+      </a>
 
-          <a class="telegram-button"
-             href="https://t.me/og_luxury"
-             target="_blank"
-             rel="noopener noreferrer">
-            CONTACTER @OG_LUXURY ↗
-          </a>
+      <div class="contact-divider"></div>
 
-          <div class="contact-divider"></div>
+      <h2>UN ARTICLE EN TÊTE ?</h2>
+      <p>
+        Vous ne trouvez pas votre bonheur ? Contactez-nous !
+        Nous étudierons la possibilité de rechercher l’article
+        auprès de nos fournisseurs.
+      </p>
+    </div>
+  </section>
+</main>
 
-          <h2>UN ARTICLE EN TÊTE ?</h2>
-          <p>
-            Vous ne trouvez pas votre bonheur ? Contactez-nous !
-            Nous étudierons la possibilité de rechercher l’article
-            auprès de nos fournisseurs.
-          </p>
-        </div>
-      </section>
-    </main>
+<footer>
+  OG LUXURY · COLLECTIONS HOMME
+</footer>
 
-    <footer>
-      OG LUXURY · COLLECTIONS HOMME
-    </footer>
-  </div>
-
-  <script>
+  </div>  <script>
     /* INTRO : ne pas la rejouer après fermeture */
     (function () {
       const intro = document.getElementById("intro");
@@ -780,6 +754,5 @@
       resize();
       requestAnimationFrame(draw);
     })();
-  </script>
-</body>
+  </script></body>
 </html>
