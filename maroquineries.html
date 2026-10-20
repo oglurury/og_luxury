@@ -1,82 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08060d">
-  <title>Maroquinerie | OG LUXURY</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      min-height: 100vh; padding: 30px 20px; color: #f7f2ff;
-      background: radial-gradient(ellipse at top, #29103d, #08060d 60%);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    .container { max-width: 850px; margin: auto; }
-    .back { display: inline-block; margin-bottom: 35px; color: #d8b4fe; font-size: 11px; letter-spacing: 2px; }
-    header { text-align: center; margin-bottom: 35px; }
-    .eyebrow { color: #c084fc; font-size: 10px; letter-spacing: 5px; margin-bottom: 12px; }
-    h1 {
-      font-size: clamp(30px, 7vw, 52px); letter-spacing: 4px;
-      background: linear-gradient(#fff, #9d91aa);
-      color: transparent; -webkit-background-clip: text; background-clip: text;
-    }
-    .intro { margin-top: 14px; color: #b9afc7; font-size: 13px; line-height: 1.8; }
-    .line { width: 70px; height: 1px; margin: 25px auto; background: linear-gradient(90deg, transparent, #c084fc, transparent); }
-    .brands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .brand {
-      display: flex; align-items: center; justify-content: center;
-      min-height: 85px; padding: 15px 10px; text-align: center;
-      border: 1px solid #a855f733; border-radius: 12px;
-      background: linear-gradient(145deg, #241430, #0c0911);
-      color: #f7f2ff; font-size: 12px; font-weight: bold; letter-spacing: 1.5px;
-      transition: .25s;
-    }
-    .brand:hover { transform: translateY(-3px); border-color: #c084fc; box-shadow: 0 8px 25px #a855f722; }
-    .contact { margin-top: 35px; padding: 25px 15px; border: 1px solid #a855f733; border-radius: 14px; text-align: center; background: #100a18; }
-    .contact h2 { font-size: 13px; letter-spacing: 3px; }
-    .contact p { margin: 12px auto 18px; max-width: 480px; color: #b9afc7; font-size: 12px; line-height: 1.8; }
-    .button { display: inline-block; padding: 13px 20px; border: 1px solid #a855f7; border-radius: 25px; background: #321746; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
-    footer { margin-top: 30px; color: #786d83; text-align: center; font-size: 9px; letter-spacing: 3px; }
-    @media (max-width: 380px) { .brand { font-size: 10px; letter-spacing: 1px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maroquinerie | OG LUXURY</title>
+<style>
+*{box-sizing:border-box}
+:root{--violet:#a855f7;--text:#f7f2ff}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at top,#261137 0%,#0b0710 48%,#050408 100%);color:var(--text);min-height:100vh}
+header{text-align:center;padding:35px 16px 20px}
+.logo{font-size:clamp(30px,7vw,54px);font-weight:900;letter-spacing:5px;text-shadow:0 0 20px #a855f788}
+.subtitle{color:#c8a9e9;letter-spacing:4px;font-size:12px;margin-top:10px}
+.back{display:inline-block;margin:8px 0 20px;padding:12px 18px;border:1px solid #8b5bb7;border-radius:30px;color:white;text-decoration:none;font-size:12px;letter-spacing:1px}
+h1{text-align:center;font-size:clamp(25px,5vw,38px);letter-spacing:3px;margin:10px 0}
+.intro{text-align:center;color:#c9bfd4;font-size:14px;padding:0 20px;margin-bottom:30px}
+main{max-width:1100px;margin:auto;padding:0 18px 55px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+.brand{min-height:105px;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px 12px;background:linear-gradient(145deg,#1b1425,#0d0a12);border:1px solid #6e398a66;border-radius:15px;font-weight:bold;font-size:14px;letter-spacing:1px;transition:.25s;position:relative;overflow:hidden}
+.brand:before{content:"";position:absolute;top:0;left:-130%;width:70%;height:100%;background:linear-gradient(100deg,transparent,#ffffff18,transparent);transform:skewX(-20deg);transition:.6s}
+.brand:hover{transform:translateY(-4px);border-color:#c084fc;box-shadow:0 0 22px #9333ea33}
+.brand:hover:before{left:150%}
+.contact{text-align:center;margin:38px auto 0;padding:25px 18px;border:1px solid #8b5bb766;border-radius:18px;background:#120c1c}
+.contact h2{letter-spacing:2px;font-size:20px}
+.contact p{color:#c9bfd4;font-size:14px;line-height:1.7}
+.telegram{display:inline-block;margin-top:10px;padding:14px 23px;background:linear-gradient(90deg,#7e22ce,#a855f7);border-radius:30px;color:white;text-decoration:none;font-weight:bold;letter-spacing:1px}
+footer{text-align:center;color:#82758e;font-size:11px;letter-spacing:2px;padding:25px 12px}
+@media(max-width:400px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.brand{font-size:12px;min-height:90px}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <a class="back" href="index.html?retour=1">← RETOUR À L’ACCUEIL</a>
-
-    <header>
-      <div class="eyebrow">OG LUXURY COLLECTIONS</div>
-      <h1>MAROQUINERIE</h1>
-      <p class="intro">Découvrez notre sélection de maroquinerie et d’accessoires premium.</p>
-      <div class="line"></div>
-    </header>
-
-    <main class="brands">
-      <div class="brand">LOUIS VUITTON</div>
-      <div class="brand">GUCCI</div>
-      <div class="brand">DIOR</div>
-      <div class="brand">PRADA</div>
-      <div class="brand">HERMÈS</div>
-      <div class="brand">LORO PIANA</div>
-      <div class="brand">GOYARD</div>
-      <div class="brand">CHANEL</div>
-      <div class="brand">FENDI</div>
-      <div class="brand">BOTTEGA VENETA</div>
-      <div class="brand">YVES SAINT LAURENT</div>
-      <div class="brand">LOEWE</div>
-      <div class="brand">BALENCIAGA</div>
-      <div class="brand">CÉLINE</div>
-    </main>
-
-    <section class="contact">
-      <h2>UN ARTICLE EN TÊTE ?</h2>
-      <p>Contactez-nous sur Telegram pour connaître les tarifs, les disponibilités ou demander un article particulier.</p>
-      <a class="button" href="https://t.me/og_luxury" target="_blank" rel="noopener noreferrer">CONTACT TELEGRAM</a>
-    </section>
-
-    <footer>OG LUXURY · COLLECTIONS HOMME</footer>
-  </div>
+<header>
+<div class="logo">OG LUXURY</div>
+<div class="subtitle">COLLECTION HOMME</div>
+<a class="back" href="index.html?retour=1">← RETOUR À L’ACCUEIL</a>
+</header>
+<h1>MAROQUINERIE</h1>
+<p class="intro">Découvrez nos marques et explorez notre sélection.</p>
+<main>
+<div class="grid">
+<div class="brand">LOUIS VUITTON</div>
+<div class="brand">GUCCI</div>
+<div class="brand">DIOR</div>
+<div class="brand">PRADA</div>
+<div class="brand">HERMÈS</div>
+<div class="brand">LORO PIANA</div>
+<div class="brand">GOYARD</div>
+<div class="brand">CHANEL</div>
+<div class="brand">FENDI</div>
+<div class="brand">BOTTEGA VENETA</div>
+<div class="brand">YVES SAINT LAURENT</div>
+<div class="brand">LOEWE</div>
+<div class="brand">BALENCIAGA</div>
+<div class="brand">CÉLINE</div>
+</div>
+<section class="contact">
+<h2>UN ARTICLE EN TÊTE ?</h2>
+<p>Les prix sont communiqués sur demande.<br>Vous ne trouvez pas votre bonheur ? Contactez-nous ! Nous étudierons la possibilité de rechercher l’article auprès de nos fournisseurs.</p>
+<a class="telegram" href="https://t.me/og_luxury" target="_blank" rel="noopener">CONTACT TELEGRAM · @og_luxury</a>
+</section>
+</main>
+<footer>OG LUXURY · COLLECTIONS HOMME</footer>
 </body>
 </html>
