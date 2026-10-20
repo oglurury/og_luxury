@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09070d">
+  <meta name="theme-color" content="#08060d">
   <title>OG LUXURY | Boutique homme</title>
 
   <style>
     :root {
-      --bg: #09070d;
+      --bg: #08060d;
       --purple: #a855f7;
-      --silver: #e9e7f0;
-      --muted: #aaa3b6;
+      --purple-light: #d8b4fe;
+      --text: #f7f2ff;
+      --muted: #b9afc7;
     }
 
     * {
@@ -21,15 +22,18 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       min-height: 100vh;
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(ellipse at 50% 25%, #32134a 0%, transparent 42%),
-        radial-gradient(ellipse at 10% 90%, #21102f 0%, transparent 35%),
-        var(--bg);
       overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% 0%, #29103d 0%, transparent 45%),
+        linear-gradient(180deg, #0b0711, #050408 75%);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     a {
@@ -37,7 +41,7 @@
       text-decoration: none;
     }
 
-    .particles {
+    #particles {
       position: fixed;
       inset: 0;
       z-index: 0;
@@ -50,255 +54,67 @@
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background: #d8a7ff;
-      box-shadow: 0 0 10px 2px #a855f7;
-      animation: twinkle 3s ease-in-out infinite alternate;
+      background: #d8b4fe;
+      box-shadow: 0 0 10px #a855f7;
+      animation: twinkle var(--duration) ease-in-out infinite;
+      opacity: 0;
     }
 
     @keyframes twinkle {
-      from { opacity: .15; transform: scale(.6); }
-      to { opacity: .95; transform: scale(1.5); }
+      0%, 100% {
+        opacity: 0;
+        transform: scale(.5);
+      }
+      50% {
+        opacity: .9;
+        transform: scale(1.5);
+      }
     }
 
     .shooting-star {
       position: absolute;
       width: 100px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #fff, #bd76ff, transparent);
+      background: linear-gradient(90deg, transparent, #fff, #c084fc, transparent);
+      box-shadow: 0 0 8px #c084fc;
       transform: rotate(-35deg);
-      opacity: 0;
-      animation: shoot 7s linear infinite;
+      animation: shooting 1.4s linear forwards;
     }
 
-    @keyframes shoot {
-      0%, 70% { opacity: 0; transform: translate(0, 0) rotate(-35deg); }
-      73% { opacity: 1; }
-      88% { opacity: 0; transform: translate(-260px, 180px) rotate(-35deg); }
-      100% { opacity: 0; }
+    @keyframes shooting {
+      0% {
+        opacity: 0;
+        translate: 0 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        translate: -250px 180px;
+      }
     }
 
-    .page {
+    main,
+    footer {
       position: relative;
       z-index: 1;
-      width: min(1100px, 100%);
-      margin: auto;
-      padding: 32px 22px 24px;
     }
 
-    header {
-      text-align: center;
-      padding: 32px 0 42px;
-    }
+    /* INTRO VIDEO */
 
-    .eyebrow {
-      color: #d6b5f5;
-      font-size: 11px;
-      letter-spacing: 7px;
-      margin-bottom: 15px;
-    }
-
-    .main-title {
-      font-size: clamp(40px, 8vw, 76px);
-      font-weight: 900;
-      letter-spacing: 5px;
-      line-height: 1.1;
-      background: linear-gradient(
-        110deg, #77717f, #fff 25%, #a49aaa 45%,
-        #fff 60%, #81768b 78%, #f6eaff
-      );
-      background-size: 220% auto;
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      animation: chrome 7s linear infinite;
-      filter: drop-shadow(0 0 20px #a855f71c);
-    }
-
-    @keyframes chrome {
-      to { background-position: 220% center; }
-    }
-
-    .intro-text {
-      max-width: 540px;
-      margin: 20px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin: 15px 0 27px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 5px;
-      color: #e8d7f7;
-    }
-
-    .section-heading::after {
-      content: "";
-      display: block;
-      width: 52px;
-      height: 1px;
-      margin: 15px auto 0;
-      background: linear-gradient(90deg, transparent, var(--purple), transparent);
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .category {
-      position: relative;
-      min-height: 225px;
-      padding: 30px 16px 25px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      border: 1px solid #b47aff30;
-      border-radius: 15px;
-      background: linear-gradient(145deg, #ffffff08, #a855f709 60%, #00000018);
-      box-shadow: inset 0 1px #ffffff08, 0 12px 40px #00000015;
-      transition: border-color .35s, background .35s, transform .35s, box-shadow .35s;
-    }
-
-    .category::before {
-      content: "";
-      position: absolute;
-      top: -70%;
-      left: -100%;
-      width: 65%;
-      height: 250%;
-      transform: rotate(25deg);
-      background: linear-gradient(90deg, transparent, #ffffff12, transparent);
-      transition: left .7s ease;
-      pointer-events: none;
-    }
-
-    .category:hover::before {
-      left: 150%;
-    }
-
-    .category:hover {
-      transform: translateY(-5px);
-      border-color: #c084fc99;
-      background: linear-gradient(145deg, #ffffff0d, #a855f71c);
-      box-shadow: 0 12px 38px #a855f71c, inset 0 0 25px #a855f709;
-    }
-
-    .category-logo {
-      width: 96px;
-      height: 96px;
-      margin-bottom: 18px;
-      overflow: visible;
-      filter: drop-shadow(0 0 5px #ffffff16)
-              drop-shadow(0 0 12px #a855f72b);
-      transition: transform .35s, filter .35s;
-    }
-
-    .category:hover .category-logo {
-      transform: translateY(-4px) scale(1.07);
-      filter: drop-shadow(0 0 5px #ffffff55)
-              drop-shadow(0 0 17px #b86cff80);
-    }
-
-    .category-name {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .category-subtitle {
-      color: #92899e;
-      font-size: 10px;
-      letter-spacing: 2px;
-      margin-top: 9px;
-    }
-
-    .contact {
-      margin: 55px auto 0;
-      padding: 30px 20px;
-      text-align: center;
-      border-top: 1px solid #b47aff2a;
-      border-bottom: 1px solid #b47aff2a;
-    }
-
-    .contact-title {
-      font-size: 24px;
-      letter-spacing: 4px;
-      margin-bottom: 23px;
-    }
-
-    .contact h3 {
-      font-size: 12px;
-      letter-spacing: 3px;
-      color: #d8b5ff;
-      margin: 23px 0 12px;
-    }
-
-    .contact p {
-      max-width: 580px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .telegram {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 18px;
-      padding: 13px 22px;
-      border: 1px solid #b77bff77;
-      border-radius: 6px;
-      color: #fff;
-      background: linear-gradient(110deg, #6d28d9, #9333ea);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      box-shadow: 0 0 25px #9333ea24;
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .telegram:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 28px #9333ea55;
-    }
-
-    footer {
-      text-align: center;
-      padding: 28px 10px 8px;
-      color: #71687c;
-      font-size: 9px;
-      letter-spacing: 4px;
-    }
-
-    .intro-screen {
+    #intro {
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: #050408;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity .7s ease, visibility .7s ease;
+      background: #030205;
+      overflow: hidden;
     }
 
-    .intro-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .intro-screen video {
+    #intro video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -309,327 +125,573 @@
     .intro-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, #050408b8, #05040812 65%, #05040830);
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.1),
+        rgba(0,0,0,.15) 45%,
+        rgba(0,0,0,.7)
+      );
+      pointer-events: none;
     }
 
-    .skip-intro {
+    #skipIntro {
       position: absolute;
       z-index: 2;
       bottom: 35px;
-      right: 25px;
-      padding: 13px 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 13px 25px;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 30px;
+      background: rgba(10,7,15,.65);
       color: white;
-      background: #100b18bb;
-      border: 1px solid #d8b5ff88;
-      border-radius: 4px;
-      font-size: 10px;
-      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
       cursor: pointer;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      transition: .3s;
     }
 
-    .skip-intro:hover {
-      background: #7e22ce;
+    #skipIntro:hover {
+      background: #a855f7;
+      border-color: #d8b4fe;
+      box-shadow: 0 0 25px #a855f766;
     }
 
-    @media (min-width: 720px) {
-      .categories {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 15px;
+    /* HEADER */
+
+    header {
+      padding: 28px 20px 0;
+      text-align: center;
+    }
+
+    .top-label {
+      color: var(--purple-light);
+      font-size: 10px;
+      letter-spacing: 7px;
+      margin-bottom: 15px;
+    }
+
+    .logo {
+      font-size: clamp(38px, 8vw, 76px);
+      font-weight: 900;
+      letter-spacing: 5px;
+      line-height: 1.1;
+      background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #d9d9e0 20%,
+        #777681 40%,
+        #fff 52%,
+        #8d899a 70%,
+        #f8f4ff 85%,
+        #77717f 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 16px #a855f722);
+    }
+
+    .subtitle {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      letter-spacing: 1px;
+    }
+
+    .purple-line {
+      width: 75px;
+      height: 1px;
+      margin: 28px auto;
+      background: linear-gradient(90deg, transparent, #c084fc, transparent);
+      box-shadow: 0 0 12px #a855f7;
+    }
+
+    /* CATEGORIES */
+
+    .collections {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 15px 22px 45px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 27px;
+      color: #e9d5ff;
+      font-size: 11px;
+      letter-spacing: 5px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .category-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 205px;
+      padding: 25px 12px;
+      overflow: hidden;
+      border: 1px solid rgba(192,132,252,.24);
+      border-radius: 15px;
+      background: linear-gradient(
+        145deg,
+        rgba(36,20,48,.82),
+        rgba(10,8,15,.94)
+      );
+      box-shadow: inset 0 1px rgba(255,255,255,.035);
+      transition: transform .35s, border-color .35s, box-shadow .35s;
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -100%;
+      width: 70%;
+      height: 220%;
+      transform: rotate(25deg);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.09),
+        transparent
+      );
+      transition: left .7s;
+      pointer-events: none;
+    }
+
+    .category-card:hover::before {
+      left: 140%;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(216,180,254,.8);
+      box-shadow: 0 12px 35px #a855f71c, 0 0 18px #a855f71c;
+    }
+
+    .category-icon {
+      width: 100px;
+      height: 90px;
+      margin-bottom: 14px;
+      overflow: visible;
+      filter: drop-shadow(0 0 7px #c084fc24);
+    }
+
+    .category-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    .category-caption {
+      margin-top: 8px;
+      color: #9d91aa;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 15px 22px 65px;
+      text-align: center;
+    }
+
+    .contact-brand {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+
+    .contact h2 {
+      margin-top: 23px;
+      color: #e9d5ff;
+      font-size: 12px;
+      letter-spacing: 4px;
+    }
+
+    .contact p {
+      max-width: 550px;
+      margin: 13px auto 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .telegram-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 22px;
+      padding: 14px 24px;
+      border: 1px solid #a855f7;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #54227a, #24112f);
+      box-shadow: 0 0 25px #a855f71a;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      transition: .3s;
+    }
+
+    .telegram-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px #a855f755;
+    }
+
+    .contact-divider {
+      height: 1px;
+      max-width: 300px;
+      margin: 35px auto;
+      background: linear-gradient(90deg, transparent, #633b7d, transparent);
+    }
+
+    footer {
+      padding: 20px 15px 30px;
+      border-top: 1px solid rgba(192,132,252,.12);
+      color: #786d83;
+      text-align: center;
+      font-size: 9px;
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 420px) {
+      .category-card {
+        min-height: 175px;
       }
 
-      .category { min-height: 250px; }
+      .category-icon {
+        width: 82px;
+        height: 76px;
+      }
 
-      .category-logo {
-        width: 100px;
-        height: 100px;
+      .category-name {
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .top-label {
+        letter-spacing: 5px;
       }
     }
 
-    @media (max-width: 380px) {
-      .page { padding-left: 14px; padding-right: 14px; }
-      .category { min-height: 205px; padding-left: 8px; padding-right: 8px; }
-      .category-logo { width: 82px; height: 82px; }
-      .category-name { font-size: 11px; letter-spacing: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="particles" id="particles"></div>
+  <div id="particles" aria-hidden="true"></div>
 
-  <div class="intro-screen" id="introScreen">
-    <video id="introVideo" autoplay muted playsinline>
+  <!-- INTRO -->
+  <div id="intro">
+    <video id="introVideo" autoplay muted playsinline preload="auto">
       <source src="1000050603.mp4" type="video/mp4">
     </video>
     <div class="intro-overlay"></div>
-    <button class="skip-intro" id="skipIntro">PASSER L’INTRO →</button>
+    <button id="skipIntro" type="button">PASSER L’INTRO</button>
   </div>
 
-  <main class="page">
+  <main>
     <header>
-      <div class="eyebrow">WELCOME TO</div>
-      <h1 class="main-title">OG LUXURY</h1>
-      <p class="intro-text">
+      <div class="top-label">WELCOME TO</div>
+      <h1 class="logo">OG LUXURY</h1>
+      <p class="subtitle">
         Découvrez notre univers et explorez nos différentes collections
+        <br>
         en qualité boutique 1.1
       </p>
+      <div class="purple-line"></div>
     </header>
 
-    <section>
-      <h2 class="section-heading">NOS COLLECTIONS</h2>
-      <div class="categories">
+    <section class="collections" id="collections">
+      <h2 class="section-title">NOS COLLECTIONS</h2>
 
-        <!-- VÊTEMENTS : silhouette de t-shirt -->
-        <a class="category" href="vetements.html">
-          <svg class="category-logo" viewBox="0 0 120 120"
-               xmlns="http://www.w3.org/2000/svg" aria-label="T-shirt" role="img">
+      <div class="category-grid">
+
+        <!-- VÊTEMENTS -->
+        <a class="category-card" href="vetements.html">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
-              <linearGradient id="shirtChrome" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#77717f"/>
-                <stop offset=".22" stop-color="#ffffff"/>
-                <stop offset=".43" stop-color="#96909f"/>
-                <stop offset=".62" stop-color="#f8f6ff"/>
-                <stop offset=".82" stop-color="#68616f"/>
-                <stop offset="1" stop-color="#e8e4ef"/>
+              <linearGradient id="shirtChrome" x1="15" y1="0" x2="105" y2="100">
+                <stop offset="0" stop-color="#fff"/>
+                <stop offset=".25" stop-color="#9994a5"/>
+                <stop offset=".48" stop-color="#f9f5ff"/>
+                <stop offset=".72" stop-color="#777080"/>
+                <stop offset="1" stop-color="#e9d5ff"/>
               </linearGradient>
             </defs>
-            <path d="M43 19 L27 25 L10 43 L26 58 L37 47 L37 101
-                     Q60 108 83 101 L83 47 L94 58 L110 43 L93 25
-                     L77 19 Q70 31 60 31 Q50 31 43 19 Z"
-                  fill="url(#shirtChrome)" fill-opacity=".12"
-                  stroke="url(#shirtChrome)" stroke-width="2.7"
+            <path d="M40 14 L25 20 L8 39 L25 53 L36 42 L36 88 L84 88 L84 42 L95 53 L112 39 L95 20 L80 14 C74 26 46 26 40 14Z"
+                  stroke="url(#shirtChrome)" stroke-width="2.5"
                   stroke-linejoin="round"/>
-            <path d="M43 19 Q46 35 60 35 Q74 35 77 19"
-                  fill="none" stroke="#fff" stroke-width="2.3"
+            <path d="M40 14 C45 35 75 35 80 14"
+                  stroke="url(#shirtChrome)" stroke-width="2.5"/>
+            <path d="M36 42 L36 88 M84 42 L84 88"
+                  stroke="url(#shirtChrome)" stroke-width="1" opacity=".5"/>
+          </svg>
+          <span class="category-name">VÊTEMENTS</span>
+          <span class="category-caption">READY TO WEAR</span>
+        </a>
+
+        <!-- SNEAKERS -->
+        <a class="category-card" href="sneakers.html">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="shoeChrome" x1="10" y1="20" x2="110" y2="90">
+                <stop offset="0" stop-color="#fff"/>
+                <stop offset=".3" stop-color="#8b8499"/>
+                <stop offset=".55" stop-color="#f5efff"/>
+                <stop offset="1" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+            <path d="M12 65 L24 59 L36 40 L47 48 L57 57 L78 63 L99 65 Q108 67 108 77 L108 82 L12 82 Q7 81 9 74Z"
+                  stroke="url(#shoeChrome)" stroke-width="2.5"
+                  stroke-linejoin="round"/>
+            <path d="M12 72 Q40 76 65 73 Q88 72 108 77"
+                  stroke="url(#shoeChrome)" stroke-width="2"/>
+            <path d="M34 47 L47 58 M42 43 L55 55 M50 48 L62 59"
+                  stroke="url(#shoeChrome)" stroke-width="2"
                   stroke-linecap="round"/>
-            <path d="M37 48 L37 98 M83 48 L83 98"
-                  stroke="#c5b5d6" stroke-opacity=".7" stroke-width="1"/>
-            <path d="M39 99 Q60 104 81 99"
-                  fill="none" stroke="#fff" stroke-width="1.5"/>
-            <path d="M14 43 L26 54 M106 43 L94 54"
-                  fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="1.2"/>
+            <path d="M24 59 L37 61 L49 60"
+                  stroke="url(#shoeChrome)" stroke-width="1.5"/>
+            <path d="M12 82 L108 82"
+                  stroke="url(#shoeChrome)" stroke-width="3"
+                  stroke-linecap="round"/>
           </svg>
-          <span class="category-name">Vêtements</span>
-          <span class="category-subtitle">COLLECTION TEXTILE</span>
+          <span class="category-name">SNEAKERS</span>
+          <span class="category-caption">FOOTWEAR</span>
         </a>
 
-        <!-- SNEAKERS : silhouette de chaussure -->
-        <a class="category" href="sneakers.html">
-          <svg class="category-logo" viewBox="0 0 120 120"
-               xmlns="http://www.w3.org/2000/svg" aria-label="Sneaker" role="img">
+        <!-- CASQUETTES -->
+        <a class="category-card" href="casquettes.html">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
-              <linearGradient id="shoeChrome" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#77717f"/>
-                <stop offset=".25" stop-color="#fff"/>
-                <stop offset=".5" stop-color="#9b93a5"/>
-                <stop offset=".72" stop-color="#f6f3ff"/>
-                <stop offset="1" stop-color="#706779"/>
+              <linearGradient id="capChrome" x1="15" y1="15" x2="105" y2="90">
+                <stop offset="0" stop-color="#fff"/>
+                <stop offset=".3" stop-color="#888193"/>
+                <stop offset=".55" stop-color="#f4edff"/>
+                <stop offset="1" stop-color="#a855f7"/>
               </linearGradient>
             </defs>
-            <path d="M13 75 Q23 73 31 63 L43 43
-                     Q46 39 50 43 L63 56 Q74 66 87 68
-                     L103 72 Q111 75 111 84 L110 91
-                     Q108 97 99 98 L23 98 Q11 97 10 88
-                     Q9 80 13 75 Z"
-                  fill="url(#shoeChrome)" fill-opacity=".13"
-                  stroke="url(#shoeChrome)" stroke-width="2.7"
-                  stroke-linejoin="round"/>
-            <path d="M13 82 Q36 86 57 84 Q83 83 109 86"
-                  fill="none" stroke="#fff" stroke-width="1.8"/>
-            <path d="M19 92 Q55 96 101 92"
-                  fill="none" stroke="#c7b8d9" stroke-width="1.2"/>
-            <path d="M40 49 L51 57 L44 67 L32 64 Z"
-                  fill="#c8b6dc" fill-opacity=".2"
-                  stroke="#e7def2" stroke-width="1.3"/>
-            <path d="M51 57 L61 65 M47 62 L57 70 M43 67 L53 75"
-                  stroke="#fff" stroke-width="1.7" stroke-linecap="round"/>
-            <path d="M65 70 Q77 77 95 78"
-                  fill="none" stroke="#b7a8ca" stroke-width="1.2"/>
-            <path d="M27 75 L36 78 M19 79 L28 82"
-                  stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M17 87 L17 91 M105 87 L104 91"
-                  stroke="#fff" stroke-width="1.3"/>
-          </svg>
-          <span class="category-name">Sneakers</span>
-          <span class="category-subtitle">COLLECTION SHOES</span>
-        </a>
-
-        <!-- CASQUETTES : silhouette de casquette -->
-        <a class="category" href="casquettes.html">
-          <svg class="category-logo" viewBox="0 0 120 120"
-               xmlns="http://www.w3.org/2000/svg" aria-label="Casquette" role="img">
-            <defs>
-              <linearGradient id="capChrome" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#77717f"/>
-                <stop offset=".24" stop-color="#fff"/>
-                <stop offset=".48" stop-color="#96909f"/>
-                <stop offset=".7" stop-color="#f9f6ff"/>
-                <stop offset="1" stop-color="#706779"/>
-              </linearGradient>
-            </defs>
-            <path d="M15 70 Q17 47 34 34 Q47 24 63 29
-                     Q79 34 87 51 L91 66
-                     Q66 77 39 75 Q25 74 15 70 Z"
-                  fill="url(#capChrome)" fill-opacity=".14"
-                  stroke="url(#capChrome)" stroke-width="2.7"
-                  stroke-linejoin="round"/>
-            <path d="M15 70 Q35 76 57 72 Q83 67 100 72
-                     Q109 75 107 82 Q103 91 78 92
-                     Q49 92 27 82 Q17 78 15 70 Z"
-                  fill="url(#capChrome)" fill-opacity=".12"
+            <path d="M17 61 Q21 29 49 21 Q72 14 88 38 L97 58"
+                  stroke="url(#capChrome)" stroke-width="2.5"
+                  stroke-linecap="round"/>
+            <path d="M17 61 Q52 70 97 58"
+                  stroke="url(#capChrome)" stroke-width="2.5"/>
+            <path d="M17 61 Q8 63 13 70 Q45 83 82 72 Q102 68 108 61 Q104 55 97 58"
                   stroke="url(#capChrome)" stroke-width="2.5"
                   stroke-linejoin="round"/>
-            <path d="M63 30 Q56 48 57 72"
-                  fill="none" stroke="#fff" stroke-width="1.5" stroke-opacity=".8"/>
-            <path d="M34 35 Q43 48 43 74"
-                  fill="none" stroke="#c9b8da" stroke-width="1.2"/>
-            <path d="M20 68 Q52 78 87 66"
-                  fill="none" stroke="#fff" stroke-width="1.5"/>
-            <path d="M35 43 Q49 35 63 39"
-                  fill="none" stroke="#fff" stroke-width="1.1" stroke-opacity=".7"/>
-            <circle cx="61" cy="30" r="2.5" fill="#f8f5ff"/>
+            <path d="M49 22 Q60 39 56 64"
+                  stroke="url(#capChrome)" stroke-width="1.5" opacity=".8"/>
+            <path d="M56 64 Q76 64 97 58"
+                  stroke="url(#capChrome)" stroke-width="1.5"/>
           </svg>
-          <span class="category-name">Casquettes</span>
-          <span class="category-subtitle">COLLECTION CAPS</span>
+          <span class="category-name">CASQUETTES</span>
+          <span class="category-caption">HEADWEAR</span>
         </a>
 
-        <!-- MAROQUINERIE : silhouette de sac -->
-        <a class="category" href="maroquineries.html">
-          <svg class="category-logo" viewBox="0 0 120 120"
-               xmlns="http://www.w3.org/2000/svg" aria-label="Sac" role="img">
+        <!-- MAROQUINERIE -->
+        <a class="category-card" href="maroquineries.html">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
-              <linearGradient id="bagChrome" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#77717f"/>
-                <stop offset=".24" stop-color="#fff"/>
-                <stop offset=".48" stop-color="#9991a3"/>
-                <stop offset=".7" stop-color="#faf7ff"/>
-                <stop offset="1" stop-color="#706779"/>
+              <linearGradient id="bagChrome" x1="15" y1="15" x2="105" y2="90">
+                <stop offset="0" stop-color="#fff"/>
+                <stop offset=".28" stop-color="#8a8496"/>
+                <stop offset=".53" stop-color="#f8f2ff"/>
+                <stop offset="1" stop-color="#a855f7"/>
               </linearGradient>
             </defs>
-            <path d="M37 44 L37 32 Q37 15 53 15 L67 15
-                     Q83 15 83 32 L83 44"
-                  fill="none" stroke="url(#bagChrome)" stroke-width="3"
-                  stroke-linecap="round"/>
-            <path d="M37 34 Q37 24 49 24 L71 24 Q83 24 83 34"
-                  fill="none" stroke="#fff" stroke-width="1.2" stroke-opacity=".8"/>
-            <path d="M25 44 L95 44 Q101 44 103 51 L108 91
-                     Q109 99 100 100 L20 100 Q11 99 12 91
-                     L17 51 Q19 44 25 44 Z"
-                  fill="url(#bagChrome)" fill-opacity=".13"
-                  stroke="url(#bagChrome)" stroke-width="2.7"
+            <path d="M25 39 L95 39 L101 83 Q101 88 95 88 L25 88 Q19 88 19 83Z"
+                  stroke="url(#bagChrome)" stroke-width="2.5"
                   stroke-linejoin="round"/>
-            <path d="M20 54 Q60 62 100 54"
-                  fill="none" stroke="#fff" stroke-width="1.4" stroke-opacity=".8"/>
-            <path d="M24 61 L20 91 Q20 95 25 95 L95 95
-                     Q100 95 100 91 L96 61"
-                  fill="none" stroke="#bca9d0" stroke-width="1.2"/>
-            <path d="M49 65 L71 65 L71 79 L49 79 Z"
-                  fill="#d9c5ed" fill-opacity=".13"
-                  stroke="#eee5fa" stroke-width="1.6"/>
-            <circle cx="60" cy="72" r="3" fill="#f4eaff"/>
-            <path d="M30 51 L27 57 M90 51 L93 57"
-                  stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M39 40 L39 29 Q39 12 60 12 Q81 12 81 29 L81 40"
+                  stroke="url(#bagChrome)" stroke-width="2.5"
+                  stroke-linecap="round"/>
+            <path d="M39 29 Q39 20 49 17 M81 29 Q81 20 71 17"
+                  stroke="url(#bagChrome)" stroke-width="1.2" opacity=".7"/>
+            <path d="M20 48 L100 48"
+                  stroke="url(#bagChrome)" stroke-width="1" opacity=".5"/>
+            <path d="M60 55 L60 72"
+                  stroke="url(#bagChrome)" stroke-width="2"
+                  stroke-linecap="round"/>
           </svg>
-          <span class="category-name">Maroquinerie</span>
-          <span class="category-subtitle">COLLECTION LEATHER</span>
+          <span class="category-name">MAROQUINERIE</span>
+          <span class="category-caption">LEATHER GOODS</span>
         </a>
 
       </div>
     </section>
 
-    <section class="contact">
-      <h2 class="contact-title">OG LUXURY</h2>
+    <section class="contact" id="contact">
+      <div class="purple-line"></div>
 
-      <h3>CONTACT TELEGRAM</h3>
+      <div class="contact-brand">OG LUXURY</div>
+
+      <h2>CONTACT TELEGRAM</h2>
       <p>
-        Les prix sont communiqués sur demande. Contactez-nous
-        pour connaître les tarifs et les disponibilités.
+        Les prix sont communiqués sur demande. Contactez-nous pour
+        connaître les tarifs et les disponibilités.
       </p>
 
-      <a class="telegram" href="https://t.me/og_luxury"
-         target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24"
-             fill="currentColor" aria-hidden="true">
-          <path d="M21.8 4.2 18.5 20c-.25 1.12-.9 1.4-1.82.88l-5.03-3.7-2.43 2.34c-.27.27-.5.5-1.02.5l.36-5.12 9.33-8.43c.4-.36-.09-.56-.62-.2L5.73 13.4.75 11.84c-1.08-.34-1.1-1.08.23-1.6L20.45 2.7c.9-.33 1.68.22 1.35 1.5Z"/>
-        </svg>
-        @OG_LUXURY
+      <a class="telegram-button"
+         href="https://t.me/og_luxury"
+         target="_blank"
+         rel="noopener noreferrer">
+        CONTACTER @OG_LUXURY
       </a>
 
-      <h3>UN ARTICLE EN TÊTE ?</h3>
+      <div class="contact-divider"></div>
+
+      <h2>UN ARTICLE EN TÊTE ?</h2>
       <p>
         Vous ne trouvez pas votre bonheur ? Contactez-nous !
         Nous étudierons la possibilité de rechercher l’article
         auprès de nos fournisseurs.
       </p>
-    </section>
 
-    <footer>OG LUXURY · COLLECTIONS HOMME</footer>
+      <a class="telegram-button"
+         href="https://t.me/og_luxury"
+         target="_blank"
+         rel="noopener noreferrer">
+        FAIRE UNE DEMANDE
+      </a>
+    </section>
   </main>
 
+  <footer>OG LUXURY · COLLECTIONS HOMME</footer>
+
   <script>
-    // Création des particules lumineuses
-    const particles = document.getElementById("particles");
+    (() => {
+      const intro = document.getElementById("intro");
+      const video = document.getElementById("introVideo");
+      const skipButton = document.getElementById("skipIntro");
 
-    for (let i = 0; i < 48; i++) {
-      const particle = document.createElement("span");
-      particle.className = "particle";
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.top = Math.random() * 100 + "%";
-      particle.style.animationDelay = Math.random() * 4 + "s";
-      particle.style.animationDuration =
-        (2 + Math.random() * 4) + "s";
-      particle.style.opacity = 0.2 + Math.random() * 0.5;
-      particles.appendChild(particle);
-    }
+      /*
+        CORRECTION DU RETOUR :
+        - Retour d'une catégorie : masquer l'intro.
+        - Retour arrière du navigateur : masquer l'intro.
+        - Visite normale ou actualisation : afficher l'intro.
+      */
 
-    // Étoiles filantes
-    for (let i = 0; i < 3; i++) {
-      const star = document.createElement("span");
-      star.className = "shooting-star";
-      star.style.top = (10 + Math.random() * 60) + "%";
-      star.style.left = (50 + Math.random() * 50) + "%";
-      star.style.animationDelay = Math.random() * 8 + "s";
-      particles.appendChild(star);
-    }
+      let returningFromCategory = false;
 
-    // Gestion de l'intro vidéo
-    const intro = document.getElementById("introScreen");
-    const video = document.getElementById("introVideo");
-    const skip = document.getElementById("skipIntro");
-
-    let returningFromCategory = false;
-
-    try {
-      returningFromCategory =
-        sessionStorage.getItem("ogLuxuryReturningFromCategory") === "yes";
-
-      if (returningFromCategory) {
-        sessionStorage.removeItem("ogLuxuryReturningFromCategory");
-      }
-    } catch (e) {}
-
-    const navigation =
-      performance.getEntriesByType("navigation")[0];
-
-    const browserBack =
-      navigation && navigation.type === "back_forward";
-
-    function closeIntro() {
-      intro.classList.add("hidden");
       try {
-        video.pause();
-      } catch (e) {}
-    }
+        returningFromCategory =
+          sessionStorage.getItem("ogLuxuryReturningFromCategory") === "yes";
 
-    if (returningFromCategory || browserBack) {
-      closeIntro();
-    } else {
-      video.play().catch(() => {});
-      video.addEventListener("ended", closeIntro, { once: true });
-    }
+        if (returningFromCategory) {
+          sessionStorage.removeItem("ogLuxuryReturningFromCategory");
+        }
+      } catch (error) {
+        // Le site reste utilisable même si le stockage est indisponible.
+      }
 
-    skip.addEventListener("click", closeIntro);
+      const navigationEntries =
+        performance.getEntriesByType("navigation");
+
+      const navigationType =
+        navigationEntries.length ? navigationEntries[0].type : "";
+
+      const browserBack = navigationType === "back_forward";
+
+      if (returningFromCategory || browserBack) {
+        intro.style.display = "none";
+
+        if (video) {
+          video.pause();
+        }
+      } else {
+        intro.style.display = "flex";
+
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      }
+
+      function closeIntro() {
+        intro.style.display = "none";
+
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      }
+
+      skipButton.addEventListener("click", closeIntro);
+
+      if (video) {
+        video.addEventListener("ended", closeIntro);
+      }
+
+      /*
+        Particules lumineuses.
+      */
+
+      const particleContainer = document.getElementById("particles");
+
+      for (let i = 0; i < 65; i++) {
+        const particle = document.createElement("span");
+        particle.className = "particle";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.top = Math.random() * 100 + "%";
+        particle.style.setProperty(
+          "--duration",
+          (2 + Math.random() * 5) + "s"
+        );
+        particle.style.animationDelay = Math.random() * 5 + "s";
+        particleContainer.appendChild(particle);
+      }
+
+      /*
+        Étoiles filantes.
+      */
+
+      function createShootingStar() {
+        const star = document.createElement("span");
+        star.className = "shooting-star";
+        star.style.left = (15 + Math.random() * 100) + "%";
+        star.style.top = (Math.random() * 65) + "%";
+        particleContainer.appendChild(star);
+
+        star.addEventListener("animationend", () => {
+          star.remove();
+        });
+      }
+
+      setInterval(() => {
+        if (Math.random() > 0.35) {
+          createShootingStar();
+        }
+      }, 2200);
+    })();
   </script>
 </body>
 </html>
