@@ -10,22 +10,32 @@
 <style>
 :root {
   --purple: #a855f7;
+  --silver: #e7dff2;
   --bg: #08060d;
   --text: #f7f3ff;
 }
+
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(ellipse at top, #21102f, #0b0710 48%, #050407);
+  background:
+    radial-gradient(ellipse at 50% 0%, #261333 0%, #0b0710 48%, #050407 100%);
 }
-a { color: inherit; text-decoration: none; }
 
-/* INTRO VIDÉO */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* INTRO VIDEO */
+
 #intro {
   position: fixed;
   inset: 0;
@@ -36,17 +46,20 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   background: #000;
 }
+
 #introVideo {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .intro-shade {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, #0003, #0009);
 }
+
 #skipIntro {
   position: absolute;
   right: 22px;
@@ -60,10 +73,15 @@ a { color: inherit; text-decoration: none; }
   font-weight: bold;
   letter-spacing: 2px;
   cursor: pointer;
+  transition: .25s;
 }
-#skipIntro:hover { background: #7e22ce; }
 
-/* PARTICULES */
+#skipIntro:hover {
+  background: #7e22ce;
+}
+
+/* PARTICULES VIOLETTES */
+
 .particles {
   position: fixed;
   inset: 0;
@@ -71,6 +89,7 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
   z-index: 0;
 }
+
 .particle {
   position: absolute;
   width: 3px;
@@ -81,54 +100,87 @@ a { color: inherit; text-decoration: none; }
   animation: float 8s linear infinite;
   opacity: .6;
 }
+
 @keyframes float {
-  0% { transform: translateY(105vh) scale(.5); opacity: 0; }
+  0% {
+    transform: translateY(105vh) scale(.5);
+    opacity: 0;
+  }
   15%, 85% { opacity: .7; }
-  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
 }
+
+/* ÉTOILES FILANTES */
+
 .shooting-star {
   position: fixed;
   width: 110px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, white, #c084fc, transparent);
+  background: linear-gradient(
+    90deg, transparent, white, #c084fc, transparent
+  );
   transform: rotate(-35deg);
   opacity: 0;
   pointer-events: none;
   animation: shoot 7s linear infinite;
   z-index: 0;
 }
+
 @keyframes shoot {
   0%, 78% { opacity: 0; }
   80% { opacity: .9; }
-  88% { opacity: 0; transform: translate(-240px, 170px) rotate(-35deg); }
+  88% {
+    opacity: 0;
+    transform: translate(-240px, 170px) rotate(-35deg);
+  }
   100% { opacity: 0; }
 }
 
-header, main, footer { position: relative; z-index: 1; }
-header { text-align: center; padding: 54px 20px 30px; }
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* EN-TÊTE */
+
+header {
+  text-align: center;
+  padding: 54px 20px 30px;
+}
+
 .eyebrow {
   font-size: .75rem;
   letter-spacing: 7px;
   color: #c084fc;
   margin-bottom: 14px;
 }
+
 h1 {
   font-size: clamp(2.5rem, 8vw, 5.8rem);
   line-height: 1;
   margin: 0;
   font-weight: 900;
   letter-spacing: 5px;
-  background: linear-gradient(110deg, white, #d8b4fe 45%, white);
+  background: linear-gradient(
+    110deg, #ffffff, #d8b4fe 45%, #ffffff
+  );
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  filter: drop-shadow(0 0 20px #a855f722);
 }
+
 .subtitle {
   max-width: 650px;
   margin: 22px auto 0;
   color: #c9bfd4;
   line-height: 1.7;
+  font-size: 1rem;
 }
+
 .section-title {
   text-align: center;
   font-size: .8rem;
@@ -137,7 +189,8 @@ h1 {
   margin: 25px 0 22px;
 }
 
-/* CATÉGORIES */
+/* CARTES DES COLLECTIONS */
+
 .categories {
   width: min(1100px, calc(100% - 32px));
   margin: 0 auto 55px;
@@ -145,49 +198,84 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
+
 .category {
   position: relative;
-  min-height: 205px;
-  border: 1px solid #58346f;
+  min-height: 220px;
+  border: 1px solid #513361;
   border-radius: 18px;
-  background: linear-gradient(145deg, #261733f5, #0c0911f7);
+  background:
+    radial-gradient(ellipse at 50% 20%, #39204788, transparent 65%),
+    linear-gradient(145deg, #21142d, #0c0911);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 24px 12px;
   overflow: hidden;
-  transition: transform .25s, border-color .25s, box-shadow .25s;
+  isolation: isolate;
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
 }
-.category:before {
+
+/* REFLET LUXE AU SURVOL */
+
+.category::before {
   content: "";
   position: absolute;
-  inset: -80%;
-  background: linear-gradient(115deg, transparent 42%, #ffffff12 50%, transparent 58%);
-  transform: translateX(-60%);
-  transition: transform .7s;
+  inset: -100%;
+  z-index: -1;
+  background: linear-gradient(
+    115deg,
+    transparent 43%,
+    #ffffff12 49%,
+    #d8b4fe20 51%,
+    transparent 57%
+  );
+  transform: translateX(-55%);
+  transition: transform .8s ease;
 }
+
 .category:hover {
   transform: translateY(-5px);
-  border-color: #c084fc;
-  box-shadow: 0 12px 38px #7e22ce2b;
+  border-color: #bb83ef;
+  box-shadow:
+    0 12px 38px #7e22ce2b,
+    inset 0 0 22px #a855f70b;
 }
-.category:hover:before { transform: translateX(60%); }
+
+.category:hover::before {
+  transform: translateX(55%);
+}
+
+/* LOGOS SVG */
+
 .category svg {
-  width: 72px;
-  height: 72px;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 0 10px #a855f755);
+  width: 86px;
+  height: 86px;
+  margin-bottom: 20px;
+  overflow: visible;
+  filter: drop-shadow(0 0 12px #a855f733);
+  transition: transform .3s ease, filter .3s ease;
 }
+
+.category:hover svg {
+  transform: translateY(-3px) scale(1.045);
+  filter: drop-shadow(0 0 18px #a855f777);
+}
+
 .category h2 {
   font-size: clamp(.8rem, 2.8vw, 1.05rem);
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   margin: 0;
   text-align: center;
+  font-weight: 700;
 }
-.arrow { color: #c084fc; margin-top: 12px; }
 
 /* CONTACT */
+
 .contact {
   width: min(760px, calc(100% - 32px));
   margin: 0 auto 55px;
@@ -197,14 +285,26 @@ h1 {
   border-radius: 18px;
   background: #110b19cc;
 }
-.contact h2 { letter-spacing: 4px; margin: 0 0 22px; }
-.contact p { color: #c9bfd4; line-height: 1.7; font-size: .94rem; }
+
+.contact h2 {
+  letter-spacing: 4px;
+  margin: 0 0 22px;
+  font-size: 1.25rem;
+}
+
+.contact p {
+  color: #c9bfd4;
+  line-height: 1.7;
+  font-size: .94rem;
+}
+
 .small-title {
   font-size: .75rem;
   letter-spacing: 3px;
   color: #c084fc;
   margin-top: 28px;
 }
+
 .telegram {
   display: inline-block;
   margin-top: 15px;
@@ -214,7 +314,16 @@ h1 {
   font-weight: 800;
   letter-spacing: 1px;
   box-shadow: 0 0 25px #9333ea33;
+  transition: transform .25s, box-shadow .25s;
 }
+
+.telegram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px #9333ea66;
+}
+
+/* PIED DE PAGE */
+
 footer {
   text-align: center;
   padding: 24px 15px 34px;
@@ -223,11 +332,22 @@ footer {
   font-size: .7rem;
   letter-spacing: 3px;
 }
+
 @media (max-width: 520px) {
   header { padding-top: 42px; }
+
   .categories { gap: 12px; }
-  .category { min-height: 175px; padding: 18px 8px; }
-  .category svg { width: 60px; height: 60px; }
+
+  .category {
+    min-height: 190px;
+    padding: 18px 8px;
+  }
+
+  .category svg {
+    width: 70px;
+    height: 70px;
+  }
+
   .eyebrow { letter-spacing: 5px; }
 }
 </style>
@@ -235,7 +355,7 @@ footer {
 
 <body>
 
-<!-- INTRO VIDÉO -->
+<!-- INTRO VIDEO -->
 <div id="intro">
   <video id="introVideo" autoplay muted playsinline preload="auto">
     <source src="1000050603.mp4" type="video/mp4">
@@ -244,10 +364,16 @@ footer {
   <button id="skipIntro" type="button">PASSER L’INTRO</button>
 </div>
 
+<!-- EFFETS D'AMBIANCE -->
 <div class="particles" id="particles"></div>
-<div class="shooting-star" style="top:22%;left:78%;animation-delay:1s"></div>
-<div class="shooting-star" style="top:62%;left:65%;animation-delay:4s"></div>
 
+<div class="shooting-star"
+     style="top:22%;left:78%;animation-delay:1s"></div>
+
+<div class="shooting-star"
+     style="top:62%;left:65%;animation-delay:4s"></div>
+
+<!-- ACCUEIL -->
 <header>
   <div class="eyebrow">WELCOME TO</div>
   <h1>OG LUXURY</h1>
@@ -257,70 +383,264 @@ footer {
 </header>
 
 <main>
+
   <div class="section-title">NOS COLLECTIONS</div>
 
-  <section class="categories">
+  <section class="categories" aria-label="Nos collections">
 
-    <a class="category" href="vetements.html">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path fill="#e9d5ff" d="M32 14 18 21 7 40l17 10 8-12v48h36V38l8 12 17-10L82 21l-14-7-9 9H41z"/>
-        <path fill="#a855f7" d="M39 14c1 8 5 12 11 12s10-4 11-12l-5-2H44z"/>
+    <!-- VÊTEMENTS : CHEMISE TAILLEUR -->
+    <a class="category" href="vetements.html" aria-label="Découvrir les vêtements">
+      <svg viewBox="0 0 100 100" role="img" aria-label="Icône vêtements">
+        <defs>
+          <linearGradient id="shirtMetal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="38%" stop-color="#d8c5ec"/>
+            <stop offset="70%" stop-color="#8b62ac"/>
+            <stop offset="100%" stop-color="#f5eaff"/>
+          </linearGradient>
+          <linearGradient id="shirtShadow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#6e438b"/>
+            <stop offset="50%" stop-color="#d9c5ec"/>
+            <stop offset="100%" stop-color="#76508f"/>
+          </linearGradient>
+        </defs>
+
+        <path d="M36 14 L23 19 L10 38 L25 49 L34 38
+                 L31 83 Q50 89 69 83 L66 38 L75 49
+                 L90 38 L77 19 L64 14 L57 23 L50 28
+                 L43 23 Z"
+              fill="url(#shirtMetal)"
+              stroke="#f1e5ff"
+              stroke-width="1.4"
+              stroke-linejoin="round"/>
+
+        <path d="M36 14 L50 28 L42 44 L33 35 Z"
+              fill="#9b78b9" stroke="#f1e5ff" stroke-width="1"/>
+
+        <path d="M64 14 L50 28 L58 44 L67 35 Z"
+              fill="url(#shirtShadow)" stroke="#f1e5ff" stroke-width="1"/>
+
+        <path d="M50 29 L47 37 L50 42 L53 37 Z"
+              fill="#6d28d9"/>
+
+        <path d="M50 45 V77"
+              stroke="#725188" stroke-width="1.3" stroke-linecap="round"
+              stroke-dasharray="2 5"/>
+
+        <path d="M15 38 L24 44 M85 38 L76 44"
+              stroke="#ffffff" stroke-width="1.5" opacity=".8"/>
+
+        <path d="M34 78 Q50 83 66 78"
+              fill="none" stroke="#ffffff" stroke-width="1" opacity=".65"/>
       </svg>
+
       <h2>VÊTEMENTS</h2>
-      <span class="arrow">↗</span>
     </a>
 
-    <a class="category" href="sneakers.html">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path fill="#e9d5ff" d="M10 62c8-1 14-6 19-17l7-16 12 7c4 12 11 18 22 21l17 5c7 2 10 7 10 14v5H10c-5 0-7-4-5-9z"/>
-        <path fill="#a855f7" d="m37 35 12 6 8 12-22-5z"/>
-        <path fill="#6d28d9" d="M12 72h83v9H10c-4 0-5-3-4-6z"/>
-        <path stroke="#6d28d9" stroke-width="3" d="m43 47 12 3m-16 2 12 3m-17 2 12 3" fill="none"/>
+    <!-- SNEAKERS : PROFIL DE CHAUSSURE -->
+    <a class="category" href="sneakers.html" aria-label="Découvrir les sneakers">
+      <svg viewBox="0 0 110 100" role="img" aria-label="Icône sneakers">
+        <defs>
+          <linearGradient id="shoeMetal" x1="0" y1="0" x2="0.8" y2="1">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="45%" stop-color="#cdb6e4"/>
+            <stop offset="100%" stop-color="#795398"/>
+          </linearGradient>
+          <linearGradient id="shoeSole" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#9c76b9"/>
+            <stop offset="50%" stop-color="#f4eaff"/>
+            <stop offset="100%" stop-color="#b99bd3"/>
+          </linearGradient>
+        </defs>
+
+        <path d="M13 61
+                 Q24 59 31 44
+                 L39 27
+                 Q42 23 46 28
+                 L57 42
+                 Q65 52 77 56
+                 L94 62
+                 Q101 65 102 74
+                 L102 79
+                 Q102 83 96 83
+                 L13 83
+                 Q7 83 7 77
+                 Q7 67 13 61 Z"
+              fill="url(#shoeMetal)"
+              stroke="#f1e5ff"
+              stroke-width="1.5"
+              stroke-linejoin="round"/>
+
+        <path d="M39 29 L46 27 L58 42
+                 L52 52 L34 48 Z"
+              fill="#8c65aa" stroke="#eee0ff" stroke-width="1"/>
+
+        <path d="M46 35 L54 44 M42 40 L51 49 M38 44 L47 52"
+              stroke="#f9f3ff" stroke-width="2" stroke-linecap="round"/>
+
+        <path d="M56 48 Q69 58 85 61"
+              fill="none" stroke="#73508e" stroke-width="2"/>
+
+        <path d="M15 67 Q34 71 52 68 Q75 66 98 74"
+              fill="none" stroke="#ffffff" stroke-width="1.4" opacity=".9"/>
+
+        <path d="M10 76 Q47 82 101 76 L101 81
+                 Q100 86 94 86 L14 86 Q8 86 8 81 Z"
+              fill="url(#shoeSole)" stroke="#f5eaff" stroke-width="1"/>
+
+        <path d="M21 80 L30 81 M42 81 L51 82 M63 81 L72 82 M84 80 L93 80"
+              stroke="#7d5798" stroke-width="1.3" stroke-linecap="round"/>
+
+        <path d="M22 60 Q27 55 30 50"
+              fill="none" stroke="#ffffff" stroke-width="1.5" opacity=".75"/>
       </svg>
+
       <h2>SNEAKERS</h2>
-      <span class="arrow">↗</span>
     </a>
 
-    <a class="category" href="casquettes.html">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path fill="#e9d5ff" d="M15 57c1-24 17-40 39-40 19 0 31 13 33 33L49 65z"/>
-        <path fill="#a855f7" d="M48 64c15-11 31-14 47-8 4 2 4 6 0 8-18 9-36 12-55 8z"/>
-        <path fill="#6d28d9" d="M20 54c9 4 18 7 29 10l-2 8c-12-2-23-6-33-12z"/>
+    <!-- CASQUETTES : CASQUETTE STRUCTURÉE -->
+    <a class="category" href="casquettes.html" aria-label="Découvrir les casquettes">
+      <svg viewBox="0 0 100 100" role="img" aria-label="Icône casquette">
+        <defs>
+          <linearGradient id="capMetal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="42%" stop-color="#d6c2e8"/>
+            <stop offset="100%" stop-color="#805b9d"/>
+          </linearGradient>
+          <linearGradient id="capBrim" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#795196"/>
+            <stop offset="48%" stop-color="#f0e4fc"/>
+            <stop offset="100%" stop-color="#9871b4"/>
+          </linearGradient>
+        </defs>
+
+        <path d="M13 55
+                 Q15 31 34 20
+                 Q48 12 62 19
+                 Q80 27 84 49
+                 L53 64 Z"
+              fill="url(#capMetal)"
+              stroke="#f3e8ff"
+              stroke-width="1.5"
+              stroke-linejoin="round"/>
+
+        <path d="M13 55 Q31 61 53 64 L55 72
+                 Q34 72 15 63 Z"
+              fill="#795398" stroke="#e9d8fa" stroke-width="1"/>
+
+        <path d="M52 64
+                 Q70 51 88 58
+                 Q94 60 91 65
+                 Q75 77 51 74 Z"
+              fill="url(#capBrim)"
+              stroke="#f2e5ff"
+              stroke-width="1.5"/>
+
+        <path d="M49 18 Q53 35 53 63"
+              fill="none" stroke="#8a62a8" stroke-width="1.5"/>
+
+        <path d="M34 22 Q38 38 37 58"
+              fill="none" stroke="#ffffff" stroke-width="1" opacity=".8"/>
+
+        <path d="M18 51 Q31 57 47 60"
+              fill="none" stroke="#ffffff" stroke-width="1.2" opacity=".8"/>
+
+        <path d="M58 68 Q73 62 87 62"
+              fill="none" stroke="#795398" stroke-width="1.4"/>
+
+        <circle cx="49" cy="19" r="3"
+                fill="#f9f3ff" stroke="#8b65a6" stroke-width="1"/>
       </svg>
+
       <h2>CASQUETTES</h2>
-      <span class="arrow">↗</span>
     </a>
 
-    <a class="category" href="maroquineries.html">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path fill="none" stroke="#e9d5ff" stroke-width="8" d="M32 36V27c0-12 8-19 18-19s18 7 18 19v9"/>
-        <rect x="15" y="32" width="70" height="58" rx="8" fill="#e9d5ff"/>
-        <path fill="#a855f7" d="M15 51h70v8H15z"/>
-        <rect x="43" y="47" width="14" height="17" rx="3" fill="#6d28d9"/>
+    <!-- MAROQUINERIE : SAC DE LUXE -->
+    <a class="category" href="maroquineries.html" aria-label="Découvrir la maroquinerie">
+      <svg viewBox="0 0 100 100" role="img" aria-label="Icône maroquinerie">
+        <defs>
+          <linearGradient id="bagMetal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="40%" stop-color="#d7c3e9"/>
+            <stop offset="100%" stop-color="#8c65a8"/>
+          </linearGradient>
+          <linearGradient id="bagSide" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#78518f"/>
+            <stop offset="100%" stop-color="#c6a9df"/>
+          </linearGradient>
+        </defs>
+
+        <path d="M32 36 V27
+                 Q32 10 50 10
+                 Q68 10 68 27 V36"
+              fill="none" stroke="url(#bagMetal)"
+              stroke-width="6" stroke-linecap="round"/>
+
+        <path d="M23 33
+                 Q20 33 19 39
+                 L12 79
+                 Q11 87 19 89
+                 L78 89
+                 Q86 88 85 80
+                 L81 39
+                 Q80 33 75 33 Z"
+              fill="url(#bagMetal)"
+              stroke="#f1e5ff"
+              stroke-width="1.5"
+              stroke-linejoin="round"/>
+
+        <path d="M19 39 L81 39 L84 51 L15 51 Z"
+              fill="#9873b5" opacity=".85"/>
+
+        <path d="M19 39 L12 79 Q11 87 19 89 L27 89 L29 39 Z"
+              fill="url(#bagSide)" opacity=".8"/>
+
+        <path d="M16 51 H83"
+              stroke="#f9f1ff" stroke-width="1.5" opacity=".9"/>
+
+        <rect x="42" y="46" width="16" height="20" rx="3"
+              fill="#6d28d9" stroke="#f0e3ff" stroke-width="1.5"/>
+
+        <path d="M47 51 V61 M53 51 V61"
+              stroke="#f7edff" stroke-width="1.2"/>
+
+        <path d="M23 72 V81 M77 72 V81"
+              stroke="#f8edff" stroke-width="1" opacity=".65"/>
+
+        <path d="M26 82 Q50 86 74 82"
+              fill="none" stroke="#795398" stroke-width="1.2"/>
       </svg>
+
       <h2>MAROQUINERIE</h2>
-      <span class="arrow">↗</span>
     </a>
 
   </section>
 
+  <!-- CONTACT -->
   <section class="contact">
     <h2>OG LUXURY</h2>
 
     <div class="small-title">CONTACT TELEGRAM</div>
+
     <p>
       Les prix sont communiqués sur demande. Contactez-nous pour connaître les tarifs et les disponibilités.
     </p>
 
     <div class="small-title">UN ARTICLE EN TÊTE ?</div>
+
     <p>
-      Vous ne trouvez pas votre bonheur ? Contactez-nous ! Nous étudierons la possibilité de rechercher l’article auprès de nos fournisseurs.
+      Vous ne trouvez pas votre bonheur ? Contactez-nous !
+      Nous étudierons la possibilité de rechercher l’article auprès de nos fournisseurs.
     </p>
 
-    <a class="telegram" href="https://t.me/og_luxury" target="_blank" rel="noopener noreferrer">
+    <a class="telegram"
+       href="https://t.me/og_luxury"
+       target="_blank"
+       rel="noopener noreferrer">
       @og_luxury · NOUS CONTACTER
     </a>
   </section>
+
 </main>
 
 <footer>OG LUXURY · COLLECTIONS HOMME</footer>
@@ -335,7 +655,9 @@ footer {
   let returningFromCategory = false;
 
   try {
-    returningFromCategory = sessionStorage.getItem(returnFlag) === "yes";
+    returningFromCategory =
+      sessionStorage.getItem(returnFlag) === "yes";
+
     sessionStorage.removeItem(returnFlag);
   } catch (e) {}
 
@@ -351,11 +673,13 @@ footer {
     video.pause();
   } else {
     intro.style.display = "flex";
+
     try {
       video.currentTime = 0;
     } catch (e) {}
 
     const playPromise = video.play();
+
     if (playPromise && playPromise.catch) {
       playPromise.catch(function () {});
     }
@@ -373,15 +697,18 @@ footer {
     }
   });
 
+  /* PARTICULES ANIMÉES */
   const particles = document.getElementById("particles");
 
   for (let i = 0; i < 28; i++) {
     const p = document.createElement("span");
+
     p.className = "particle";
     p.style.left = Math.random() * 100 + "%";
     p.style.animationDelay = Math.random() * 8 + "s";
     p.style.animationDuration = (6 + Math.random() * 7) + "s";
     p.style.opacity = (0.2 + Math.random() * 0.6).toString();
+
     particles.appendChild(p);
   }
 })();
