@@ -1,594 +1,683 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08060d">
-  <title>OG LUXURY | Boutique homme</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08060c">
+<title>OG LUXURY | Boutique homme</title>
 
-  <style>
-    :root {
-      --bg: #08060d;
-      --purple: #b56cff;
-      --light-purple: #e0c4ff;
-      --text: #f7f3ff;
-      --muted: #b9afc8;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+:root {
+  --violet: #a855f7;
+  --violet-light: #d8b4fe;
+  --background: #08060c;
+  --text: #f8f4ff;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: var(--text);
-      background:
-        radial-gradient(ellipse at 50% 0%, #241035 0%, transparent 48%),
-        linear-gradient(180deg, #09060f, #100819 55%, #07060b);
-      font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 0%, #28113b 0%, transparent 50%),
+    linear-gradient(180deg, #0d0812, #050407 80%);
+  overflow-x: hidden;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+a {
+  color: inherit;
+}
 
-    #particles {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    header, main, footer {
-      position: relative;
-      z-index: 1;
-    }
+.site {
+  position: relative;
+  z-index: 1;
+}
 
-    header {
-      padding: 25px 18px;
-      text-align: center;
-      border-bottom: 1px solid rgba(190, 130, 255, 0.15);
-    }
+/* INTRO VIDEO */
 
-    .header-logo {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: 5px;
-      background: linear-gradient(110deg, #fff, #a7a7b5, #fff, #b87aff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #030205;
+  transition: opacity .7s ease, visibility .7s ease;
+}
 
-    .hero {
-      min-height: 370px;
-      padding: 90px 20px 70px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 
-    .welcome {
-      color: var(--light-purple);
-      font-size: 12px;
-      letter-spacing: 7px;
-      margin-bottom: 15px;
-    }
+.intro video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #030205;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(38px, 10vw, 76px);
-      font-weight: 900;
-      letter-spacing: clamp(3px, 1.5vw, 10px);
-      line-height: 1.1;
-      background: linear-gradient(
-        115deg, #777780, #fff, #a5a5b1, #fff, #a96bff
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 0 20px rgba(173, 100, 255, .16));
-    }
+.skip-intro {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  padding: 14px 25px;
+  border: 1px solid rgba(216, 180, 254, .8);
+  border-radius: 40px;
+  color: white;
+  background: rgba(12, 7, 18, .78);
+  backdrop-filter: blur(10px);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  cursor: pointer;
+}
 
-    .hero p {
-      max-width: 570px;
-      margin: 22px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
+.skip-intro:hover {
+  background: #6325a0;
+}
 
-    .section-title {
-      text-align: center;
-      margin: 0 0 32px;
-      font-size: 18px;
-      letter-spacing: 4px;
-    }
+/* HEADER */
 
-    .section-title span {
-      color: var(--purple);
-    }
+header {
+  padding: 42px 18px 20px;
+  text-align: center;
+}
 
-    .collections {
-      padding: 35px 18px 80px;
-      max-width: 1050px;
-      margin: auto;
-    }
+.top-label {
+  color: #c4a3e8;
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-bottom: 17px;
+}
 
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 15px;
-    }
+.logo-title {
+  margin: 0;
+  font-size: clamp(39px, 10vw, 76px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: clamp(3px, 1vw, 9px);
+  color: #f9f5ff;
+  background: linear-gradient(
+    180deg,
+    #ffffff 5%,
+    #ded9e7 25%,
+    #8f899a 47%,
+    #ffffff 55%,
+    #aaa2b8 75%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px #a855f755);
+}
 
-    .category-card {
-      position: relative;
-      min-height: 185px;
-      padding: 25px 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 17px;
-      text-align: center;
-      border: 1px solid rgba(190, 130, 255, .25);
-      border-radius: 15px;
-      background: linear-gradient(
-        145deg, rgba(39, 22, 54, .82), rgba(13, 10, 19, .94)
-      );
-      box-shadow: 0 8px 28px rgba(0, 0, 0, .2);
-      transition: transform .25s ease, border-color .25s ease,
-                  box-shadow .25s ease;
-    }
+.tagline {
+  margin: 18px auto 0;
+  max-width: 440px;
+  color: #c4b7d2;
+  font-size: 13px;
+  line-height: 1.8;
+}
 
-    .category-card::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -100%;
-      width: 65%;
-      height: 200%;
-      transform: rotate(22deg);
-      background: linear-gradient(
-        90deg, transparent, rgba(255,255,255,.13), transparent
-      );
-      transition: left .6s ease;
-      pointer-events: none;
-    }
+/* CATEGORIES */
 
-    .category-card:hover::after {
-      left: 150%;
-    }
+main {
+  width: min(100% - 30px, 960px);
+  margin: 26px auto 0;
+}
 
-    .category-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--purple);
-      box-shadow: 0 0 25px rgba(181, 108, 255, .17);
-    }
+.section-title {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 4px;
+  color: #d8b4fe;
+}
 
-    .category-card svg {
-      width: 47px;
-      height: 47px;
-      fill: none;
-      stroke: #d7b5ff;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+.categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
 
-    .category-card strong {
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
+.category {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 165px;
+  padding: 20px 10px;
+  overflow: hidden;
+  border: 1px solid rgba(190, 126, 255, .28);
+  border-radius: 15px;
+  background:
+    linear-gradient(145deg, rgba(48, 27, 63, .82), rgba(10, 8, 14, .96));
+  text-decoration: none;
+  transition: transform .25s ease, border-color .25s ease,
+              box-shadow .25s ease;
+}
 
-    .contact {
-      margin: 0 18px 60px;
-      padding: 35px 22px;
-      text-align: center;
-      border: 1px solid rgba(190, 130, 255, .23);
-      border-radius: 16px;
-      background: rgba(19, 12, 27, .8);
-    }
+.category::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(255, 255, 255, .11),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left .65s ease;
+  pointer-events: none;
+}
 
-    .contact h2 {
-      margin: 0 0 20px;
-      letter-spacing: 5px;
-      font-size: 23px;
-    }
+.category:hover::after {
+  left: 150%;
+}
 
-    .contact h3 {
-      margin: 26px 0 10px;
-      color: var(--light-purple);
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
+.category:hover {
+  transform: translateY(-4px);
+  border-color: #c084fc;
+  box-shadow: 0 0 25px rgba(168, 85, 247, .16);
+}
 
-    .contact p {
-      max-width: 580px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
+.category svg {
+  width: 43px;
+  height: 43px;
+  margin-bottom: 17px;
+  fill: none;
+  stroke: #e7d5ff;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px #a855f744);
+}
 
-    .telegram-button {
-      display: inline-block;
-      margin-top: 17px;
-      padding: 13px 23px;
-      color: white;
-      background: linear-gradient(110deg, #7b32bd, #aa62f3);
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 0 22px rgba(181, 108, 255, .2);
-    }
+.category-name {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    footer {
-      padding: 22px 12px 30px;
-      text-align: center;
-      border-top: 1px solid rgba(190, 130, 255, .13);
-      color: #887c98;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
+.category-note {
+  margin-top: 8px;
+  color: #9d8aa9;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
 
-    /* INTRO VIDEO : aucun texte ajouté sur la vidéo */
-    #introOverlay {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #050408;
-      transition: opacity .6s ease, visibility .6s ease;
-    }
+/* CONTACT */
 
-    #introOverlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+.contact {
+  width: min(100% - 30px, 680px);
+  margin: 55px auto 40px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid rgba(190, 126, 255, .23);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #1b1025cc, #09070dcc);
+}
 
-    #introVideo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #050408;
-    }
+.contact-brand {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 5px;
+}
 
-    .intro-shade {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,.12),
-        rgba(0,0,0,0) 45%,
-        rgba(0,0,0,.25)
-      );
-      pointer-events: none;
-    }
+.contact h2 {
+  margin: 18px 0 12px;
+  color: #d8b4fe;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
 
-    /* Bouton fixé en bas de l'écran */
-    #skipIntro {
-      position: absolute;
-      z-index: 10;
-      left: 50%;
-      bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-      transform: translateX(-50%);
-      display: block;
-      width: max-content;
-      max-width: calc(100% - 36px);
-      padding: 14px 24px;
-      color: #fff;
-      background: rgba(15, 8, 24, .82);
-      border: 1px solid #bd83ff;
-      border-radius: 30px;
-      box-shadow: 0 0 22px rgba(168, 85, 247, .35);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      cursor: pointer;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-    }
+.contact p {
+  max-width: 500px;
+  margin: 12px auto;
+  color: #c0b4ca;
+  font-size: 13px;
+  line-height: 1.8;
+}
 
-    #skipIntro:active {
-      background: rgba(91, 37, 135, .95);
-    }
+.contact h3 {
+  margin-top: 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
 
-    @media (max-width: 380px) {
-      .category-card {
-        min-height: 160px;
-      }
+.telegram {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 25px;
+  border: 1px solid #bb83fa;
+  border-radius: 35px;
+  background: linear-gradient(90deg, #6325a0, #a855f7);
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
 
-      #skipIntro {
-        bottom: calc(22px + env(safe-area-inset-bottom, 0px));
-      }
-    }
+.telegram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px #a855f766;
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+/* FOOTER */
+
+footer {
+  position: relative;
+  padding: 24px 15px calc(24px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(190, 126, 255, .13);
+  text-align: center;
+  color: #8f819c;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* MOBILE */
+
+@media (min-width: 650px) {
+  header {
+    padding-top: 65px;
+  }
+
+  .categories {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .category {
+    min-height: 195px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+
+  #stars {
+    display: none;
+  }
+}
+</style>
 </head>
 
 <body>
-  <canvas id="particles" aria-hidden="true"></canvas>
 
-  <!-- INTRO VIDEO -->
-  <div id="introOverlay">
-    <video id="introVideo" autoplay muted playsinline preload="auto">
-      <source src="1000050603.mp4" type="video/mp4">
-    </video>
+<canvas id="stars" aria-hidden="true"></canvas>
 
-    <div class="intro-shade"></div>
+<!-- INTRO : ne s'affiche qu'une fois par session du navigateur -->
+<div class="intro" id="intro">
+  <video
+    id="introVideo"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    disablepictureinpicture
+  >
+    <source src="1000050603.mp4" type="video/mp4">
+  </video>
 
-    <!-- Le texte OG LUXURY a été retiré ici -->
+  <button class="skip-intro" id="skipIntro" type="button">
+    PASSER L’INTRO
+  </button>
+</div>
 
-    <button id="skipIntro" type="button">
-      PASSER L’INTRO
-    </button>
-  </div>
+<div class="site">
 
-  <header>
-    <div class="header-logo">OG LUXURY</div>
-  </header>
+<header>
+  <div class="top-label">COLLECTIONS HOMME</div>
+  <h1 class="logo-title">OG LUXURY</h1>
+  <p class="tagline">
+    WELCOME TO<br>
+    Découvrez notre univers et explorez nos différentes collections
+    en qualité boutique 1.1.
+  </p>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="welcome">WELCOME TO</div>
-      <h1>OG LUXURY</h1>
-      <p>
-        Découvrez notre univers et explorez nos différentes
-        collections en qualité boutique 1.1
-      </p>
-    </section>
+<main>
+  <h2 class="section-title">DÉCOUVRIR NOS CATÉGORIES</h2>
 
-    <section class="collections">
-      <h2 class="section-title">NOS <span>COLLECTIONS</span></h2>
+  <section class="categories">
 
-      <div class="category-grid">
-        <a class="category-card" href="vetements.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M18 10a6 6 0 0 1 12 0"/>
-            <path d="M24 16 8 28a2 2 0 0 0 1 4h30a2 2 0 0 0 1-4L24 16Z"/>
-            <path d="M24 16v-3"/>
-          </svg>
-          <strong>VÊTEMENTS</strong>
-        </a>
+    <a class="category" href="vetements.html">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M18 13l-8 5-5 8 8 4 4-6v17h26V24l4 6 5-4-7-9-8-4"/>
+        <path d="M18 13c0 8 12 8 12 0"/>
+        <path d="M18 13l3-6h7l3 6"/>
+      </svg>
+      <span class="category-name">VÊTEMENTS</span>
+      <span class="category-note">COLLECTIONS</span>
+    </a>
 
-        <a class="category-card" href="sneakers.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M7 29c5 0 9-5 11-12l7 5 5 5 9 3a4 4 0 0 1 3 4v3H8a4 4 0 0 1-4-4v-1a3 3 0 0 1 3-3Z"/>
-            <path d="m18 20 5 4m-8-1 5 4m-8-1 5 4M4 34h38"/>
-          </svg>
-          <strong>SNEAKERS</strong>
-        </a>
+    <a class="category" href="sneakers.html">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M5 31c6 0 10-5 13-13l6 4c3 5 7 7 13 8l6 2v7H5z"/>
+        <path d="M18 19l4 7m1-4l4 5m-1-8l4 5"/>
+        <path d="M5 34h38"/>
+      </svg>
+      <span class="category-name">SNEAKERS</span>
+      <span class="category-note">COLLECTIONS</span>
+    </a>
 
-        <a class="category-card" href="casquettes.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M8 29a16 16 0 0 1 32 0"/>
-            <path d="M8 29h32c0 5-7 8-17 8S8 34 8 29Z"/>
-            <path d="M24 13v9"/>
-          </svg>
-          <strong>CASQUETTES</strong>
-        </a>
+    <a class="category" href="casquettes.html">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M7 28c1-10 8-17 18-17s16 7 17 17"/>
+        <path d="M7 28c9 3 24 2 35 0"/>
+        <path d="M7 28c-2 0-4 3-2 5 8 5 25 5 37 0 3-2 1-5-3-5"/>
+        <path d="M17 13c2 6 11 8 18 5"/>
+      </svg>
+      <span class="category-name">CASQUETTES</span>
+      <span class="category-note">COLLECTIONS</span>
+    </a>
 
-        <a class="category-card" href="maroquineries.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <rect x="7" y="19" width="34" height="23" rx="3"/>
-            <path d="M16 19v-6a8 8 0 0 1 16 0v6"/>
-            <path d="M7 27h34"/>
-          </svg>
-          <strong>MAROQUINERIES</strong>
-        </a>
-      </div>
-    </section>
+    <a class="category" href="maroquineries.html">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="7" y="17" width="34" height="25" rx="3"/>
+        <path d="M16 17v-5a8 8 0 0 1 16 0v5"/>
+        <path d="M7 26h34"/>
+        <path d="M22 26v4h4v-4"/>
+      </svg>
+      <span class="category-name">MAROQUINERIES</span>
+      <span class="category-note">COLLECTIONS</span>
+    </a>
 
-    <section class="contact">
-      <h2>OG LUXURY</h2>
+  </section>
+</main>
 
-      <h3>CONTACT TELEGRAM</h3>
-      <p>
-        Les prix sont communiqués sur demande. Contactez-nous
-        pour connaître les tarifs et les disponibilités.
-      </p>
+<section class="contact">
+  <div class="contact-brand">OG LUXURY</div>
 
-      <a class="telegram-button"
-         href="https://t.me/og_luxury"
-         target="_blank"
-         rel="noopener noreferrer">
-        @og_luxury
-      </a>
+  <h2>CONTACT TELEGRAM</h2>
 
-      <h3>UN ARTICLE EN TÊTE ?</h3>
-      <p>
-        Vous ne trouvez pas votre bonheur ? Contactez-nous !
-        Nous étudierons la possibilité de rechercher l’article
-        auprès de nos fournisseurs.
-      </p>
-    </section>
-  </main>
+  <p>
+    Les prix sont communiqués sur demande. Contactez-nous pour
+    connaître les tarifs et les disponibilités.
+  </p>
 
-  <footer>OG LUXURY · Collections homme</footer>
+  <h3>UN ARTICLE EN TÊTE ?</h3>
 
-  <script>
-    // FERMETURE DE L'INTRO
-    const intro = document.getElementById("introOverlay");
-    const video = document.getElementById("introVideo");
-    const skipButton = document.getElementById("skipIntro");
-    let introClosed = false;
+  <p>
+    Vous ne trouvez pas votre bonheur ? Contactez-nous !
+    Nous étudierons la possibilité de rechercher l’article
+    auprès de nos fournisseurs.
+  </p>
 
-    function closeIntro() {
-      if (introClosed) return;
-      introClosed = true;
-      intro.classList.add("hidden");
+  <a class="telegram" href="https://t.me/og_luxury"
+     target="_blank" rel="noopener">
+    CONTACTER @OG_LUXURY
+  </a>
+</section>
 
-      try {
-        video.pause();
-      } catch (error) {}
+<footer>OG LUXURY · Collections homme</footer>
 
-      setTimeout(() => {
-        intro.style.display = "none";
-      }, 700);
-    }
+</div>
 
-    skipButton.addEventListener("click", closeIntro);
-    video.addEventListener("ended", closeIntro);
-    video.addEventListener("error", closeIntro);
+<script>
+(function () {
+  const intro = document.getElementById("intro");
+  const video = document.getElementById("introVideo");
+  const skip = document.getElementById("skipIntro");
+
+  const INTRO_KEY = "ogLuxuryIntroSeen";
+
+  let introClosed = false;
+  let safetyTimer;
+  let autoplayTimer;
+
+  function closeIntro() {
+    if (introClosed) return;
+
+    introClosed = true;
+
+    clearTimeout(safetyTimer);
+    clearTimeout(autoplayTimer);
+
+    // Mémorise que l'intro a été vue pendant cette session.
+    try {
+      sessionStorage.setItem(INTRO_KEY, "yes");
+    } catch (error) {}
+
+    intro.classList.add("hidden");
+
+    try {
+      video.pause();
+    } catch (error) {}
+  }
+
+  // Retour depuis une catégorie : on ne rejoue pas la vidéo.
+  let alreadySeen = false;
+
+  try {
+    alreadySeen = sessionStorage.getItem(INTRO_KEY) === "yes";
+  } catch (error) {}
+
+  if (alreadySeen) {
+    introClosed = true;
+    intro.classList.add("hidden");
+    video.pause();
+  } else {
+    // Durée maximale de sécurité : 15 secondes.
+    safetyTimer = setTimeout(closeIntro, 15000);
+
+    // Si la lecture automatique est bloquée, on retire
+    // l'intro après un court délai.
+    autoplayTimer = setTimeout(closeIntro, 3500);
 
     const playAttempt = video.play();
 
     if (playAttempt && typeof playAttempt.catch === "function") {
-      playAttempt.catch(() => {
-        setTimeout(closeIntro, 3500);
+      playAttempt.catch(function () {
+        // Le délai de 3,5 secondes fermera l'intro.
       });
     }
 
-    // Sécurité : l'intro ne reste jamais bloquée
-    setTimeout(closeIntro, 15000);
+    video.addEventListener("playing", function () {
+      clearTimeout(autoplayTimer);
+    }, { once: true });
 
-    // PARTICULES VIOLETTES ET ÉTOILES FILANTES
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    video.addEventListener("ended", closeIntro);
+    video.addEventListener("error", closeIntro);
+    skip.addEventListener("click", closeIntro);
+  }
 
-    let width = 0;
-    let height = 0;
-    let particles = [];
-    let shootingStars = [];
-    let nextStar = 0;
+  // Si le navigateur restaure la page depuis son historique,
+  // l'intro reste masquée si elle a déjà été vue.
+  window.addEventListener("pageshow", function () {
+    try {
+      if (sessionStorage.getItem(INTRO_KEY) === "yes") {
+        introClosed = true;
+        intro.classList.add("hidden");
+        video.pause();
+      }
+    } catch (error) {}
+  });
+})();
 
-    function resizeCanvas() {
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
+/* ÉTOILES VIOLETTES ET ÉTOILES FILANTES */
+(function () {
+  const canvas = document.getElementById("stars");
+  const ctx = canvas.getContext("2d");
 
-      canvas.width = width * ratio;
-      canvas.height = height * ratio;
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
 
-      const amount = Math.min(
-        65,
-        Math.max(24, Math.floor(width / 7))
-      );
+  let width = 0;
+  let height = 0;
+  let particles = [];
+  let shootingStars = [];
+  let nextShootingStar = 0;
 
-      particles = Array.from({ length: amount }, () => ({
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(100, Math.floor(width * height / 8500));
+
+    particles = Array.from({ length: count }, function () {
+      return {
         x: Math.random() * width,
         y: Math.random() * height,
-        r: Math.random() * 1.7 + .4,
-        speed: Math.random() * .35 + .08,
-        phase: Math.random() * Math.PI * 2
-      }));
-    }
+        radius: Math.random() * 1.7 + .3,
+        alpha: Math.random() * .65 + .15,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * .018 + .006,
+        drift: (Math.random() - .5) * .12
+      };
+    });
+  }
 
-    function createShootingStar() {
-      const fromLeft = Math.random() > .5;
+  function makeShootingStar() {
+    const startFromLeft = Math.random() > .5;
 
-      shootingStars.push({
-        x: fromLeft ? Math.random() * width * .7 : width * .8,
-        y: Math.random() * height * .45,
-        vx: fromLeft ? 5 + Math.random() * 4 : -5 - Math.random() * 4,
-        vy: 2 + Math.random() * 3,
-        length: 90 + Math.random() * 130,
-        life: 1
-      });
-    }
+    shootingStars.push({
+      x: startFromLeft ? Math.random() * width * .7 : width + 30,
+      y: Math.random() * height * .55,
+      vx: startFromLeft ? 7 + Math.random() * 5 : -7 - Math.random() * 5,
+      vy: 3 + Math.random() * 3,
+      length: 90 + Math.random() * 150,
+      life: 1,
+      decay: .009 + Math.random() * .009
+    });
+  }
 
-    function animate(time) {
-      ctx.clearRect(0, 0, width, height);
+  function drawStar(star) {
+    const tailX = star.x - star.vx * star.length / 10;
+    const tailY = star.y - star.vy * star.length / 10;
 
-      particles.forEach(p => {
-        p.y -= p.speed;
+    const gradient = ctx.createLinearGradient(
+      star.x, star.y, tailX, tailY
+    );
 
-        if (p.y < -5) {
-          p.y = height + 5;
-          p.x = Math.random() * width;
-        }
+    gradient.addColorStop(0, "rgba(255,255,255," + star.life + ")");
+    gradient.addColorStop(.2, "rgba(216,180,254," + star.life * .9 + ")");
+    gradient.addColorStop(1, "rgba(168,85,247,0)");
 
-        const glow = .35 + .45 *
-          (Math.sin(time * .0015 + p.phase) + 1) / 2;
+    ctx.save();
+    ctx.globalAlpha = star.life;
+    ctx.shadowColor = "#b66cff";
+    ctx.shadowBlur = 17;
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(star.x, star.y);
+    ctx.lineTo(tailX, tailY);
+    ctx.stroke();
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(194, 133, 255, ${glow})`;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "#a855f7";
-        ctx.fill();
-      });
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, 1.7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
 
-      ctx.shadowBlur = 0;
+  function animate(time) {
+    ctx.clearRect(0, 0, width, height);
 
-      if (time > nextStar) {
-        createShootingStar();
-        nextStar = time + 2000 + Math.random() * 2500;
+    particles.forEach(function (p) {
+      p.phase += p.speed;
+      p.y -= .04;
+      p.x += p.drift;
 
-        if (Math.random() > .72) {
-          setTimeout(createShootingStar, 350);
-        }
+      if (p.y < -5) p.y = height + 5;
+      if (p.x < -5) p.x = width + 5;
+      if (p.x > width + 5) p.x = -5;
+
+      const alpha = p.alpha * (.55 + .45 * Math.sin(p.phase));
+
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(198,139,255," + alpha + ")";
+      ctx.shadowColor = "#a855f7";
+      ctx.shadowBlur = 9;
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.shadowBlur = 0;
+
+    if (time > nextShootingStar) {
+      makeShootingStar();
+
+      // Parfois, une deuxième étoile suit la première.
+      nextShootingStar = time + 2000 + Math.random() * 2500;
+
+      if (Math.random() > .65) {
+        setTimeout(makeShootingStar, 350);
       }
-
-      shootingStars = shootingStars.filter(star => star.life > 0);
-
-      shootingStars.forEach(star => {
-        const tailX = star.x - star.vx * star.length / 10;
-        const tailY = star.y - star.vy * star.length / 10;
-        const gradient = ctx.createLinearGradient(
-          star.x, star.y, tailX, tailY
-        );
-
-        gradient.addColorStop(0, "rgba(255,255,255,1)");
-        gradient.addColorStop(.2, "rgba(208,157,255,.9)");
-        gradient.addColorStop(1, "rgba(168,85,247,0)");
-
-        ctx.beginPath();
-        ctx.moveTo(star.x, star.y);
-        ctx.lineTo(tailX, tailY);
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 2;
-        ctx.shadowBlur = 13;
-        ctx.shadowColor = "#bd83ff";
-        ctx.stroke();
-
-        star.x += star.vx;
-        star.y += star.vy;
-        star.life -= .012;
-
-        ctx.shadowBlur = 0;
-      });
-
-      requestAnimationFrame(animate);
     }
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    shootingStars = shootingStars.filter(function (star) {
+      star.x += star.vx;
+      star.y += star.vy;
+      star.life -= star.decay;
 
-    if (!reducedMotion) {
-      requestAnimationFrame(animate);
-    }
-  </script>
+      drawStar(star);
+
+      return star.life > 0 &&
+        star.x > -250 && star.x < width + 250 &&
+        star.y < height + 200;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  requestAnimationFrame(animate);
+})();
+</script>
+
 </body>
 </html>
