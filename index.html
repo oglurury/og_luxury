@@ -22,9 +22,7 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
@@ -61,14 +59,8 @@
     }
 
     @keyframes twinkle {
-      0%, 100% {
-        opacity: 0;
-        transform: scale(.5);
-      }
-      50% {
-        opacity: .9;
-        transform: scale(1.5);
-      }
+      0%, 100% { opacity: 0; transform: scale(.5); }
+      50% { opacity: .9; transform: scale(1.5); }
     }
 
     .shooting-star {
@@ -82,26 +74,14 @@
     }
 
     @keyframes shooting {
-      0% {
-        opacity: 0;
-        translate: 0 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        translate: -250px 180px;
-      }
+      0% { opacity: 0; translate: 0 0; }
+      10% { opacity: 1; }
+      100% { opacity: 0; translate: -250px 180px; }
     }
 
-    main,
-    footer {
-      position: relative;
-      z-index: 1;
-    }
+    main, footer { position: relative; z-index: 1; }
 
-    /* INTRO VIDEO */
+    /* INTRO */
 
     #intro {
       position: fixed;
@@ -210,7 +190,7 @@
       box-shadow: 0 0 12px #a855f7;
     }
 
-    /* CATEGORIES */
+    /* COLLECTIONS */
 
     .collections {
       max-width: 1050px;
@@ -243,11 +223,7 @@
       overflow: hidden;
       border: 1px solid rgba(192,132,252,.24);
       border-radius: 15px;
-      background: linear-gradient(
-        145deg,
-        rgba(36,20,48,.82),
-        rgba(10,8,15,.94)
-      );
+      background: linear-gradient(145deg, rgba(36,20,48,.82), rgba(10,8,15,.94));
       box-shadow: inset 0 1px rgba(255,255,255,.035);
       transition: transform .35s, border-color .35s, box-shadow .35s;
     }
@@ -260,19 +236,12 @@
       width: 70%;
       height: 220%;
       transform: rotate(25deg);
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.09),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent);
       transition: left .7s;
       pointer-events: none;
     }
 
-    .category-card:hover::before {
-      left: 140%;
-    }
+    .category-card:hover::before { left: 140%; }
 
     .category-card:hover {
       transform: translateY(-5px);
@@ -372,29 +341,14 @@
     }
 
     @media (max-width: 420px) {
-      .category-card {
-        min-height: 175px;
-      }
-
-      .category-icon {
-        width: 82px;
-        height: 76px;
-      }
-
-      .category-name {
-        font-size: 10px;
-        letter-spacing: 2px;
-      }
-
-      .top-label {
-        letter-spacing: 5px;
-      }
+      .category-card { min-height: 175px; }
+      .category-icon { width: 82px; height: 76px; }
+      .category-name { font-size: 10px; letter-spacing: 2px; }
+      .top-label { letter-spacing: 5px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: .01ms !important;
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
@@ -406,7 +360,6 @@
 <body>
   <div id="particles" aria-hidden="true"></div>
 
-  <!-- INTRO -->
   <div id="intro">
     <video id="introVideo" autoplay muted playsinline preload="auto">
       <source src="1000050603.mp4" type="video/mp4">
@@ -432,10 +385,8 @@
 
       <div class="category-grid">
 
-        <!-- VÊTEMENTS -->
         <a class="category-card" href="vetements.html">
-          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="shirtChrome" x1="15" y1="0" x2="105" y2="100">
                 <stop offset="0" stop-color="#fff"/>
@@ -445,22 +396,16 @@
                 <stop offset="1" stop-color="#e9d5ff"/>
               </linearGradient>
             </defs>
-            <path d="M40 14 L25 20 L8 39 L25 53 L36 42 L36 88 L84 88 L84 42 L95 53 L112 39 L95 20 L80 14 C74 26 46 26 40 14Z"
-                  stroke="url(#shirtChrome)" stroke-width="2.5"
-                  stroke-linejoin="round"/>
-            <path d="M40 14 C45 35 75 35 80 14"
-                  stroke="url(#shirtChrome)" stroke-width="2.5"/>
-            <path d="M36 42 L36 88 M84 42 L84 88"
-                  stroke="url(#shirtChrome)" stroke-width="1" opacity=".5"/>
+            <path d="M40 14 L25 20 L8 39 L25 53 L36 42 L36 88 L84 88 L84 42 L95 53 L112 39 L95 20 L80 14 C74 26 46 26 40 14Z" stroke="url(#shirtChrome)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M40 14 C45 35 75 35 80 14" stroke="url(#shirtChrome)" stroke-width="2.5"/>
+            <path d="M36 42 L36 88 M84 42 L84 88" stroke="url(#shirtChrome)" stroke-width="1" opacity=".5"/>
           </svg>
           <span class="category-name">VÊTEMENTS</span>
           <span class="category-caption">READY TO WEAR</span>
         </a>
 
-        <!-- SNEAKERS -->
         <a class="category-card" href="sneakers.html">
-          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="shoeChrome" x1="10" y1="20" x2="110" y2="90">
                 <stop offset="0" stop-color="#fff"/>
@@ -469,28 +414,18 @@
                 <stop offset="1" stop-color="#a855f7"/>
               </linearGradient>
             </defs>
-            <path d="M12 65 L24 59 L36 40 L47 48 L57 57 L78 63 L99 65 Q108 67 108 77 L108 82 L12 82 Q7 81 9 74Z"
-                  stroke="url(#shoeChrome)" stroke-width="2.5"
-                  stroke-linejoin="round"/>
-            <path d="M12 72 Q40 76 65 73 Q88 72 108 77"
-                  stroke="url(#shoeChrome)" stroke-width="2"/>
-            <path d="M34 47 L47 58 M42 43 L55 55 M50 48 L62 59"
-                  stroke="url(#shoeChrome)" stroke-width="2"
-                  stroke-linecap="round"/>
-            <path d="M24 59 L37 61 L49 60"
-                  stroke="url(#shoeChrome)" stroke-width="1.5"/>
-            <path d="M12 82 L108 82"
-                  stroke="url(#shoeChrome)" stroke-width="3"
-                  stroke-linecap="round"/>
+            <path d="M12 65 L24 59 L36 40 L47 48 L57 57 L78 63 L99 65 Q108 67 108 77 L108 82 L12 82 Q7 81 9 74Z" stroke="url(#shoeChrome)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M12 72 Q40 76 65 73 Q88 72 108 77" stroke="url(#shoeChrome)" stroke-width="2"/>
+            <path d="M34 47 L47 58 M42 43 L55 55 M50 48 L62 59" stroke="url(#shoeChrome)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M24 59 L37 61 L49 60" stroke="url(#shoeChrome)" stroke-width="1.5"/>
+            <path d="M12 82 L108 82" stroke="url(#shoeChrome)" stroke-width="3" stroke-linecap="round"/>
           </svg>
           <span class="category-name">SNEAKERS</span>
           <span class="category-caption">FOOTWEAR</span>
         </a>
 
-        <!-- CASQUETTES -->
         <a class="category-card" href="casquettes.html">
-          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="capChrome" x1="15" y1="15" x2="105" y2="90">
                 <stop offset="0" stop-color="#fff"/>
@@ -499,27 +434,18 @@
                 <stop offset="1" stop-color="#a855f7"/>
               </linearGradient>
             </defs>
-            <path d="M17 61 Q21 29 49 21 Q72 14 88 38 L97 58"
-                  stroke="url(#capChrome)" stroke-width="2.5"
-                  stroke-linecap="round"/>
-            <path d="M17 61 Q52 70 97 58"
-                  stroke="url(#capChrome)" stroke-width="2.5"/>
-            <path d="M17 61 Q8 63 13 70 Q45 83 82 72 Q102 68 108 61 Q104 55 97 58"
-                  stroke="url(#capChrome)" stroke-width="2.5"
-                  stroke-linejoin="round"/>
-            <path d="M49 22 Q60 39 56 64"
-                  stroke="url(#capChrome)" stroke-width="1.5" opacity=".8"/>
-            <path d="M56 64 Q76 64 97 58"
-                  stroke="url(#capChrome)" stroke-width="1.5"/>
+            <path d="M17 61 Q21 29 49 21 Q72 14 88 38 L97 58" stroke="url(#capChrome)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M17 61 Q52 70 97 58" stroke="url(#capChrome)" stroke-width="2.5"/>
+            <path d="M17 61 Q8 63 13 70 Q45 83 82 72 Q102 68 108 61 Q104 55 97 58" stroke="url(#capChrome)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M49 22 Q60 39 56 64" stroke="url(#capChrome)" stroke-width="1.5" opacity=".8"/>
+            <path d="M56 64 Q76 64 97 58" stroke="url(#capChrome)" stroke-width="1.5"/>
           </svg>
           <span class="category-name">CASQUETTES</span>
           <span class="category-caption">HEADWEAR</span>
         </a>
 
-        <!-- MAROQUINERIE -->
         <a class="category-card" href="maroquineries.html">
-          <svg class="category-icon" viewBox="0 0 120 100" fill="none"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="category-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="bagChrome" x1="15" y1="15" x2="105" y2="90">
                 <stop offset="0" stop-color="#fff"/>
@@ -528,19 +454,11 @@
                 <stop offset="1" stop-color="#a855f7"/>
               </linearGradient>
             </defs>
-            <path d="M25 39 L95 39 L101 83 Q101 88 95 88 L25 88 Q19 88 19 83Z"
-                  stroke="url(#bagChrome)" stroke-width="2.5"
-                  stroke-linejoin="round"/>
-            <path d="M39 40 L39 29 Q39 12 60 12 Q81 12 81 29 L81 40"
-                  stroke="url(#bagChrome)" stroke-width="2.5"
-                  stroke-linecap="round"/>
-            <path d="M39 29 Q39 20 49 17 M81 29 Q81 20 71 17"
-                  stroke="url(#bagChrome)" stroke-width="1.2" opacity=".7"/>
-            <path d="M20 48 L100 48"
-                  stroke="url(#bagChrome)" stroke-width="1" opacity=".5"/>
-            <path d="M60 55 L60 72"
-                  stroke="url(#bagChrome)" stroke-width="2"
-                  stroke-linecap="round"/>
+            <path d="M25 39 L95 39 L101 83 Q101 88 95 88 L25 88 Q19 88 19 83Z" stroke="url(#bagChrome)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M39 40 L39 29 Q39 12 60 12 Q81 12 81 29 L81 40" stroke="url(#bagChrome)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M39 29 Q39 20 49 17 M81 29 Q81 20 71 17" stroke="url(#bagChrome)" stroke-width="1.2" opacity=".7"/>
+            <path d="M20 48 L100 48" stroke="url(#bagChrome)" stroke-width="1" opacity=".5"/>
+            <path d="M60 55 L60 72" stroke="url(#bagChrome)" stroke-width="2" stroke-linecap="round"/>
           </svg>
           <span class="category-name">MAROQUINERIE</span>
           <span class="category-caption">LEATHER GOODS</span>
@@ -551,7 +469,6 @@
 
     <section class="contact" id="contact">
       <div class="purple-line"></div>
-
       <div class="contact-brand">OG LUXURY</div>
 
       <h2>CONTACT TELEGRAM</h2>
@@ -559,11 +476,7 @@
         Les prix sont communiqués sur demande. Contactez-nous pour
         connaître les tarifs et les disponibilités.
       </p>
-
-      <a class="telegram-button"
-         href="https://t.me/og_luxury"
-         target="_blank"
-         rel="noopener noreferrer">
+      <a class="telegram-button" href="https://t.me/og_luxury" target="_blank" rel="noopener noreferrer">
         CONTACTER @OG_LUXURY
       </a>
 
@@ -575,11 +488,7 @@
         Nous étudierons la possibilité de rechercher l’article
         auprès de nos fournisseurs.
       </p>
-
-      <a class="telegram-button"
-         href="https://t.me/og_luxury"
-         target="_blank"
-         rel="noopener noreferrer">
+      <a class="telegram-button" href="https://t.me/og_luxury" target="_blank" rel="noopener noreferrer">
         FAIRE UNE DEMANDE
       </a>
     </section>
@@ -594,39 +503,27 @@
       const skipButton = document.getElementById("skipIntro");
 
       /*
-        CORRECTION DU RETOUR :
-        - Retour d'une catégorie : masquer l'intro.
-        - Retour arrière du navigateur : masquer l'intro.
-        - Visite normale ou actualisation : afficher l'intro.
+        RETOUR À L'ACCUEIL :
+        Les liens des catégories doivent ouvrir index.html?retour=1.
+        Ce paramètre masque l'intro sans dépendre de sessionStorage.
       */
 
-      let returningFromCategory = false;
+      const params = new URLSearchParams(window.location.search);
+      const retourAccueil = params.get("retour") === "1";
 
-      try {
-        returningFromCategory =
-          sessionStorage.getItem("ogLuxuryReturningFromCategory") === "yes";
-
-        if (returningFromCategory) {
-          sessionStorage.removeItem("ogLuxuryReturningFromCategory");
-        }
-      } catch (error) {
-        // Le site reste utilisable même si le stockage est indisponible.
-      }
-
-      const navigationEntries =
-        performance.getEntriesByType("navigation");
-
-      const navigationType =
-        navigationEntries.length ? navigationEntries[0].type : "";
-
-      const browserBack = navigationType === "back_forward";
-
-      if (returningFromCategory || browserBack) {
+      if (retourAccueil) {
         intro.style.display = "none";
 
         if (video) {
           video.pause();
         }
+
+        // Nettoie l'adresse sans recharger la page.
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname + window.location.hash
+        );
       } else {
         intro.style.display = "flex";
 
@@ -636,7 +533,7 @@
         }
       }
 
-      function closeIntro() {
+      function fermerIntro() {
         intro.style.display = "none";
 
         if (video) {
@@ -645,16 +542,13 @@
         }
       }
 
-      skipButton.addEventListener("click", closeIntro);
+      skipButton.addEventListener("click", fermerIntro);
 
       if (video) {
-        video.addEventListener("ended", closeIntro);
+        video.addEventListener("ended", fermerIntro);
       }
 
-      /*
-        Particules lumineuses.
-      */
-
+      // Particules lumineuses.
       const particleContainer = document.getElementById("particles");
 
       for (let i = 0; i < 65; i++) {
@@ -662,18 +556,12 @@
         particle.className = "particle";
         particle.style.left = Math.random() * 100 + "%";
         particle.style.top = Math.random() * 100 + "%";
-        particle.style.setProperty(
-          "--duration",
-          (2 + Math.random() * 5) + "s"
-        );
+        particle.style.setProperty("--duration", (2 + Math.random() * 5) + "s");
         particle.style.animationDelay = Math.random() * 5 + "s";
         particleContainer.appendChild(particle);
       }
 
-      /*
-        Étoiles filantes.
-      */
-
+      // Étoiles filantes.
       function createShootingStar() {
         const star = document.createElement("span");
         star.className = "shooting-star";
@@ -681,15 +569,11 @@
         star.style.top = (Math.random() * 65) + "%";
         particleContainer.appendChild(star);
 
-        star.addEventListener("animationend", () => {
-          star.remove();
-        });
+        star.addEventListener("animationend", () => star.remove());
       }
 
       setInterval(() => {
-        if (Math.random() > 0.35) {
-          createShootingStar();
-        }
+        if (Math.random() > 0.35) createShootingStar();
       }, 2200);
     })();
   </script>
