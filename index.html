@@ -246,7 +246,7 @@
       letter-spacing: 2px;
     }
 
-    /* INTRO VIDEO */
+    /* INTRO VIDEO : aucun texte ajouté sur la vidéo */
     #introOverlay {
       position: fixed;
       inset: 0;
@@ -279,31 +279,14 @@
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(0,0,0,.25),
-        rgba(0,0,0,.03) 45%,
-        rgba(0,0,0,.45)
+        rgba(0,0,0,.12),
+        rgba(0,0,0,0) 45%,
+        rgba(0,0,0,.25)
       );
       pointer-events: none;
     }
 
-    /* Logo au centre de l'intro */
-    .intro-logo {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-      text-align: center;
-      font-size: clamp(35px, 9vw, 70px);
-      font-weight: 900;
-      letter-spacing: clamp(4px, 2vw, 12px);
-      background: linear-gradient(110deg, #aaaab5, #fff, #b5b5c0, #fff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 0 20px rgba(0,0,0,.7));
-      pointer-events: none;
-    }
-
-    /* BOUTON DÉPLACÉ TOUT EN BAS DE L'ÉCRAN */
+    /* Bouton fixé en bas de l'écran */
     #skipIntro {
       position: absolute;
       z-index: 10;
@@ -360,7 +343,8 @@
     </video>
 
     <div class="intro-shade"></div>
-    <div class="intro-logo">OG LUXURY</div>
+
+    <!-- Le texte OG LUXURY a été retiré ici -->
 
     <button id="skipIntro" type="button">
       PASSER L’INTRO
@@ -474,7 +458,6 @@
     video.addEventListener("ended", closeIntro);
     video.addEventListener("error", closeIntro);
 
-    // Si la vidéo ne démarre pas, ne pas bloquer le site
     const playAttempt = video.play();
 
     if (playAttempt && typeof playAttempt.catch === "function") {
