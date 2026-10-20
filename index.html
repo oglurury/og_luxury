@@ -36,7 +36,7 @@ body {
   background-attachment: fixed;
 }
 
-/* ANIMATION EN ARRIERE-PLAN */
+/* FOND ANIME VIOLET ET CHROME */
 #luxury-particles {
   position: fixed;
   inset: 0;
@@ -46,7 +46,6 @@ body {
   pointer-events: none;
 }
 
-/* Le site reste au-dessus des particules */
 header,
 main,
 footer {
@@ -66,15 +65,15 @@ header {
   gap: 15px;
   padding: 18px 5%;
   background: rgba(7, 5, 13, .94);
-  border-bottom: 1px solid #55318d;
-  box-shadow: 0 4px 25px #6c32c522;
+  border-bottom: 1px solid #7047b8;
+  box-shadow: 0 4px 30px #8b5cff33;
 }
 
 .logo {
   font-weight: 900;
   letter-spacing: 4px;
   color: #e9e5ef;
-  text-shadow: 0 0 10px #a56aff66;
+  text-shadow: 0 0 12px #a56aff88;
   text-decoration: none;
 }
 
@@ -128,13 +127,13 @@ nav a:hover {
   border-radius: 30px;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0 0 15px #8b5cff44;
+  box-shadow: 0 0 20px #8b5cff66;
   transition: .25s;
 }
 
 .skip:hover {
   background: #281345;
-  box-shadow: 0 0 25px #8b5cff99;
+  box-shadow: 0 0 30px #8b5cffcc;
 }
 
 /* HERO */
@@ -154,7 +153,7 @@ nav a:hover {
   color: #e3d0ff;
 }
 
-/* CHROME METALLIQUE */
+/* TITRE CHROME */
 h1 {
   margin: 0;
   font-size: clamp(36px, 9vw, 90px);
@@ -179,8 +178,8 @@ h1 {
   -webkit-text-fill-color: transparent;
   filter:
     drop-shadow(0 1px 0 #ffffff55)
-    drop-shadow(0 0 8px #a66bff55)
-    drop-shadow(0 0 22px #702cff44);
+    drop-shadow(0 0 10px #a66bff77)
+    drop-shadow(0 0 28px #702cff66);
 }
 
 .hero p {
@@ -205,7 +204,7 @@ section.content {
   font-weight: 400;
   margin: 0 0 25px;
   color: #eadcff;
-  text-shadow: 0 0 14px #8b5cff55;
+  text-shadow: 0 0 18px #8b5cff88;
 }
 
 .categories {
@@ -222,35 +221,36 @@ section.content {
   padding: 20px 5px;
   text-align: center;
   text-decoration: none;
-  border: 1px solid #55318d;
+  border: 1px solid #7047b8;
   border-radius: 8px;
   background:
-    radial-gradient(ellipse at top, #281440 0%, transparent 75%),
+    radial-gradient(ellipse at top, #351653 0%, transparent 75%),
     linear-gradient(145deg, #19102b, #08060e);
   font-family: Georgia, serif;
   font-size: 19px;
   color: #f4eaff;
-  box-shadow: inset 0 0 18px #8b5cff0a;
+  box-shadow:
+    inset 0 0 20px #8b5cff16,
+    0 0 12px #8b5cff16;
   transition: border-color .25s, box-shadow .25s, transform .25s;
   position: relative;
   overflow: hidden;
 }
 
-/* REFLET CHROME AU SURVOL */
 .category::after {
   content: "";
   position: absolute;
   top: -50%;
   left: -120%;
-  width: 45%;
+  width: 50%;
   height: 200%;
   transform: rotate(25deg);
   background: linear-gradient(
     90deg,
     transparent,
-    #ffffff12,
-    #d8c8ff55,
-    #ffffff30,
+    #ffffff22,
+    #d8c8ff99,
+    #ffffff55,
     transparent
   );
   transition: left .8s ease;
@@ -262,8 +262,10 @@ section.content {
 }
 
 .category:hover {
-  border-color: var(--purple-bright);
-  box-shadow: 0 0 20px #8b5cff44, inset 0 0 18px #8b5cff15;
+  border-color: #e0caff;
+  box-shadow:
+    0 0 25px #8b5cff77,
+    inset 0 0 22px #8b5cff33;
   transform: translateY(-3px);
 }
 
@@ -272,12 +274,12 @@ section.content {
   max-width: 1150px;
   margin: 10px auto 30px;
   padding: 35px 18px;
-  border: 1px solid #7047a8;
+  border: 1px solid #8050c9;
   border-radius: 12px;
   text-align: center;
   background:
     radial-gradient(ellipse at top, #24133b, #10091a 55%, #07050d 100%);
-  box-shadow: 0 0 28px #6b32b51c;
+  box-shadow: 0 0 32px #6b32b533;
 }
 
 .contact-logo {
@@ -297,7 +299,7 @@ section.content {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 12px #8b5cff66);
+  filter: drop-shadow(0 0 14px #8b5cff88);
 }
 
 .contact h2 {
@@ -318,7 +320,7 @@ section.content {
   padding: 20px;
   border: 1px solid #8050c9;
   border-radius: 9px;
-  background: #0b0714aa;
+  background: #0b0714dd;
 }
 
 .request h3 {
@@ -335,19 +337,19 @@ section.content {
   font-weight: bold;
   text-decoration: none;
   margin-top: 10px;
-  text-shadow: 0 0 12px #8b5cff55;
+  text-shadow: 0 0 15px #8b5cff88;
   transition: .25s;
 }
 
 .telegram:hover {
   color: #fff;
-  text-shadow: 0 0 8px #fff, 0 0 24px #a45cff;
+  text-shadow: 0 0 8px #fff, 0 0 28px #a45cff;
 }
 
 footer {
   padding: 0 15px 25px;
   text-align: center;
-  color: #8e7ba8;
+  color: #a08bbd;
   font-size: 12px;
 }
 
@@ -405,10 +407,10 @@ footer {
 
 <body>
 
-<!-- PARTICULES VIOLETTES ET ETOILES FILANTES CHROME -->
+<!-- PARTICULES ET ETOILES FILANTES -->
 <canvas id="luxury-particles" aria-hidden="true"></canvas>
 
-<!-- INTRO VIDEO : garder 1000050603.mp4 à côté de index.html -->
+<!-- INTRO VIDEO -->
 <div class="intro" id="intro">
   <video id="introVideo" autoplay muted playsinline preload="auto">
     <source src="1000050603.mp4" type="video/mp4">
@@ -506,7 +508,7 @@ footer {
   setTimeout(closeIntro, 15000);
 })();
 
-/* PARTICULES VIOLETTES + ETOILES FILANTES CHROME */
+/* PARTICULES VIOLETTES PLUS LUMINEUSES + CHROME */
 (function() {
   const canvas = document.getElementById('luxury-particles');
   if (!canvas) return;
@@ -523,7 +525,7 @@ footer {
   let particles = [];
   let shootingStars = [];
   let animationFrame = null;
-  let lastStarTime = 0;
+  let nextStarTime = 0;
 
   function random(min, max) {
     return Math.random() * (max - min) + min;
@@ -542,38 +544,37 @@ footer {
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    /* Densité adaptée à la taille de l'écran */
     const count = Math.min(
-      100,
-      Math.max(30, Math.floor(width * height / 11000))
+      140,
+      Math.max(45, Math.floor(width * height / 8000))
     );
 
     particles = Array.from({ length: count }, function() {
       return {
         x: random(0, width),
         y: random(0, height),
-        radius: random(0.5, 1.8),
-        speed: random(0.12, 0.42),
+        radius: random(0.7, 2.2),
+        speed: random(0.12, 0.48),
         phase: random(0, Math.PI * 2),
-        drift: random(-0.12, 0.12),
-        chrome: Math.random() > 0.84
+        drift: random(-0.16, 0.16),
+        chrome: Math.random() > 0.78
       };
     });
   }
 
+  /* Etoiles filantes plus longues et plus rapides */
   function createShootingStar() {
-    /* Départ parfois hors écran pour un passage naturel */
     const fromLeft = Math.random() > 0.5;
 
     shootingStars.push({
-      x: fromLeft ? random(-width * 0.15, width * 0.65) : width + 30,
-      y: random(0, height * 0.65),
-      vx: fromLeft ? random(5, 8) : -random(5, 8),
-      vy: random(2, 4),
-      length: random(65, 125),
+      x: fromLeft ? random(-50, width * 0.8) : width + 50,
+      y: random(0, height * 0.75),
+      vx: fromLeft ? random(6, 10) : -random(6, 10),
+      vy: random(2, 5),
+      length: random(100, 190),
       life: 1,
-      decay: random(0.009, 0.016),
-      width: random(1, 2)
+      decay: random(0.006, 0.012),
+      width: random(1.8, 3)
     });
   }
 
@@ -589,19 +590,27 @@ footer {
     if (p.x < -5) p.x = width + 5;
     if (p.x > width + 5) p.x = -5;
 
-    const glow = 0.3 + 0.7 *
+    const glow = 0.4 + 0.6 *
       (0.5 + 0.5 * Math.sin(time * 0.0015 + p.phase));
 
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
 
     ctx.fillStyle = p.chrome
-      ? 'rgba(242,235,255,' + glow + ')'
-      : 'rgba(171,112,255,' + glow + ')';
+      ? 'rgba(255,250,255,' + glow + ')'
+      : 'rgba(177,105,255,' + glow + ')';
 
-    ctx.shadowBlur = p.chrome ? 12 : 8;
-    ctx.shadowColor = p.chrome ? '#f0e6ff' : '#9b5cff';
+    ctx.shadowBlur = p.chrome ? 20 : 16;
+    ctx.shadowColor = p.chrome ? '#ffffff' : '#a45cff';
     ctx.fill();
+
+    /* Petit reflet supplémentaire sur certaines particules */
+    if (p.chrome && p.radius > 1.5) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius * 2.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(209,180,255,' + (glow * 0.12) + ')';
+      ctx.fill();
+    }
   }
 
   function drawShootingStar(star) {
@@ -612,36 +621,65 @@ footer {
       star.x, star.y, tailX, tailY
     );
 
-    gradient.addColorStop(0, 'rgba(255,255,255,' + star.life + ')');
-    gradient.addColorStop(0.18, 'rgba(226,210,255,' + star.life + ')');
-    gradient.addColorStop(0.55, 'rgba(153,91,255,' + (star.life * 0.65) + ')');
-    gradient.addColorStop(1, 'rgba(139,92,255,0)');
+    gradient.addColorStop(
+      0, 'rgba(255,255,255,' + star.life + ')'
+    );
+    gradient.addColorStop(
+      0.12, 'rgba(255,255,255,' + (star.life * 0.95) + ')'
+    );
+    gradient.addColorStop(
+      0.35, 'rgba(220,198,255,' + (star.life * 0.9) + ')'
+    );
+    gradient.addColorStop(
+      0.65, 'rgba(163,91,255,' + (star.life * 0.65) + ')'
+    );
+    gradient.addColorStop(
+      1, 'rgba(139,92,255,0)'
+    );
 
     ctx.save();
     ctx.globalAlpha = star.life;
     ctx.strokeStyle = gradient;
     ctx.lineWidth = star.width;
     ctx.lineCap = 'round';
-    ctx.shadowBlur = 15;
-    ctx.shadowColor = '#c9a4ff';
+    ctx.shadowBlur = 24;
+    ctx.shadowColor = '#bd8cff';
 
     ctx.beginPath();
     ctx.moveTo(star.x, star.y);
     ctx.lineTo(tailX, tailY);
     ctx.stroke();
 
-    /* Petit éclat chrome à la pointe */
+    /* Pointe chrome blanche et lumineuse */
     ctx.fillStyle = '#ffffff';
-    ctx.shadowBlur = 18;
+    ctx.shadowBlur = 25;
+    ctx.shadowColor = '#ffffff';
+
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.width * 1.3, 0, Math.PI * 2);
+    ctx.arc(star.x, star.y, star.width * 1.6, 0, Math.PI * 2);
     ctx.fill();
+
+    /* Eclat en forme de croix */
+    ctx.globalAlpha = star.life * 0.85;
+    ctx.strokeStyle = '#f7edff';
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+    ctx.moveTo(star.x - 7, star.y);
+    ctx.lineTo(star.x + 7, star.y);
+    ctx.moveTo(star.x, star.y - 7);
+    ctx.lineTo(star.x, star.y + 7);
+    ctx.stroke();
 
     ctx.restore();
 
     star.x += star.vx;
     star.y += star.vy;
     star.life -= star.decay;
+  }
+
+  function scheduleNextStar(time) {
+    nextStarTime = time + random(2000, 4000);
   }
 
   function draw(time) {
@@ -655,19 +693,22 @@ footer {
       drawParticle(p, time);
     }
 
-    /* Apparition irrégulière : environ toutes les 4 à 9 secondes */
-    if (time - lastStarTime > random(4000, 9000)) {
-      if (shootingStars.length < 2) {
+    /* Passage plus fréquent, sans encombrer l'écran */
+    if (time >= nextStarTime && shootingStars.length < 3) {
+      createShootingStar();
+      scheduleNextStar(time);
+
+      /* Parfois, une seconde étoile suit la première */
+      if (Math.random() > 0.72 && shootingStars.length < 3) {
         createShootingStar();
       }
-      lastStarTime = time;
     }
 
     shootingStars = shootingStars.filter(function(star) {
       return star.life > 0 &&
-        star.x > -200 &&
-        star.x < width + 200 &&
-        star.y < height + 200;
+        star.x > -250 &&
+        star.x < width + 250 &&
+        star.y < height + 250;
     });
 
     for (const star of shootingStars) {
@@ -690,9 +731,7 @@ footer {
     }
   }
 
-  window.addEventListener('resize', function() {
-    resize();
-  });
+  window.addEventListener('resize', resize);
 
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
@@ -703,6 +742,9 @@ footer {
   });
 
   resize();
+
+  /* Première étoile après un court délai */
+  nextStarTime = performance.now() + 1200;
   startAnimation();
 })();
 </script>
