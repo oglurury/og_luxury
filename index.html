@@ -1,758 +1,760 @@
-<!DOCTYPE html><html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08060d">
-  <title>OG LUXURY | Boutique homme</title>  <script>
-    try {
-      if (localStorage.getItem("ogLuxuryIntroSeen") === "yes") {
-        document.documentElement.classList.add("intro-seen");
-      }
-    } catch (e) {}
-  </script>  <style>
-    :root {
-      --bg: #08060d;
-      --purple: #a855f7;
-      --violet: #7c3aed;
-      --white: #f8f5ff;
-      --muted: #aaa3b8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      background:
-        radial-gradient(ellipse at 50% 0%, #241038 0%, transparent 48%),
-        linear-gradient(180deg, #0b0711, #08060d 65%);
-      color: var(--white);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    #stars {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* INTRO VIDEO */
-
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #050408;
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.7s ease, visibility 0.7s ease;
-    }
-
-    .intro.hidden,
-    .intro-seen .intro {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .intro video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .intro::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.1),
-        rgba(0, 0, 0, 0.3)
-      );
-      pointer-events: none;
-    }
-
-    .skip-intro {
-      position: absolute;
-      z-index: 2;
-      right: 22px;
-      bottom: 25px;
-      padding: 13px 20px;
-      border: 1px solid rgba(200, 150, 255, 0.8);
-      border-radius: 30px;
-      background: rgba(15, 8, 24, 0.8);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .skip-intro:hover {
-      background: var(--violet);
-      box-shadow: 0 0 25px #9333ea88;
-    }
-
-    /* HEADER */
-
-    header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 20px 10px;
-    }
-
-    .mini-logo {
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 6px;
-      color: #ded4ed;
-    }
-
-    /* HERO */
-
-    .hero {
-      text-align: center;
-      padding: 90px 20px 65px;
-    }
-
-    .eyebrow {
-      margin-bottom: 18px;
-      color: #c084fc;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 7px;
-    }
-
-    .hero h1 {
-      font-size: clamp(43px, 10vw, 92px);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: 4px;
-      background: linear-gradient(
-        110deg,
-        #77717e 0%,
-        #ffffff 20%,
-        #9a8ba8 38%,
-        #ffffff 53%,
-        #756a82 73%,
-        #f8f5ff 90%
-      );
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: chrome 7s linear infinite;
-      filter: drop-shadow(0 0 18px #a855f726);
-    }
-
-    @keyframes chrome {
-      to {
-        background-position: 200% center;
-      }
-    }
-
-    .hero-description {
-      max-width: 520px;
-      margin: 24px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .hero-line {
-      width: 65px;
-      height: 2px;
-      margin: 30px auto 0;
-      background: linear-gradient(90deg, transparent, #c084fc, transparent);
-      box-shadow: 0 0 15px #a855f7;
-    }
-
-    /* COLLECTIONS */
-
-    .collections {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 10px 22px 85px;
-    }
-
-    .section-heading {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .section-heading h2 {
-      font-size: 12px;
-      letter-spacing: 5px;
-      font-weight: 700;
-    }
-
-    .section-heading p {
-      margin-top: 12px;
-      color: #91889f;
-      font-size: 12px;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .category-card {
-      position: relative;
-      display: flex;
-      min-height: 190px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 19px;
-      overflow: hidden;
-      padding: 25px 12px;
-      border: 1px solid #ffffff15;
-      border-radius: 15px;
-      background: linear-gradient(
-        145deg,
-        rgba(36, 22, 51, 0.75),
-        rgba(12, 9, 18, 0.94)
-      );
-      transition: transform 0.35s ease, border-color 0.35s ease,
-        box-shadow 0.35s ease;
-    }
-
-    .category-card::before {
-      content: "";
-      position: absolute;
-      top: -100%;
-      left: -70%;
-      width: 45%;
-      height: 300%;
-      transform: rotate(25deg);
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #ffffff12,
-        #e9d5ff55,
-        #ffffff0a,
-        transparent
-      );
-      transition: left 0.8s ease;
-      pointer-events: none;
-    }
-
-    .category-card:hover::before {
-      left: 140%;
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-      border-color: #b56bff99;
-      box-shadow: 0 10px 35px #7c3aed20, 0 0 20px #a855f718;
-    }
-
-    /* NOUVELLES SILHOUETTES VIOLETTES */
-
-    .category-icon {
-      width: 48px;
-      height: 48px;
-      color: #bd83ff;
-      fill: currentColor;
-      filter: drop-shadow(0 0 7px #a855f733);
-      transition: color 0.3s ease, filter 0.3s ease;
-    }
-
-    .category-card:hover .category-icon {
-      color: #d8b4fe;
-      filter: drop-shadow(0 0 10px #a855f766);
-    }
-
-    .category-card h3 {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-align: center;
-    }
-
-    .card-arrow {
-      color: #a855f7;
-      font-size: 18px;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      max-width: 680px;
-      margin: 0 auto 70px;
-      padding: 0 22px;
-      text-align: center;
-    }
-
-    .contact-panel {
-      padding: 35px 22px;
-      border: 1px solid #a855f735;
-      border-radius: 16px;
-      background: linear-gradient(
-        145deg,
-        rgba(35, 19, 49, 0.8),
-        rgba(12, 8, 18, 0.95)
-      );
-      box-shadow: 0 0 35px #7c3aed0d;
-    }
-
-    .contact-brand {
-      margin-bottom: 23px;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 5px;
-    }
-
-    .contact h2 {
-      margin-bottom: 13px;
-      font-size: 11px;
-      letter-spacing: 3px;
-    }
-
-    .contact p {
-      max-width: 480px;
-      margin: 0 auto 28px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .telegram-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin: 0 auto 30px;
-      padding: 14px 23px;
-      border: 1px solid #b879ff;
-      border-radius: 30px;
-      background: linear-gradient(100deg, #7c3aed, #a855f7);
-      color: white;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      box-shadow: 0 0 24px #9333ea30;
-      transition: 0.3s;
-    }
-
-    .telegram-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px #a855f755;
-    }
-
-    .contact-divider {
-      width: 50px;
-      height: 1px;
-      margin: 0 auto 28px;
-      background: #a855f7;
-    }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      padding: 24px 15px 30px;
-      border-top: 1px solid #ffffff0c;
-      color: #777080;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-align: center;
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        padding-top: 75px;
-      }
-
-      .hero h1 {
-        letter-spacing: 2px;
-      }
-
-      .category-grid {
-        gap: 12px;
-      }
-
-      .category-card {
-        min-height: 165px;
-        gap: 16px;
-      }
-
-      .category-card h3 {
-        font-size: 10px;
-        letter-spacing: 2px;
-      }
-
-      .collections {
-        padding-right: 16px;
-        padding-left: 16px;
-      }
-
-      .skip-intro {
-        right: 15px;
-        bottom: 18px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
-    }
-  </style></head><body>
-  <canvas id="stars" aria-hidden="true"></canvas>  <!-- INTRO VIDEO -->  <div class="intro" id="intro">
-    <video id="introVideo" autoplay muted playsinline preload="auto">
-      <source src="1000050603.mp4" type="video/mp4">
-    </video>
-    <button class="skip-intro" id="skipIntro" type="button">
-      PASSER L’INTRO
-    </button>
-  </div>  <div class="page">
-    <header>
-      <div class="mini-logo">OG LUXURY</div>
-    </header><main>
-  <section class="hero">
-    <p class="eyebrow">WELCOME TO</p>
-    <h1>OG LUXURY</h1>
-    <p class="hero-description">
-      Découvrez notre univers et explorez nos différentes collections
-      en qualité boutique 1.1
-    </p>
-    <div class="hero-line"></div>
-  </section>
-
-  <section class="collections">
-    <div class="section-heading">
-      <h2>NOS COLLECTIONS</h2>
-      <p>Explorez notre sélection</p>
-    </div>
-
-    <div class="category-grid">
-
-      <!-- VÊTEMENTS : SILHOUETTE DE T-SHIRT -->
-      <a class="category-card" href="vetements.html">
-        <svg class="category-icon" viewBox="0 0 48 48"
-          aria-hidden="true">
-          <path d="M15 7 5 13l5 10 6-3v21h16V20l6 3 5-10L33 7c-2 4-5 6-9 6s-7-2-9-6Z"/>
-        </svg>
-        <h3>VÊTEMENTS</h3>
-        <span class="card-arrow">↗</span>
-      </a>
-
-      <!-- SNEAKERS : SILHOUETTE DE BASKET -->
-      <a class="category-card" href="sneakers.html">
-        <svg class="category-icon" viewBox="0 0 48 48"
-          aria-hidden="true">
-          <path d="M5 29c5 0 9-4 12-12l7 6c3 2 6 3 10 4l7 2c3 1 4 3 4 7v2H8c-4 0-6-2-6-5 0-2 1-3 3-4Z"/>
-        </svg>
-        <h3>SNEAKERS</h3>
-        <span class="card-arrow">↗</span>
-      </a>
-
-      <!-- CASQUETTES : SILHOUETTE SIMPLE -->
-      <a class="category-card" href="casquettes.html">
-        <svg class="category-icon" viewBox="0 0 48 48"
-          aria-hidden="true">
-          <path d="M6 28a18 18 0 0 1 36 0H6Z"/>
-          <path d="M6 28c-3 1-4 4-1 6 5 3 17 2 27-1 6-2 10-4 10-6-10-3-25-3-36 1Z"/>
-        </svg>
-        <h3>CASQUETTES</h3>
-        <span class="card-arrow">↗</span>
-      </a>
-
-      <!-- MAROQUINERIE : SILHOUETTE DE SAC -->
-      <a class="category-card" href="maroquineries.html">
-        <svg class="category-icon" viewBox="0 0 48 48"
-          aria-hidden="true">
-          <path d="M8 17h32l3 25H5l3-25Z"/>
-          <path d="M16 18v-5a8 8 0 0 1 16 0v5h-4v-5a4 4 0 0 0-8 0v5h-4Z"/>
-        </svg>
-        <h3>MAROQUINERIE</h3>
-        <span class="card-arrow">↗</span>
-      </a>
-
-    </div>
-  </section>
-
-  <section class="contact">
-    <div class="contact-panel">
-      <div class="contact-brand">OG LUXURY</div>
-
-      <h2>CONTACT TELEGRAM</h2>
-      <p>
-        Les prix sont communiqués sur demande. Contactez-nous
-        pour connaître les tarifs et les disponibilités.
-      </p>
-
-      <a class="telegram-button"
-         href="https://t.me/og_luxury"
-         target="_blank"
-         rel="noopener noreferrer">
-        CONTACTER @OG_LUXURY ↗
-      </a>
-
-      <div class="contact-divider"></div>
-
-      <h2>UN ARTICLE EN TÊTE ?</h2>
-      <p>
-        Vous ne trouvez pas votre bonheur ? Contactez-nous !
-        Nous étudierons la possibilité de rechercher l’article
-        auprès de nos fournisseurs.
-      </p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  OG LUXURY · COLLECTIONS HOMME
+<!DOCTYPE html>  <html lang="fr">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta name="theme-color" content="#08060d">  
+  <title>OG LUXURY | Boutique homme</title>    <script>  
+    try {  
+      if (localStorage.getItem("ogLuxuryIntroSeen") === "yes") {  
+        document.documentElement.classList.add("intro-seen");  
+      }  
+    } catch (e) {}  
+  </script>    <style>  
+    :root {  
+      --bg: #08060d;  
+      --purple: #a855f7;  
+      --violet: #7c3aed;  
+      --white: #f8f5ff;  
+      --muted: #aaa3b8;  
+    }  
+  
+    * {  
+      box-sizing: border-box;  
+      margin: 0;  
+      padding: 0;  
+    }  
+  
+    html {  
+      scroll-behavior: smooth;  
+    }  
+  
+    body {  
+      min-height: 100vh;  
+      overflow-x: hidden;  
+      background:  
+        radial-gradient(ellipse at 50% 0%, #241038 0%, transparent 48%),  
+        linear-gradient(180deg, #0b0711, #08060d 65%);  
+      color: var(--white);  
+      font-family: Arial, Helvetica, sans-serif;  
+    }  
+  
+    a {  
+      color: inherit;  
+      text-decoration: none;  
+    }  
+  
+    #stars {  
+      position: fixed;  
+      inset: 0;  
+      width: 100%;  
+      height: 100%;  
+      z-index: 0;  
+      pointer-events: none;  
+    }  
+  
+    .page {  
+      position: relative;  
+      z-index: 1;  
+    }  
+  
+    /* INTRO VIDEO */  
+  
+    .intro {  
+      position: fixed;  
+      inset: 0;  
+      z-index: 1000;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      background: #050408;  
+      opacity: 1;  
+      visibility: visible;  
+      transition: opacity 0.7s ease, visibility 0.7s ease;  
+    }  
+  
+    .intro.hidden,  
+    .intro-seen .intro {  
+      opacity: 0;  
+      visibility: hidden;  
+      pointer-events: none;  
+    }  
+  
+    .intro video {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+    }  
+  
+    .intro::after {  
+      content: "";  
+      position: absolute;  
+      inset: 0;  
+      background: linear-gradient(  
+        180deg,  
+        rgba(0, 0, 0, 0.1),  
+        rgba(0, 0, 0, 0.3)  
+      );  
+      pointer-events: none;  
+    }  
+  
+    .skip-intro {  
+      position: absolute;  
+      z-index: 2;  
+      right: 22px;  
+      bottom: 25px;  
+      padding: 13px 20px;  
+      border: 1px solid rgba(200, 150, 255, 0.8);  
+      border-radius: 30px;  
+      background: rgba(15, 8, 24, 0.8);  
+      color: white;  
+      font-size: 11px;  
+      font-weight: 700;  
+      letter-spacing: 2px;  
+      cursor: pointer;  
+      transition: 0.3s;  
+    }  
+  
+    .skip-intro:hover {  
+      background: var(--violet);  
+      box-shadow: 0 0 25px #9333ea88;  
+    }  
+  
+    /* HEADER */  
+  
+    header {  
+      display: flex;  
+      justify-content: center;  
+      align-items: center;  
+      padding: 30px 20px 10px;  
+    }  
+  
+    .mini-logo {  
+      font-size: 12px;  
+      font-weight: 900;  
+      letter-spacing: 6px;  
+      color: #ded4ed;  
+    }  
+  
+    /* HERO */  
+  
+    .hero {  
+      text-align: center;  
+      padding: 90px 20px 65px;  
+    }  
+  
+    .eyebrow {  
+      margin-bottom: 18px;  
+      color: #c084fc;  
+      font-size: 11px;  
+      font-weight: 700;  
+      letter-spacing: 7px;  
+    }  
+  
+    .hero h1 {  
+      font-size: clamp(43px, 10vw, 92px);  
+      font-weight: 900;  
+      line-height: 1.08;  
+      letter-spacing: 4px;  
+      background: linear-gradient(  
+        110deg,  
+        #77717e 0%,  
+        #ffffff 20%,  
+        #9a8ba8 38%,  
+        #ffffff 53%,  
+        #756a82 73%,  
+        #f8f5ff 90%  
+      );  
+      background-size: 200% auto;  
+      -webkit-background-clip: text;  
+      background-clip: text;  
+      color: transparent;  
+      animation: chrome 7s linear infinite;  
+      filter: drop-shadow(0 0 18px #a855f726);  
+    }  
+  
+    @keyframes chrome {  
+      to {  
+        background-position: 200% center;  
+      }  
+    }  
+  
+    .hero-description {  
+      max-width: 520px;  
+      margin: 24px auto 0;  
+      color: var(--muted);  
+      font-size: 14px;  
+      line-height: 1.9;  
+    }  
+  
+    .hero-line {  
+      width: 65px;  
+      height: 2px;  
+      margin: 30px auto 0;  
+      background: linear-gradient(90deg, transparent, #c084fc, transparent);  
+      box-shadow: 0 0 15px #a855f7;  
+    }  
+  
+    /* COLLECTIONS */  
+  
+    .collections {  
+      max-width: 1050px;  
+      margin: 0 auto;  
+      padding: 10px 22px 85px;  
+    }  
+  
+    .section-heading {  
+      margin-bottom: 30px;  
+      text-align: center;  
+    }  
+  
+    .section-heading h2 {  
+      font-size: 12px;  
+      letter-spacing: 5px;  
+      font-weight: 700;  
+    }  
+  
+    .section-heading p {  
+      margin-top: 12px;  
+      color: #91889f;  
+      font-size: 12px;  
+    }  
+  
+    .category-grid {  
+      display: grid;  
+      grid-template-columns: repeat(2, minmax(0, 1fr));  
+      gap: 18px;  
+    }  
+  
+    .category-card {  
+      position: relative;  
+      display: flex;  
+      min-height: 190px;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 19px;  
+      overflow: hidden;  
+      padding: 25px 12px;  
+      border: 1px solid #ffffff15;  
+      border-radius: 15px;  
+      background: linear-gradient(  
+        145deg,  
+        rgba(36, 22, 51, 0.75),  
+        rgba(12, 9, 18, 0.94)  
+      );  
+      transition: transform 0.35s ease, border-color 0.35s ease,  
+        box-shadow 0.35s ease;  
+    }  
+  
+    .category-card::before {  
+      content: "";  
+      position: absolute;  
+      top: -100%;  
+      left: -70%;  
+      width: 45%;  
+      height: 300%;  
+      transform: rotate(25deg);  
+      background: linear-gradient(  
+        90deg,  
+        transparent,  
+        #ffffff12,  
+        #e9d5ff55,  
+        #ffffff0a,  
+        transparent  
+      );  
+      transition: left 0.8s ease;  
+      pointer-events: none;  
+    }  
+  
+    .category-card:hover::before {  
+      left: 140%;  
+    }  
+  
+    .category-card:hover {  
+      transform: translateY(-5px);  
+      border-color: #b56bff99;  
+      box-shadow: 0 10px 35px #7c3aed20, 0 0 20px #a855f718;  
+    }  
+  
+    .category-icon {  
+      width: 48px;  
+      height: 48px;  
+      color: #d8b4fe;  
+      filter: drop-shadow(0 0 9px #a855f74d);  
+    }  
+  
+    .category-card h3 {  
+      font-size: 11px;  
+      font-weight: 700;  
+      letter-spacing: 3px;  
+      text-align: center;  
+    }  
+  
+    .card-arrow {  
+      color: #a855f7;  
+      font-size: 18px;  
+    }  
+  
+    /* CONTACT */  
+  
+    .contact {  
+      max-width: 680px;  
+      margin: 0 auto 70px;  
+      padding: 0 22px;  
+      text-align: center;  
+    }  
+  
+    .contact-panel {  
+      padding: 35px 22px;  
+      border: 1px solid #a855f735;  
+      border-radius: 16px;  
+      background: linear-gradient(  
+        145deg,  
+        rgba(35, 19, 49, 0.8),  
+        rgba(12, 8, 18, 0.95)  
+      );  
+      box-shadow: 0 0 35px #7c3aed0d;  
+    }  
+  
+    .contact-brand {  
+      margin-bottom: 23px;  
+      font-size: 20px;  
+      font-weight: 900;  
+      letter-spacing: 5px;  
+    }  
+  
+    .contact h2 {  
+      margin-bottom: 13px;  
+      font-size: 11px;  
+      letter-spacing: 3px;  
+    }  
+  
+    .contact p {  
+      max-width: 480px;  
+      margin: 0 auto 28px;  
+      color: var(--muted);  
+      font-size: 13px;  
+      line-height: 1.9;  
+    }  
+  
+    .telegram-button {  
+      display: inline-flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 10px;  
+      margin: 0 auto 30px;  
+      padding: 14px 23px;  
+      border: 1px solid #b879ff;  
+      border-radius: 30px;  
+      background: linear-gradient(100deg, #7c3aed, #a855f7);  
+      color: white;  
+      font-size: 11px;  
+      font-weight: 800;  
+      letter-spacing: 2px;  
+      box-shadow: 0 0 24px #9333ea30;  
+      transition: 0.3s;  
+    }  
+  
+    .telegram-button:hover {  
+      transform: translateY(-2px);  
+      box-shadow: 0 0 30px #a855f755;  
+    }  
+  
+    .contact-divider {  
+      width: 50px;  
+      height: 1px;  
+      margin: 0 auto 28px;  
+      background: #a855f7;  
+    }  
+  
+    footer {  
+      position: relative;  
+      z-index: 1;  
+      padding: 24px 15px 30px;  
+      border-top: 1px solid #ffffff0c;  
+      color: #777080;  
+      font-size: 10px;  
+      letter-spacing: 2px;  
+      text-align: center;  
+    }  
+  
+    @media (max-width: 480px) {  
+      .hero {  
+        padding-top: 75px;  
+      }  
+  
+      .hero h1 {  
+        letter-spacing: 2px;  
+      }  
+  
+      .category-grid {  
+        gap: 12px;  
+      }  
+  
+      .category-card {  
+        min-height: 165px;  
+        gap: 16px;  
+      }  
+  
+      .category-card h3 {  
+        font-size: 10px;  
+        letter-spacing: 2px;  
+      }  
+  
+      .collections {  
+        padding-right: 16px;  
+        padding-left: 16px;  
+      }  
+  
+      .skip-intro {  
+        right: 15px;  
+        bottom: 18px;  
+      }  
+    }  
+  
+    @media (prefers-reduced-motion: reduce) {  
+      *,  
+      *::before,  
+      *::after {  
+        animation: none !important;  
+        scroll-behavior: auto !important;  
+        transition: none !important;  
+      }  
+    }  
+  </style>  </head>  <body>  
+  <canvas id="stars" aria-hidden="true"></canvas>    <!-- INTRO VIDEO -->    <div class="intro" id="intro">  
+    <video id="introVideo" autoplay muted playsinline preload="auto">  
+      <source src="1000050603.mp4" type="video/mp4">  
+    </video>  
+    <button class="skip-intro" id="skipIntro" type="button">  
+      PASSER L’INTRO  
+    </button>  
+  </div>    <div class="page">  
+    <header>  
+      <div class="mini-logo">OG LUXURY</div>  
+    </header>  <main>  
+  <section class="hero">  
+    <p class="eyebrow">WELCOME TO</p>  
+    <h1>OG LUXURY</h1>  
+    <p class="hero-description">  
+      Découvrez notre univers et explorez nos différentes collections  
+      en qualité boutique 1.1  
+    </p>  
+    <div class="hero-line"></div>  
+  </section>  
+
+  <section class="collections">  
+    <div class="section-heading">  
+      <h2>NOS COLLECTIONS</h2>  
+      <p>Explorez notre sélection</p>  
+    </div>  
+
+    <div class="category-grid">  
+
+      <!-- VÊTEMENTS : ICÔNE CINTRE -->  
+      <a class="category-card" href="vetements.html">  
+        <svg class="category-icon" viewBox="0 0 48 48"  
+          fill="none" stroke="currentColor" stroke-width="1.5"  
+          stroke-linecap="round" stroke-linejoin="round"  
+          aria-hidden="true">  
+          <path d="M21 12a3 3 0 1 1 4 2.83V18"/>  
+          <path d="M25 18 42 30a2 2 0 0 1-1.15 3.63H7.15A2 2 0 0 1 6 30l18-12"/>  
+        </svg>  
+        <h3>VÊTEMENTS</h3>  
+        <span class="card-arrow">↗</span>  
+      </a>  
+
+      <!-- SNEAKERS : PROFIL DE CHAUSSURE -->  
+      <a class="category-card" href="sneakers.html">  
+        <svg class="category-icon" viewBox="0 0 48 48"  
+          fill="none" stroke="currentColor" stroke-width="1.5"  
+          stroke-linecap="round" stroke-linejoin="round"  
+          aria-hidden="true">  
+          <path d="M5 30c5 0 9-4 12-11l7 5c3 2 6 3 10 4l7 2c2 1 3 3 3 6H7c-3 0-4-2-4-4s1-2 2-2Z"/>  
+          <path d="m17 20 5 4"/>  
+          <path d="m15 24 6 3"/>  
+          <path d="m22 27 6 1"/>  
+          <path d="M5 32h6"/>  
+          <path d="M4 36h40"/>  
+        </svg>  
+        <h3>SNEAKERS</h3>  
+        <span class="card-arrow">↗</span>  
+      </a>  
+
+      <!-- CASQUETTES : ICÔNE CASQUETTE -->  
+      <a class="category-card" href="casquettes.html">  
+        <svg class="category-icon" viewBox="0 0 48 48"  
+          fill="none" stroke="currentColor" stroke-width="1.5"  
+          stroke-linecap="round" stroke-linejoin="round"  
+          aria-hidden="true">  
+          <path d="M7 29a17 17 0 0 1 34 0"/>  
+          <path d="M7 29c8-4 22-4 32 0"/>  
+          <path d="M7 29c-4 1-5 4-2 6 5 3 17 2 26-1 5-2 8-4 8-6"/>  
+          <path d="M24 13v10"/>  
+          <path d="M19 18h10"/>  
+        </svg>  
+        <h3>CASQUETTES</h3>  
+        <span class="card-arrow">↗</span>  
+      </a>  
+
+      <!-- MAROQUINERIE : SAC À POIGNÉES -->  
+      <a class="category-card" href="maroquineries.html">  
+        <svg class="category-icon" viewBox="0 0 48 48"  
+          fill="none" stroke="currentColor" stroke-width="1.5"  
+          stroke-linecap="round" stroke-linejoin="round"  
+          aria-hidden="true">  
+          <path d="M8 19h32l3 23H5l3-23Z"/>  
+          <path d="M16 19v-5a8 8 0 0 1 16 0v5"/>  
+          <path d="M8 25h32"/>  
+          <path d="M21 25v5h6v-5"/>  
+        </svg>  
+        <h3>MAROQUINERIE</h3>  
+        <span class="card-arrow">↗</span>  
+      </a>  
+
+    </div>  
+  </section>  
+
+  <section class="contact">  
+    <div class="contact-panel">  
+      <div class="contact-brand">OG LUXURY</div>  
+
+      <h2>CONTACT TELEGRAM</h2>  
+      <p>  
+        Les prix sont communiqués sur demande. Contactez-nous  
+        pour connaître les tarifs et les disponibilités.  
+      </p>  
+
+      <a class="telegram-button"  
+         href="https://t.me/og_luxury"  
+         target="_blank"  
+         rel="noopener noreferrer">  
+        CONTACTER @OG_LUXURY ↗  
+      </a>  
+
+      <div class="contact-divider"></div>  
+
+      <h2>UN ARTICLE EN TÊTE ?</h2>  
+      <p>  
+        Vous ne trouvez pas votre bonheur ? Contactez-nous !  
+        Nous étudierons la possibilité de rechercher l’article  
+        auprès de nos fournisseurs.  
+      </p>  
+    </div>  
+  </section>  
+</main>  
+
+<footer>  
+  OG LUXURY · COLLECTIONS HOMME  
 </footer>
 
-  </div>  <script>
-    /* INTRO : ne pas la rejouer après fermeture */
-    (function () {
-      const intro = document.getElementById("intro");
-      const video = document.getElementById("introVideo");
-      const skip = document.getElementById("skipIntro");
-      const KEY = "ogLuxuryIntroSeen";
-
-      let closed = false;
-      let safetyTimer;
-      let autoplayTimer;
-
-      function closeIntro() {
-        if (closed) return;
-        closed = true;
-
-        clearTimeout(safetyTimer);
-        clearTimeout(autoplayTimer);
-
-        try {
-          localStorage.setItem(KEY, "yes");
-        } catch (e) {}
-
-        document.documentElement.classList.add("intro-seen");
-        intro.classList.add("hidden");
-
-        try {
-          video.pause();
-        } catch (e) {}
-      }
-
-      let alreadySeen = false;
-
-      try {
-        alreadySeen = localStorage.getItem(KEY) === "yes";
-      } catch (e) {}
-
-      if (alreadySeen) {
-        closed = true;
-        document.documentElement.classList.add("intro-seen");
-        intro.classList.add("hidden");
-        video.pause();
-      } else {
-        safetyTimer = setTimeout(closeIntro, 15000);
-        autoplayTimer = setTimeout(closeIntro, 3500);
-
-        const playAttempt = video.play();
-
-        if (playAttempt && typeof playAttempt.catch === "function") {
-          playAttempt.catch(function () {
-            closeIntro();
-          });
-        }
-
-        video.addEventListener("playing", function () {
-          clearTimeout(autoplayTimer);
-        }, { once: true });
-
-        video.addEventListener("ended", closeIntro);
-        video.addEventListener("error", closeIntro);
-        skip.addEventListener("click", closeIntro);
-      }
-
-      window.addEventListener("pageshow", function () {
-        try {
-          if (localStorage.getItem(KEY) === "yes") {
-            closed = true;
-            document.documentElement.classList.add("intro-seen");
-            intro.classList.add("hidden");
-            video.pause();
-          }
-        } catch (e) {}
-      });
-    })();
-
-    /* ÉTOILES VIOLETTES ET ÉTOILES FILANTES */
-    (function () {
-      const canvas = document.getElementById("stars");
-      const ctx = canvas.getContext("2d");
-
-      if (!ctx || window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches) {
-        canvas.style.display = "none";
-        return;
-      }
-
-      let width = 0;
-      let height = 0;
-      let particles = [];
-      let shootingStars = [];
-      let nextShootingStar = 0;
-
-      function resize() {
-        const ratio = Math.min(window.devicePixelRatio || 1, 2);
-
-        width = window.innerWidth;
-        height = window.innerHeight;
-
-        canvas.width = width * ratio;
-        canvas.height = height * ratio;
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-        const count = Math.min(
-          100,
-          Math.floor((width * height) / 11000)
-        );
-
-        particles = Array.from({ length: count }, function () {
-          return {
-            x: Math.random() * width,
-            y: Math.random() * height,
-            r: Math.random() * 1.5 + 0.3,
-            a: Math.random() * 0.7 + 0.2,
-            speed: Math.random() * 0.012 + 0.003,
-            phase: Math.random() * Math.PI * 2
-          };
-        });
-      }
-
-      function createShootingStar() {
-        const fromLeft = Math.random() > 0.5;
-
-        shootingStars.push({
-          x: fromLeft ? -50 : Math.random() * width,
-          y: Math.random() * height * 0.55,
-          vx: fromLeft ? 7 + Math.random() * 5 : -7 - Math.random() * 5,
-          vy: 2 + Math.random() * 3,
-          length: 100 + Math.random() * 180,
-          life: 1,
-          decay: 0.009 + Math.random() * 0.009
-        });
-      }
-
-      function draw(time) {
-        ctx.clearRect(0, 0, width, height);
-
-        particles.forEach(function (p) {
-          const flicker = 0.45 + 0.55 *
-            Math.sin(time * p.speed + p.phase);
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(195, 135, 255, " +
-            (p.a * flicker) + ")";
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = "#a855f7";
-          ctx.fill();
-        });
-
-        ctx.shadowBlur = 0;
-
-        if (time > nextShootingStar) {
-          createShootingStar();
-
-          nextShootingStar = time +
-            2000 + Math.random() * 2500;
-
-          if (Math.random() < 0.35) {
-            setTimeout(function () {
-              createShootingStar();
-            }, 350);
-          }
-        }
-
-        shootingStars = shootingStars.filter(function (s) {
-          s.x += s.vx;
-          s.y += s.vy;
-          s.life -= s.decay;
-
-          const tailX = s.x - s.vx * s.length / 10;
-          const tailY = s.y - s.vy * s.length / 10;
-
-          const gradient = ctx.createLinearGradient(
-            s.x, s.y, tailX, tailY
-          );
-
-          gradient.addColorStop(0, "rgba(255,255,255," +
-            Math.max(0, s.life) + ")");
-          gradient.addColorStop(0.25, "rgba(205,150,255," +
-            Math.max(0, s.life * 0.8) + ")");
-          gradient.addColorStop(1, "rgba(150,70,255,0)");
-
-          ctx.beginPath();
-          ctx.moveTo(s.x, s.y);
-          ctx.lineTo(tailX, tailY);
-          ctx.strokeStyle = gradient;
-          ctx.lineWidth = 2;
-          ctx.shadowBlur = 14;
-          ctx.shadowColor = "#a855f7";
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, 2, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff";
-          ctx.shadowBlur = 15;
-          ctx.shadowColor = "#c084fc";
-          ctx.fill();
-
-          ctx.shadowBlur = 0;
-
-          return s.life > 0 &&
-            s.x > -300 && s.x < width + 300 &&
-            s.y < height + 200;
-        });
-
-        requestAnimationFrame(draw);
-      }
-
-      window.addEventListener("resize", resize);
-      resize();
-      requestAnimationFrame(draw);
-    })();
-  </script></body>
-</html>
+  </div>    <script>  
+    /* INTRO : ne pas la rejouer après fermeture */  
+    (function () {  
+      const intro = document.getElementById("intro");  
+      const video = document.getElementById("introVideo");  
+      const skip = document.getElementById("skipIntro");  
+      const KEY = "ogLuxuryIntroSeen";  
+  
+      let closed = false;  
+      let safetyTimer;  
+      let autoplayTimer;  
+  
+      function closeIntro() {  
+        if (closed) return;  
+        closed = true;  
+  
+        clearTimeout(safetyTimer);  
+        clearTimeout(autoplayTimer);  
+  
+        try {  
+          localStorage.setItem(KEY, "yes");  
+        } catch (e) {}  
+  
+        document.documentElement.classList.add("intro-seen");  
+        intro.classList.add("hidden");  
+  
+        try {  
+          video.pause();  
+        } catch (e) {}  
+      }  
+  
+      let alreadySeen = false;  
+  
+      try {  
+        alreadySeen = localStorage.getItem(KEY) === "yes";  
+      } catch (e) {}  
+  
+      if (alreadySeen) {  
+        closed = true;  
+        document.documentElement.classList.add("intro-seen");  
+        intro.classList.add("hidden");  
+        video.pause();  
+      } else {  
+        safetyTimer = setTimeout(closeIntro, 15000);  
+        autoplayTimer = setTimeout(closeIntro, 3500);  
+  
+        const playAttempt = video.play();  
+  
+        if (playAttempt && typeof playAttempt.catch === "function") {  
+          playAttempt.catch(function () {  
+            closeIntro();  
+          });  
+        }  
+  
+        video.addEventListener("playing", function () {  
+          clearTimeout(autoplayTimer);  
+        }, { once: true });  
+  
+        video.addEventListener("ended", closeIntro);  
+        video.addEventListener("error", closeIntro);  
+        skip.addEventListener("click", closeIntro);  
+      }  
+  
+      window.addEventListener("pageshow", function () {  
+        try {  
+          if (localStorage.getItem(KEY) === "yes") {  
+            closed = true;  
+            document.documentElement.classList.add("intro-seen");  
+            intro.classList.add("hidden");  
+            video.pause();  
+          }  
+        } catch (e) {}  
+      });  
+    })();  
+  
+    /* ÉTOILES VIOLETTES ET ÉTOILES FILANTES */  
+    (function () {  
+      const canvas = document.getElementById("stars");  
+      const ctx = canvas.getContext("2d");  
+  
+      if (!ctx || window.matchMedia(  
+        "(prefers-reduced-motion: reduce)"  
+      ).matches) {  
+        canvas.style.display = "none";  
+        return;  
+      }  
+  
+      let width = 0;  
+      let height = 0;  
+      let particles = [];  
+      let shootingStars = [];  
+      let nextShootingStar = 0;  
+  
+      function resize() {  
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);  
+  
+        width = window.innerWidth;  
+        height = window.innerHeight;  
+  
+        canvas.width = width * ratio;  
+        canvas.height = height * ratio;  
+        canvas.style.width = width + "px";  
+        canvas.style.height = height + "px";  
+  
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);  
+  
+        const count = Math.min(  
+          100,  
+          Math.floor((width * height) / 11000)  
+        );  
+  
+        particles = Array.from({ length: count }, function () {  
+          return {  
+            x: Math.random() * width,  
+            y: Math.random() * height,  
+            r: Math.random() * 1.5 + 0.3,  
+            a: Math.random() * 0.7 + 0.2,  
+            speed: Math.random() * 0.012 + 0.003,  
+            phase: Math.random() * Math.PI * 2  
+          };  
+        });  
+      }  
+  
+      function createShootingStar() {  
+        const fromLeft = Math.random() > 0.5;  
+  
+        shootingStars.push({  
+          x: fromLeft ? -50 : Math.random() * width,  
+          y: Math.random() * height * 0.55,  
+          vx: fromLeft ? 7 + Math.random() * 5 : -7 - Math.random() * 5,  
+          vy: 2 + Math.random() * 3,  
+          length: 100 + Math.random() * 180,  
+          life: 1,  
+          decay: 0.009 + Math.random() * 0.009  
+        });  
+      }  
+  
+      function draw(time) {  
+        ctx.clearRect(0, 0, width, height);  
+  
+        particles.forEach(function (p) {  
+          const flicker = 0.45 + 0.55 *  
+            Math.sin(time * p.speed + p.phase);  
+  
+          ctx.beginPath();  
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);  
+          ctx.fillStyle = "rgba(195, 135, 255, " +  
+            (p.a * flicker) + ")";  
+          ctx.shadowBlur = 8;  
+          ctx.shadowColor = "#a855f7";  
+          ctx.fill();  
+        });  
+  
+        ctx.shadowBlur = 0;  
+  
+        if (time > nextShootingStar) {  
+          createShootingStar();  
+  
+          nextShootingStar = time +  
+            2000 + Math.random() * 2500;  
+  
+          if (Math.random() < 0.35) {  
+            setTimeout(function () {  
+              createShootingStar();  
+            }, 350);  
+          }  
+        }  
+  
+        shootingStars = shootingStars.filter(function (s) {  
+          s.x += s.vx;  
+          s.y += s.vy;  
+          s.life -= s.decay;  
+  
+          const tailX = s.x - s.vx * s.length / 10;  
+          const tailY = s.y - s.vy * s.length / 10;  
+  
+          const gradient = ctx.createLinearGradient(  
+            s.x, s.y, tailX, tailY  
+          );  
+  
+          gradient.addColorStop(0, "rgba(255,255,255," +  
+            Math.max(0, s.life) + ")");  
+          gradient.addColorStop(0.25, "rgba(205,150,255," +  
+            Math.max(0, s.life * 0.8) + ")");  
+          gradient.addColorStop(1, "rgba(150,70,255,0)");  
+  
+          ctx.beginPath();  
+          ctx.moveTo(s.x, s.y);  
+          ctx.lineTo(tailX, tailY);  
+          ctx.strokeStyle = gradient;  
+          ctx.lineWidth = 2;  
+          ctx.shadowBlur = 14;  
+          ctx.shadowColor = "#a855f7";  
+          ctx.stroke();  
+  
+          ctx.beginPath();  
+          ctx.arc(s.x, s.y, 2, 0, Math.PI * 2);  
+          ctx.fillStyle = "#ffffff";  
+          ctx.shadowBlur = 15;  
+          ctx.shadowColor = "#c084fc";  
+          ctx.fill();  
+  
+          ctx.shadowBlur = 0;  
+  
+          return s.life > 0 &&  
+            s.x > -300 && s.x < width + 300 &&  
+            s.y < height + 200;  
+        });  
+  
+        requestAnimation
