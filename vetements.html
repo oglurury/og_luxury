@@ -3,67 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08060d">
 <title>Vêtements | OG LUXURY</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#21102f 0%,#09070d 48%,#030304 100%);color:#f7f3fb;font-family:Arial,Helvetica,sans-serif;min-height:100vh}
-header{text-align:center;padding:30px 16px 18px}
-.back{display:inline-block;color:#d8b9ff;text-decoration:none;border:1px solid #7950a5;border-radius:30px;padding:10px 17px;font-size:12px;letter-spacing:1px}
-.logo{font-size:clamp(32px,8vw,54px);font-weight:900;letter-spacing:5px;margin:30px 0 8px;background:linear-gradient(110deg,#fff,#aaa4b5,#fff,#8065a5);background-clip:text;-webkit-background-clip:text;color:transparent}
-.subtitle{color:#b9a9c9;font-size:11px;letter-spacing:4px}
-h1{text-align:center;font-size:13px;letter-spacing:5px;color:#d7b9ff;margin:38px 0 24px}
-.grid{max-width:1000px;margin:auto;padding:0 16px 45px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.card{min-height:145px;border:1px solid #392648;border-radius:13px;background:linear-gradient(145deg,#17131c,#09080c);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:18px 8px;text-align:center;box-shadow:inset 0 0 22px #a855f70a;transition:.25s}
-.card:active{border-color:#bd83ff;box-shadow:0 0 20px #a855f733}
-.card img{width:100%;max-width:145px;height:65px;object-fit:contain;filter:grayscale(1) brightness(1.8)}
-.card span{font-size:12px;font-weight:bold;letter-spacing:1.5px;color:#eee}
-footer{text-align:center;padding:22px;color:#81768c;font-size:10px;letter-spacing:2px;border-top:1px solid #24192d}
-@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{min-height:170px}}
-@media(min-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+body{margin:0;min-height:100vh;color:white;font-family:Arial,sans-serif;background:radial-gradient(ellipse at top,#281039,#100b16 48%,#050507)}
+header{text-align:center;padding:32px 15px 24px}
+.back{display:inline-block;padding:10px 16px;margin-bottom:25px;border:1px solid #8c4bc0;border-radius:30px;color:#e7caff;text-decoration:none;font-size:13px}
+h1{margin:0;font-size:clamp(30px,8vw,52px);letter-spacing:5px;text-shadow:0 0 22px #9d42ff}
+.subtitle{margin-top:12px;color:#b9a6c8;font-size:12px;letter-spacing:3px}
+main{width:min(920px,calc(100% - 28px));margin:20px auto 45px}
+.brands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.brand{min-height:105px;padding:16px 10px;display:flex;justify-content:center;align-items:center;text-align:center;border:1px solid #be7eff55;border-radius:14px;background:linear-gradient(145deg,#21152d,#0b0a10);font-family:Georgia,serif;font-size:16px;font-weight:bold;letter-spacing:1px;transition:.25s}
+.brand:hover{transform:translateY(-3px);border-color:#d7a7ff;box-shadow:0 0 22px #8b36c533}
+.contact{text-align:center;margin:35px 0}
+.contact a{display:inline-block;padding:14px 24px;border-radius:30px;background:linear-gradient(90deg,#6827a0,#a34dff);color:white;text-decoration:none;font-weight:bold;font-size:13px}
+footer{padding:20px;text-align:center;border-top:1px solid #ffffff15;color:#92849d;font-size:12px}
+@media(min-width:600px){.brands{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:850px){.brands{grid-template-columns:repeat(4,minmax(0,1fr))}}
 </style>
 </head>
 <body>
 <header>
-<a class="back" href="index.html">← RETOUR À L’ACCUEIL</a>
-<div class="logo">OG LUXURY</div>
-<div class="subtitle">L’UNIVERS DU LUXE</div>
+<a class="back" href="index.html" onclick="if(document.referrer && new URL(document.referrer).origin===location.origin && history.length>1){event.preventDefault();history.back()}">← RETOUR</a>
+<h1>VÊTEMENTS</h1>
+<div class="subtitle">OG LUXURY · COLLECTIONS HOMME</div>
 </header>
-<h1>COLLECTION VÊTEMENTS</h1>
-<main class="grid" id="brands"></main>
-<footer>OG LUXURY · COLLECTIONS HOMME</footer>
-<script>
-const brands = [
-"Louis Vuitton","Gucci","Dior","Prada","Stone Island x C.P. Company",
-"Moncler","Burberry","Acne Studios","Fendi","Balenciaga","Chrome Hearts","Loewe"
-];
-const grid = document.getElementById("brands");
-brands.forEach(name => {
-  const card = document.createElement("div");
-  card.className = "card";
-  const img = document.createElement("img");
-  img.alt = "Logo " + name;
-  img.loading = "lazy";
-  img.src = "https://logo.clearbit.com/" + ({
-    "Louis Vuitton":"louisvuitton.com",
-    "Gucci":"gucci.com",
-    "Dior":"dior.com",
-    "Prada":"prada.com",
-    "Stone Island x C.P. Company":"stoneisland.com",
-    "Moncler":"moncler.com",
-    "Burberry":"burberry.com",
-    "Acne Studios":"acnestudios.com",
-    "Fendi":"fendi.com",
-    "Balenciaga":"balenciaga.com",
-    "Chrome Hearts":"chromehearts.com",
-    "Loewe":"loewe.com"
-  }[name]);
-  img.onerror = () => { img.style.display = "none"; };
-  const label = document.createElement("span");
-  label.textContent = name.toUpperCase();
-  card.append(img,label);
-  grid.appendChild(card);
-});
-</script>
+<main>
+<section class="brands">
+<div class="brand">LOUIS VUITTON</div>
+<div class="brand">GUCCI</div>
+<div class="brand">DIOR</div>
+<div class="brand">PRADA</div>
+<div class="brand">STONE ISLAND × C.P. COMPANY</div>
+<div class="brand">MONCLER</div>
+<div class="brand">BURBERRY</div>
+<div class="brand">ACNE STUDIOS</div>
+<div class="brand">FENDI</div>
+<div class="brand">BALENCIAGA</div>
+<div class="brand">CHROME HEARTS</div>
+<div class="brand">LOEWE</div>
+</section>
+<div class="contact"><a href="https://t.me/og_luxury" target="_blank" rel="noopener">CONTACT TELEGRAM</a></div>
+</main>
+<footer>OG LUXURY · Collections homme</footer>
 </body>
 </html>
