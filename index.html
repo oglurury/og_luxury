@@ -2,752 +2,812 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080510">
-<title>OG LUXURY | Boutique homme</title>
-
-<style>
-:root {
-  --bg: #07050d;
-  --panel: #100b1c;
-  --purple: #8b5cff;
-  --purple-bright: #c4a0ff;
-  --violet-dark: #35145c;
-  --text: #f6f0ff;
-  --muted: #c0b3d8;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(ellipse at 50% 0%, #281345 0%, transparent 42%),
-    linear-gradient(180deg, #10091b 0%, #07050d 52%, #030207 100%);
-  background-attachment: fixed;
-}
-
-/* FOND ANIME VIOLET ET CHROME */
-#luxury-particles {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-header,
-main,
-footer {
-  position: relative;
-  z-index: 1;
-}
-
-a {
-  color: inherit;
-}
-
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 5%;
-  background: rgba(7, 5, 13, .94);
-  border-bottom: 1px solid #7047b8;
-  box-shadow: 0 4px 30px #8b5cff33;
-}
-
-.logo {
-  font-weight: 900;
-  letter-spacing: 4px;
-  color: #e9e5ef;
-  text-shadow: 0 0 12px #a56aff88;
-  text-decoration: none;
-}
-
-nav {
-  display: flex;
-  gap: 15px;
-  font-size: 13px;
-}
-
-nav a {
-  text-decoration: none;
-  transition: color .2s;
-}
-
-nav a:hover {
-  color: var(--purple-bright);
-}
-
-/* INTRO VIDEO */
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: #030207;
-  transition: opacity .5s, visibility .5s;
-}
-
-.intro video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.intro.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.skip {
-  position: absolute;
-  z-index: 2;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  border: 1px solid var(--purple-bright);
-  background: #10091eef;
-  color: white;
-  padding: 13px 24px;
-  border-radius: 30px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  box-shadow: 0 0 20px #8b5cff66;
-  transition: .25s;
-}
-
-.skip:hover {
-  background: #281345;
-  box-shadow: 0 0 30px #8b5cffcc;
-}
-
-/* HERO */
-.hero {
-  padding: 65px 18px 45px;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center, #241039 0%, #10091b 48%, transparent 100%);
-  border-bottom: 1px solid #7047b8;
-}
-
-.hero .welcome {
-  font-family: Georgia, serif;
-  letter-spacing: 8px;
-  font-size: clamp(18px, 3vw, 30px);
-  margin: 0 0 12px;
-  color: #e3d0ff;
-}
-
-/* TITRE CHROME */
-h1 {
-  margin: 0;
-  font-size: clamp(36px, 9vw, 90px);
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: #d8d8e3;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #c8c8d3 13%,
-    #ffffff 23%,
-    #858594 37%,
-    #f7f4ff 48%,
-    #aaa0bf 58%,
-    #f9f7ff 69%,
-    #777181 83%,
-    #e8e4f0 94%,
-    #ffffff 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter:
-    drop-shadow(0 1px 0 #ffffff55)
-    drop-shadow(0 0 10px #a66bff77)
-    drop-shadow(0 0 28px #702cff66);
-}
-
-.hero p {
-  max-width: 650px;
-  margin: 20px auto 0;
-  color: #d8c9ef;
-  line-height: 1.8;
-}
-
-/* CATEGORIES */
-section.content {
-  max-width: 1200px;
-  padding: 35px 18px;
-  margin: auto;
-}
-
-.section-title {
-  text-align: center;
-  font-family: Georgia, serif;
-  font-size: clamp(22px, 4vw, 32px);
-  letter-spacing: 5px;
-  font-weight: 400;
-  margin: 0 0 25px;
-  color: #eadcff;
-  text-shadow: 0 0 18px #8b5cff88;
-}
-
-.categories {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
-}
-
-.category {
-  min-height: 150px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 20px 5px;
-  text-align: center;
-  text-decoration: none;
-  border: 1px solid #7047b8;
-  border-radius: 8px;
-  background:
-    radial-gradient(ellipse at top, #351653 0%, transparent 75%),
-    linear-gradient(145deg, #19102b, #08060e);
-  font-family: Georgia, serif;
-  font-size: 19px;
-  color: #f4eaff;
-  box-shadow:
-    inset 0 0 20px #8b5cff16,
-    0 0 12px #8b5cff16;
-  transition: border-color .25s, box-shadow .25s, transform .25s;
-  position: relative;
-  overflow: hidden;
-}
-
-.category::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -120%;
-  width: 50%;
-  height: 200%;
-  transform: rotate(25deg);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #ffffff22,
-    #d8c8ff99,
-    #ffffff55,
-    transparent
-  );
-  transition: left .8s ease;
-  pointer-events: none;
-}
-
-.category:hover::after {
-  left: 150%;
-}
-
-.category:hover {
-  border-color: #e0caff;
-  box-shadow:
-    0 0 25px #8b5cff77,
-    inset 0 0 22px #8b5cff33;
-  transform: translateY(-3px);
-}
-
-/* CONTACT TELEGRAM */
-.contact {
-  max-width: 1150px;
-  margin: 10px auto 30px;
-  padding: 35px 18px;
-  border: 1px solid #8050c9;
-  border-radius: 12px;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at top, #24133b, #10091a 55%, #07050d 100%);
-  box-shadow: 0 0 32px #6b32b533;
-}
-
-.contact-logo {
-  font-size: clamp(32px, 6vw, 55px);
-  font-weight: 900;
-  letter-spacing: 5px;
-  color: #d8d8e3;
-  background: linear-gradient(
-    180deg,
-    #ffffff,
-    #bfc0cf 25%,
-    #f8f5ff 42%,
-    #9486aa 60%,
-    #f7f4ff 78%,
-    #a4a0b1
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 14px #8b5cff88);
-}
-
-.contact h2 {
-  font-size: 14px;
-  letter-spacing: 5px;
-  color: #d8bcff;
-}
-
-.contact p {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-.request {
-  max-width: 800px;
-  margin: 25px auto 0;
-  padding: 20px;
-  border: 1px solid #8050c9;
-  border-radius: 9px;
-  background: #0b0714dd;
-}
-
-.request h3 {
-  font-family: Georgia, serif;
-  letter-spacing: 2px;
-  font-weight: 400;
-  color: #eadbff;
-}
-
-.telegram {
-  display: inline-block;
-  color: #d2a8ff;
-  font-size: 21px;
-  font-weight: bold;
-  text-decoration: none;
-  margin-top: 10px;
-  text-shadow: 0 0 15px #8b5cff88;
-  transition: .25s;
-}
-
-.telegram:hover {
-  color: #fff;
-  text-shadow: 0 0 8px #fff, 0 0 28px #a45cff;
-}
-
-footer {
-  padding: 0 15px 25px;
-  text-align: center;
-  color: #a08bbd;
-  font-size: 12px;
-}
-
-/* MOBILE */
-@media (max-width: 700px) {
-  header {
-    flex-wrap: wrap;
-  }
-
-  nav {
-    gap: 12px;
-  }
-
-  .categories {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .category {
-    min-height: 125px;
-  }
-
-  .hero {
-    padding: 55px 15px 38px;
-  }
-
-  .hero .welcome {
-    letter-spacing: 5px;
-  }
-
-  h1 {
-    letter-spacing: 1px;
-  }
-
-  .contact {
-    margin: 10px 12px 25px;
-  }
-}
-
-/* ACCESSIBILITE */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *, *::before, *::after {
-    transition-duration: .01ms !important;
-  }
-
-  #luxury-particles {
-    display: none;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- PARTICULES ET ETOILES FILANTES -->
-<canvas id="luxury-particles" aria-hidden="true"></canvas>
-
-<!-- INTRO VIDEO -->
-<div class="intro" id="intro">
-  <video id="introVideo" autoplay muted playsinline preload="auto">
-    <source src="1000050603.mp4" type="video/mp4">
-  </video>
-  <button class="skip" id="skip" type="button">PASSER L’INTRO</button>
-</div>
-
-<header>
-  <a class="logo" href="#accueil">OG LUXURY</a>
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#categories">Catégories</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main id="accueil">
-
-  <section class="hero">
-    <p class="welcome">WELCOME TO</p>
-    <h1>OG LUXURY</h1>
-    <p>
-      Découvrez notre univers et explorez nos différentes collections
-      en qualité boutique 1.1
-    </p>
-  </section>
-
-  <section class="content" id="categories">
-    <h2 class="section-title">NOS CATÉGORIES</h2>
-
-    <div class="categories">
-      <a class="category" href="#contact">Vêtements</a>
-      <a class="category" href="#contact">Sneakers</a>
-      <a class="category" href="#contact">Casquettes</a>
-      <a class="category" href="#contact">Maroquineries</a>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="contact-logo">OG LUXURY</div>
-    <h2>CONTACT TELEGRAM</h2>
-
-    <p>
-      Les prix sont communiqués sur demande.
-      Contactez-nous pour connaître les tarifs et les disponibilités.
-    </p>
-
-    <div class="request">
-      <h3>UN ARTICLE EN TÊTE ?</h3>
-      <p>
-        Vous ne trouvez pas votre bonheur ? Contactez-nous !
-        Nous étudierons la possibilité de rechercher l’article
-        auprès de nos fournisseurs.
-      </p>
-
-      <a class="telegram"
-         href="https://t.me/og_luxury"
-         target="_blank"
-         rel="noopener">@og_luxury</a>
-    </div>
-  </section>
-
-</main>
-
-<footer>OG LUXURY · Collections homme</footer>
-
-<script>
-/* GESTION DE L'INTRO VIDEO */
-(function() {
-  const intro = document.getElementById('intro');
-  const video = document.getElementById('introVideo');
-  let closed = false;
-
-  function closeIntro() {
-    if (closed) return;
-    closed = true;
-    intro.classList.add('hidden');
-    video.pause();
-  }
-
-  document.getElementById('skip')
-    .addEventListener('click', closeIntro);
-
-  video.addEventListener('ended', closeIntro);
-  video.addEventListener('error', closeIntro);
-
-  const play = video.play();
-
-  if (play && play.catch) {
-    play.catch(function() {
-      setTimeout(closeIntro, 3500);
-    });
-  }
-
-  setTimeout(closeIntro, 15000);
-})();
-
-/* PARTICULES VIOLETTES PLUS LUMINEUSES + CHROME */
-(function() {
-  const canvas = document.getElementById('luxury-particles');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return;
-  }
-
-  let width = 0;
-  let height = 0;
-  let particles = [];
-  let shootingStars = [];
-  let animationFrame = null;
-  let nextStarTime = 0;
-
-  function random(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-
-  function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-
-    width = window.innerWidth;
-    height = window.innerHeight;
-
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.min(
-      140,
-      Math.max(45, Math.floor(width * height / 8000))
-    );
-
-    particles = Array.from({ length: count }, function() {
-      return {
-        x: random(0, width),
-        y: random(0, height),
-        radius: random(0.7, 2.2),
-        speed: random(0.12, 0.48),
-        phase: random(0, Math.PI * 2),
-        drift: random(-0.16, 0.16),
-        chrome: Math.random() > 0.78
-      };
-    });
-  }
-
-  /* Etoiles filantes plus longues et plus rapides */
-  function createShootingStar() {
-    const fromLeft = Math.random() > 0.5;
-
-    shootingStars.push({
-      x: fromLeft ? random(-50, width * 0.8) : width + 50,
-      y: random(0, height * 0.75),
-      vx: fromLeft ? random(6, 10) : -random(6, 10),
-      vy: random(2, 5),
-      length: random(100, 190),
-      life: 1,
-      decay: random(0.006, 0.012),
-      width: random(1.8, 3)
-    });
-  }
-
-  function drawParticle(p, time) {
-    p.y -= p.speed;
-    p.x += p.drift;
-
-    if (p.y < -5) {
-      p.y = height + 5;
-      p.x = random(0, width);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08040f">
+  <meta name="description" content="OG LUXURY — Découvrez nos collections homme : vêtements, sneakers, casquettes et maroquineries.">
+  <title>OG LUXURY | Boutique homme</title>
+
+  <style>
+    :root {
+      --bg: #08040f;
+      --purple: #a94dff;
+      --purple-light: #dfbaff;
+      --silver: #e9e4f2;
+      --text: #f4efff;
+      --muted: #c8bdd7;
     }
 
-    if (p.x < -5) p.x = width + 5;
-    if (p.x > width + 5) p.x = -5;
-
-    const glow = 0.4 + 0.6 *
-      (0.5 + 0.5 * Math.sin(time * 0.0015 + p.phase));
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-
-    ctx.fillStyle = p.chrome
-      ? 'rgba(255,250,255,' + glow + ')'
-      : 'rgba(177,105,255,' + glow + ')';
-
-    ctx.shadowBlur = p.chrome ? 20 : 16;
-    ctx.shadowColor = p.chrome ? '#ffffff' : '#a45cff';
-    ctx.fill();
-
-    /* Petit reflet supplémentaire sur certaines particules */
-    if (p.chrome && p.radius > 1.5) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius * 2.8, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(209,180,255,' + (glow * 0.12) + ')';
-      ctx.fill();
-    }
-  }
-
-  function drawShootingStar(star) {
-    const tailX = star.x - star.vx * star.length / 9;
-    const tailY = star.y - star.vy * star.length / 9;
-
-    const gradient = ctx.createLinearGradient(
-      star.x, star.y, tailX, tailY
-    );
-
-    gradient.addColorStop(
-      0, 'rgba(255,255,255,' + star.life + ')'
-    );
-    gradient.addColorStop(
-      0.12, 'rgba(255,255,255,' + (star.life * 0.95) + ')'
-    );
-    gradient.addColorStop(
-      0.35, 'rgba(220,198,255,' + (star.life * 0.9) + ')'
-    );
-    gradient.addColorStop(
-      0.65, 'rgba(163,91,255,' + (star.life * 0.65) + ')'
-    );
-    gradient.addColorStop(
-      1, 'rgba(139,92,255,0)'
-    );
-
-    ctx.save();
-    ctx.globalAlpha = star.life;
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = star.width;
-    ctx.lineCap = 'round';
-    ctx.shadowBlur = 24;
-    ctx.shadowColor = '#bd8cff';
-
-    ctx.beginPath();
-    ctx.moveTo(star.x, star.y);
-    ctx.lineTo(tailX, tailY);
-    ctx.stroke();
-
-    /* Pointe chrome blanche et lumineuse */
-    ctx.fillStyle = '#ffffff';
-    ctx.shadowBlur = 25;
-    ctx.shadowColor = '#ffffff';
-
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.width * 1.6, 0, Math.PI * 2);
-    ctx.fill();
-
-    /* Eclat en forme de croix */
-    ctx.globalAlpha = star.life * 0.85;
-    ctx.strokeStyle = '#f7edff';
-    ctx.lineWidth = 1;
-
-    ctx.beginPath();
-    ctx.moveTo(star.x - 7, star.y);
-    ctx.lineTo(star.x + 7, star.y);
-    ctx.moveTo(star.x, star.y - 7);
-    ctx.lineTo(star.x, star.y + 7);
-    ctx.stroke();
-
-    ctx.restore();
-
-    star.x += star.vx;
-    star.y += star.vy;
-    star.life -= star.decay;
-  }
-
-  function scheduleNextStar(time) {
-    nextStarTime = time + random(2000, 4000);
-  }
-
-  function draw(time) {
-    animationFrame = null;
-
-    if (document.hidden) return;
-
-    ctx.clearRect(0, 0, width, height);
-
-    for (const p of particles) {
-      drawParticle(p, time);
+    * {
+      box-sizing: border-box;
     }
 
-    /* Passage plus fréquent, sans encombrer l'écran */
-    if (time >= nextStarTime && shootingStars.length < 3) {
-      createShootingStar();
-      scheduleNextStar(time);
+    html {
+      scroll-behavior: smooth;
+    }
 
-      /* Parfois, une seconde étoile suit la première */
-      if (Math.random() > 0.72 && shootingStars.length < 3) {
-        createShootingStar();
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% 0%, #28103d 0%, transparent 45%),
+        radial-gradient(ellipse at 10% 45%, #170824 0%, transparent 45%),
+        var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    #luxury-particles {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* INTRO VIDEO */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #05020a;
+      transition: opacity .7s ease, visibility .7s ease;
+    }
+
+    #intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #intro video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #skip-intro {
+      position: absolute;
+      right: 20px;
+      bottom: 24px;
+      padding: 12px 20px;
+      color: white;
+      background: rgba(13, 5, 22, .8);
+      border: 1px solid var(--purple-light);
+      border-radius: 30px;
+      letter-spacing: 2px;
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(169, 77, 255, .45);
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 26px 20px 20px;
+      border-bottom: 1px solid rgba(169, 77, 255, .35);
+    }
+
+    .brand {
+      color: var(--silver);
+      text-decoration: none;
+      font-family: Georgia, serif;
+      font-size: clamp(25px, 5vw, 42px);
+      letter-spacing: 9px;
+      text-shadow: 0 0 15px rgba(198, 135, 255, .6);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 65px 20px 45px;
+      text-align: center;
+      border-bottom: 1px solid rgba(169, 77, 255, .3);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: #e4c8ff;
+      font-family: Georgia, serif;
+      letter-spacing: 10px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 9vw, 94px);
+      font-weight: 400;
+      letter-spacing: clamp(3px, 1.4vw, 13px);
+      background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #d8d4e2 20%,
+        #fff 35%,
+        #8f849f 49%,
+        #f9f5ff 62%,
+        #aaa1b9 80%,
+        #fff 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 15px rgba(173, 93, 255, .5));
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin: 22px auto 0;
+      color: #e1d8ed;
+      font-family: Georgia, serif;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      padding: 38px 20px 46px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      margin: 0 0 32px;
+      text-align: center;
+      color: #f4eaff;
+      font-family: Georgia, serif;
+      font-size: clamp(22px, 4.8vw, 36px);
+      font-weight: 400;
+      letter-spacing: clamp(3px, 1vw, 7px);
+      text-shadow: 0 0 14px rgba(176, 72, 255, .65);
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      width: min(10vw, 65px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple-light));
+    }
+
+    .section-title::after {
+      transform: rotate(180deg);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 220px;
+      padding: 25px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 23px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(145deg,
+        rgba(29, 12, 48, .8),
+        rgba(5, 3, 12, .96));
+      border: 1px solid rgba(177, 91, 255, .65);
+      border-radius: 16px;
+      box-shadow:
+        0 0 14px rgba(145, 45, 255, .12),
+        inset 0 0 22px rgba(115, 39, 180, .05);
+      transition: border-color .3s ease,
+                  box-shadow .3s ease,
+                  transform .3s ease;
+    }
+
+    /* Reflet discret au survol */
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      pointer-events: none;
+      background: linear-gradient(
+        115deg,
+        transparent 42%,
+        rgba(255, 255, 255, .11) 49%,
+        rgba(209, 174, 255, .22) 50%,
+        transparent 57%
+      );
+      transform: translateX(-80%);
+      transition: transform .65s ease;
+    }
+
+    .category-card:hover::after {
+      transform: translateX(80%);
+    }
+
+    .category-icon {
+      position: relative;
+      z-index: 1;
+      width: 112px;
+      height: 100px;
+      overflow: visible;
+      color: #eadbff;
+      filter:
+        drop-shadow(0 0 3px #b55aff)
+        drop-shadow(0 0 9px rgba(140, 50, 255, .6));
+      transition: filter .3s ease, transform .3s ease;
+    }
+
+    .category-card span {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: #ead1ff;
+      box-shadow:
+        0 0 24px rgba(161, 58, 255, .3),
+        inset 0 0 18px rgba(177, 91, 255, .08);
+    }
+
+    .category-card:hover .category-icon {
+      transform: scale(1.06);
+      filter:
+        drop-shadow(0 0 4px #fff)
+        drop-shadow(0 0 13px #a94dff);
+    }
+
+    /* CONTACT */
+    .contact {
+      max-width: 1080px;
+      margin: 0 auto 28px;
+      padding: 35px 24px 28px;
+      text-align: center;
+      background: linear-gradient(
+        145deg,
+        rgba(24, 8, 42, .55),
+        rgba(4, 3, 12, .8)
+      );
+      border: 1px solid rgba(153, 67, 255, .65);
+      border-radius: 20px;
+      box-shadow: inset 0 0 35px rgba(100, 32, 160, .06);
+    }
+
+    .contact h2 {
+      margin: 0 0 10px;
+      color: var(--silver);
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 6vw, 45px);
+      font-weight: 400;
+      letter-spacing: 7px;
+      text-shadow: 0 0 14px rgba(198, 135, 255, .5);
+    }
+
+    .contact-label {
+      margin: 0 0 20px;
+      color: #e4c8ff;
+      letter-spacing: 7px;
+      font-size: 12px;
+    }
+
+    .contact-description {
+      max-width: 650px;
+      margin: 0 auto 20px;
+      color: #ded4eb;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .request-box {
+      max-width: 650px;
+      margin: 20px auto 0;
+      padding: 22px 18px;
+      border: 1px solid rgba(169, 77, 255, .7);
+      border-radius: 12px;
+      background: rgba(4, 2, 10, .48);
+    }
+
+    .request-box h3 {
+      margin: 0 0 12px;
+      color: #ead8ff;
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 4px;
+    }
+
+    .request-box p {
+      margin: 0 auto 18px;
+      color: #ded4eb;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .telegram-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #e7caff;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      text-shadow: 0 0 12px rgba(169, 77, 255, .8);
+      transition: color .2s ease, text-shadow .2s ease;
+    }
+
+    .telegram-link:hover {
+      color: white;
+      text-shadow: 0 0 18px #a94dff;
+    }
+
+    .telegram-icon {
+      width: 23px;
+      height: 23px;
+      fill: currentColor;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 22px 15px 30px;
+      text-align: center;
+      color: #c4a5e8;
+      font-family: Georgia, serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+    }
+
+    footer::before {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 1px;
+      margin: 0 auto 20px;
+      background: linear-gradient(90deg, transparent, #a94dff, transparent);
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      header {
+        padding: 23px 12px 18px;
+      }
+
+      .brand {
+        letter-spacing: 6px;
+      }
+
+      .hero {
+        padding: 52px 18px 36px;
+      }
+
+      .eyebrow {
+        letter-spacing: 6px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .category-card {
+        min-height: 170px;
+        padding: 18px 8px;
+        gap: 14px;
+      }
+
+      .category-icon {
+        width: 94px;
+        height: 82px;
+      }
+
+      .category-card span {
+        font-size: 11px;
+        letter-spacing: 1.2px;
+      }
+
+      .contact {
+        margin: 0 12px 20px;
+        padding: 28px 14px 22px;
+      }
+
+      .contact-label {
+        letter-spacing: 4px;
+      }
+
+      .request-box {
+        padding: 20px 12px;
+      }
+
+      footer {
+        letter-spacing: 3px;
+        font-size: 10px;
       }
     }
 
-    shootingStars = shootingStars.filter(function(star) {
-      return star.life > 0 &&
-        star.x > -250 &&
-        star.x < width + 250 &&
-        star.y < height + 250;
-    });
+    @media (max-width: 360px) {
+      .category-card span {
+        font-size: 10px;
+        letter-spacing: .7px;
+      }
 
-    for (const star of shootingStars) {
-      drawShootingStar(star);
+      .section-title {
+        letter-spacing: 2px;
+        gap: 10px;
+      }
     }
 
-    ctx.shadowBlur = 0;
-    animationFrame = requestAnimationFrame(draw);
-  }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-  function startAnimation() {
-    if (document.hidden || animationFrame !== null) return;
-    animationFrame = requestAnimationFrame(draw);
-  }
-
-  function stopAnimation() {
-    if (animationFrame !== null) {
-      cancelAnimationFrame(animationFrame);
-      animationFrame = null;
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
     }
-  }
+  </style>
+</head>
 
-  window.addEventListener('resize', resize);
+<body>
+  <canvas id="luxury-particles" aria-hidden="true"></canvas>
 
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-      stopAnimation();
-    } else {
-      startAnimation();
-    }
-  });
+  <!-- INTRO VIDEO -->
+  <div id="intro">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="1000050603.mp4" type="video/mp4">
+    </video>
+    <button id="skip-intro" type="button">PASSER L’INTRO</button>
+  </div>
 
-  resize();
+  <!-- HEADER -->
+  <header>
+    <a class="brand" href="#accueil">OG LUXURY</a>
+  </header>
 
-  /* Première étoile après un court délai */
-  nextStarTime = performance.now() + 1200;
-  startAnimation();
-})();
-</script>
+  <main>
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+      <p class="eyebrow">WELCOME TO</p>
+      <h1>OG LUXURY</h1>
+      <p class="hero-description">
+        Découvrez notre univers et explorez nos différentes collections
+        en qualité boutique 1.1
+      </p>
+    </section>
 
+    <!-- CATÉGORIES -->
+    <section class="categories" id="categories">
+      <h2 class="section-title">NOS CATÉGORIES</h2>
+
+      <div class="category-grid">
+
+        <!-- VÊTEMENTS : CINTRE MINIMALISTE -->
+        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie vêtements">
+          <svg class="category-icon" viewBox="0 0 120 100"
+               fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <path d="M60 18 C60 12 66 10 70 14 C75 19 67 24 63 29 L63 35"/>
+            <path d="M60 35 L15 69 Q10 74 17 77 L103 77 Q110 74 104 69 L60 35Z"/>
+          </svg>
+          <span>VÊTEMENTS</span>
+        </a>
+
+        <!-- SNEAKERS : CONTOUR DE BASKET -->
+        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie sneakers">
+          <svg class="category-icon" viewBox="0 0 120 100"
+               fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 64 Q25 62 35 53 L49 39 Q53 36 57 42 L68 52 Q78 59 94 59 L104 61 Q110 64 108 72 L106 78 L15 78 Q9 76 15 64Z"/>
+            <path d="M15 70 Q37 73 56 70 Q83 67 108 71"/>
+            <path d="M43 49 L54 54 M48 44 L60 51 M55 42 L65 49"/>
+            <path d="M18 79 L106 79"/>
+          </svg>
+          <span>SNEAKERS</span>
+        </a>
+
+        <!-- CASQUETTES : CONTOUR DE CASQUETTE -->
+        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie casquettes">
+          <svg class="category-icon" viewBox="0 0 120 100"
+               fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <path d="M25 64 Q27 39 47 29 Q65 20 81 32 Q92 41 93 58"/>
+            <path d="M25 64 Q14 66 10 74 Q9 78 17 77 L48 72"/>
+            <path d="M48 72 Q70 76 91 63 Q98 59 103 63 Q106 67 97 72 Q75 85 48 72Z"/>
+            <path d="M61 27 Q68 43 66 65"/>
+          </svg>
+          <span>CASQUETTES</span>
+        </a>
+
+        <!-- MAROQUINERIES : CONTOUR DE SAC -->
+        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie maroquineries">
+          <svg class="category-icon" viewBox="0 0 120 100"
+               fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <path d="M39 36 Q39 15 60 15 Q81 15 81 36"/>
+            <path d="M28 35 L92 35 Q98 35 100 43 L106 75 Q107 82 98 82 L22 82 Q13 82 14 75 L20 43 Q22 35 28 35Z"/>
+            <path d="M21 48 L99 48"/>
+            <rect x="54" y="57" width="12" height="11" rx="2"/>
+          </svg>
+          <span>MAROQUINERIES</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <h2>OG LUXURY</h2>
+      <p class="contact-label">CONTACT TELEGRAM</p>
+
+      <p class="contact-description">
+        Les prix sont communiqués sur demande. Contactez-nous pour connaître
+        les tarifs et les disponibilités.
+      </p>
+
+      <div class="request-box">
+        <h3>UN ARTICLE EN TÊTE ?</h3>
+        <p>
+          Vous ne trouvez pas votre bonheur ? Contactez-nous !
+          Nous étudierons la possibilité de rechercher l’article
+          auprès de nos fournisseurs.
+        </p>
+
+        <a class="telegram-link"
+           href="https://t.me/og_luxury"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Contacter OG LUXURY sur Telegram">
+
+          <svg class="telegram-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.8 3.2a1.3 1.3 0 0 0-1.4-.2L2.1 10.1c-1.3.5-1.2 1.5-.2 1.8l4.7 1.5 1.8 5.6c.2.6.4.8.8.8.3 0 .6-.2.9-.5l2.7-2.6 4.9 3.6c.9.5 1.5.2 1.7-.8l3.1-14.7c.2-.8-.1-1.3-.7-1.6ZM8 13l10.5-6.6c.5-.3.9-.1.5.2l-8.7 7.9-.4 3.6L8 13Z"/>
+          </svg>
+
+          @og_luxury
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>OG LUXURY · COLLECTIONS HOMME</footer>
+
+  <script>
+    /* INTRO VIDÉO */
+    (() => {
+      const intro = document.getElementById("intro");
+      const video = document.getElementById("intro-video");
+      const skip = document.getElementById("skip-intro");
+      let closed = false;
+
+      function closeIntro() {
+        if (closed) return;
+        closed = true;
+        intro.classList.add("hidden");
+
+        try {
+          video.pause();
+        } catch (e) {}
+      }
+
+      skip.addEventListener("click", closeIntro);
+      video.addEventListener("ended", closeIntro);
+      video.addEventListener("error", closeIntro);
+
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          setTimeout(closeIntro, 3500);
+        });
+      }
+
+      setTimeout(closeIntro, 15000);
+    })();
+
+    /* FOND ANIMÉ : PARTICULES VIOLETTES ET ÉTOILES FILANTES */
+    (() => {
+      const canvas = document.getElementById("luxury-particles");
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        canvas.style.display = "none";
+        return;
+      }
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let particles = [];
+      let stars = [];
+      let nextStarTime = 0;
+      let lastTime = 0;
+
+      const random = (min, max) => Math.random() * (max - min) + min;
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = Math.min(100, Math.max(35, Math.floor(width / 10)));
+        particles = Array.from({ length: count }, () => ({
+          x: random(0, width),
+          y: random(0, height),
+          r: random(.6, 1.9),
+          speed: random(5, 18),
+          phase: random(0, Math.PI * 2),
+          twinkle: random(1.2, 3.5),
+          alpha: random(.25, .8)
+        }));
+      }
+
+      function spawnStar() {
+        if (stars.length >= 3) return;
+
+        const fromLeft = Math.random() < .5;
+        const x = fromLeft ? random(-width * .1, width * .55)
+                           : random(width * .45, width * 1.1);
+        const y = random(0, height * .75);
+        const angle = fromLeft ? random(.25, .75) : random(2.35, 2.9);
+
+        stars.push({
+          x, y,
+          vx: Math.cos(angle) * random(450, 700),
+          vy: Math.sin(angle) * random(450, 700),
+          life: 0,
+          duration: random(.65, 1.05),
+          length: random(110, 200),
+          width: random(1.5, 2.5)
+        });
+      }
+
+      function drawParticle(p, time, dt) {
+        p.y -= p.speed * dt;
+
+        if (p.y < -5) {
+          p.y = height + 5;
+          p.x = random(0, width);
+        }
+
+        const pulse = .35 + .65 * (0.5 + 0.5 *
+          Math.sin(time * p.twinkle + p.phase));
+        const alpha = p.alpha * pulse;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(194, 119, 255, ${alpha})`;
+        ctx.shadowColor = "#a94dff";
+        ctx.shadowBlur = 9;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      function drawStar(star, dt) {
+        star.life += dt;
+
+        const progress = star.life / star.duration;
+        if (progress >= 1) return false;
+
+        const x1 = star.x;
+        const y1 = star.y;
+
+        star.x += star.vx * dt;
+        star.y += star.vy * dt;
+
+        const speed = Math.hypot(star.vx, star.vy);
+        const tailX = star.x - star.vx / speed * star.length;
+        const tailY = star.y - star.vy / speed * star.length;
+        const fade = Math.sin(Math.PI * progress);
+
+        const gradient = ctx.createLinearGradient(
+          tailX, tailY, star.x, star.y
+        );
+
+        gradient.addColorStop(0, "rgba(153, 55, 255, 0)");
+        gradient.addColorStop(.55, `rgba(157, 70, 255, ${.45 * fade})`);
+        gradient.addColorStop(.88, `rgba(231, 205, 255, ${.9 * fade})`);
+        gradient.addColorStop(1, `rgba(255, 255, 255, ${fade})`);
+
+        ctx.save();
+        ctx.lineCap = "round";
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = star.width;
+        ctx.shadowColor = "#a94dff";
+        ctx.shadowBlur = 18;
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(star.x, star.y);
+        ctx.stroke();
+
+        ctx.fillStyle = `rgba(255,255,255,${fade})`;
+        ctx.shadowColor = "#fff";
+        ctx.shadowBlur = 14;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, 1.8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        return star.x > -star.length &&
+               star.x < width + star.length &&
+               star.y > -star.length &&
+               star.y < height + star.length;
+      }
+
+      function animate(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+
+        const dt = Math.min((timestamp - lastTime) / 1000, .04);
+        lastTime = timestamp;
+
+        ctx.clearRect(0, 0, width, height);
+
+        const seconds = timestamp / 1000;
+        particles.forEach(p => drawParticle(p, seconds, dt));
+
+        if (timestamp >= nextStarTime) {
+          spawnStar();
+
+          // Apparitions irrégulières toutes les 2 à 4 secondes.
+          nextStarTime = timestamp + random(2000, 4000);
+
+          // Parfois, une seconde étoile suit de près.
+          if (Math.random() < .25) {
+            nextStarTime = timestamp + random(350, 750);
+          }
+        }
+
+        stars = stars.filter(star => drawStar(star, dt));
+
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener("resize", resize, { passive: true });
+
+      resize();
+      nextStarTime = performance.now() + 900;
+      requestAnimationFrame(animate);
+    })();
+  </script>
 </body>
 </html>
