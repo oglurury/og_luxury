@@ -1,157 +1,227 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vêtements | OG LUXURY</title>
-  <style>
-    * { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vêtements | OG LUXURY</title>
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(ellipse at top, #28103e 0%, #100b17 42%, #050507 100%);
-    }
+<style>
+*{box-sizing:border-box}
 
-    header {
-      text-align: center;
-      padding: 38px 16px 24px;
-    }
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(ellipse at top,#281039,#100b16 48%,#050507);
+  color:white;
+  font-family:Arial,Helvetica,sans-serif;
+}
 
-    .back {
-      display: inline-block;
-      color: #d9baff;
-      text-decoration: none;
-      border: 1px solid #7443a5;
-      border-radius: 30px;
-      padding: 10px 16px;
-      font-size: 13px;
-      margin-bottom: 28px;
-    }
+header{
+  text-align:center;
+  padding:32px 15px 24px;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 8vw, 54px);
-      letter-spacing: 5px;
-      color: #f4eaff;
-      text-shadow: 0 0 22px #a34dff;
-    }
+.back{
+  display:inline-block;
+  padding:10px 16px;
+  margin-bottom:25px;
+  border:1px solid #8c4bc0;
+  border-radius:30px;
+  color:#e7caff;
+  text-decoration:none;
+  font-size:13px;
+}
 
-    .subtitle {
-      color: #bdaacb;
-      font-size: 13px;
-      letter-spacing: 3px;
-      margin-top: 12px;
-    }
+h1{
+  margin:0;
+  font-size:clamp(30px,8vw,52px);
+  letter-spacing:5px;
+  color:#f5eaff;
+  text-shadow:0 0 22px #9d42ff;
+}
 
-    main {
-      width: min(100% - 28px, 900px);
-      margin: 20px auto 50px;
-    }
+.subtitle{
+  margin-top:12px;
+  color:#b9a6c8;
+  font-size:12px;
+  letter-spacing:3px;
+}
 
-    .brands {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
-    }
+main{
+  width:min(920px,calc(100% - 28px));
+  margin:20px auto 45px;
+}
 
-    .brand {
-      min-height: 112px;
-      padding: 16px 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      border: 1px solid rgba(190, 126, 255, .32);
-      border-radius: 13px;
-      background: linear-gradient(145deg, rgba(48, 25, 65, .75), rgba(10, 9, 15, .94));
-      box-shadow: inset 0 0 18px rgba(151, 69, 222, .06);
-      transition: .25s ease;
-    }
+.brands{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
 
-    .brand span {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(14px, 3.4vw, 20px);
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      overflow-wrap: anywhere;
-      color: #f5efff;
-      text-shadow: 0 0 12px rgba(190, 126, 255, .3);
-    }
+.brand{
+  min-height:135px;
+  padding:18px 10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  border:1px solid rgba(190,126,255,.35);
+  border-radius:14px;
+  background:linear-gradient(145deg,#21152d,#0b0a10);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
 
-    .brand:hover {
-      border-color: #d8a9ff;
-      box-shadow: 0 0 22px rgba(164, 74, 255, .22);
-      transform: translateY(-3px);
-    }
+.brand:hover{
+  transform:translateY(-3px);
+  border-color:#d7a7ff;
+  box-shadow:0 0 22px #8b36c533;
+}
 
-    .contact {
-      text-align: center;
-      margin: 38px 0 20px;
-    }
+.brand img{
+  display:block;
+  width:100%;
+  max-width:155px;
+  height:55px;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+}
 
-    .contact a {
-      display: inline-block;
-      padding: 13px 22px;
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      background: linear-gradient(90deg, #6927a6, #a34dff);
-      font-weight: bold;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
+.brand p{
+  margin:0;
+  text-align:center;
+  color:#cbb6dc;
+  font-size:11px;
+  letter-spacing:1.5px;
+}
 
-    footer {
-      padding: 20px;
-      text-align: center;
-      color: #887c94;
-      font-size: 12px;
-      border-top: 1px solid rgba(190, 126, 255, .15);
-    }
+.contact{
+  text-align:center;
+  margin:35px 0;
+}
 
-    @media (min-width: 600px) {
-      .brands { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
+.contact a{
+  display:inline-block;
+  padding:14px 24px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#6827a0,#a34dff);
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:13px;
+  letter-spacing:1px;
+}
 
-    @media (min-width: 850px) {
-      .brands { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    }
-  </style>
+footer{
+  padding:20px;
+  text-align:center;
+  border-top:1px solid #ffffff15;
+  color:#92849d;
+  font-size:12px;
+}
+
+@media(min-width:600px){
+  .brands{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(min-width:850px){
+  .brands{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <a class="back" href="index.html">← RETOUR À L’ACCUEIL</a>
-    <h1>VÊTEMENTS</h1>
-    <div class="subtitle">OG LUXURY · COLLECTIONS HOMME</div>
-  </header>
+<header>
+  <a class="back" href="index.html">← RETOUR À L’ACCUEIL</a>
+  <h1>VÊTEMENTS</h1>
+  <div class="subtitle">OG LUXURY · COLLECTIONS HOMME</div>
+</header>
 
-  <main>
-    <section class="brands" aria-label="Marques de vêtements">
-      <div class="brand"><span>LOUIS VUITTON</span></div>
-      <div class="brand"><span>GUCCI</span></div>
-      <div class="brand"><span>DIOR</span></div>
-      <div class="brand"><span>PRADA</span></div>
-      <div class="brand"><span>STONE ISLAND × C.P. COMPANY</span></div>
-      <div class="brand"><span>MONCLER</span></div>
-      <div class="brand"><span>BURBERRY</span></div>
-      <div class="brand"><span>ACNE STUDIOS</span></div>
-      <div class="brand"><span>FENDI</span></div>
-      <div class="brand"><span>BALENCIAGA</span></div>
-      <div class="brand"><span>CHROME HEARTS</span></div>
-      <div class="brand"><span>LOEWE</span></div>
-    </section>
+<main>
+<section class="brands" aria-label="Logos des marques">
 
-    <div class="contact">
-      <a href="https://t.me/og_luxury" target="_blank" rel="noopener">
-        CONTACT TELEGRAM
-      </a>
-    </div>
-  </main>
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/louisvuitton/ffffff"
+         alt="Logo Louis Vuitton" loading="lazy">
+    <p>LOUIS VUITTON</p>
+  </article>
 
-  <footer>OG LUXURY · Collections homme</footer>
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/gucci/ffffff"
+         alt="Logo Gucci" loading="lazy">
+    <p>GUCCI</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/dior/ffffff"
+         alt="Logo Dior" loading="lazy">
+    <p>DIOR</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/prada/ffffff"
+         alt="Logo Prada" loading="lazy">
+    <p>PRADA</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/stoneisland/ffffff"
+         alt="Logo Stone Island" loading="lazy">
+    <p>STONE ISLAND × C.P. COMPANY</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/moncler/ffffff"
+         alt="Logo Moncler" loading="lazy">
+    <p>MONCLER</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/burberry/ffffff"
+         alt="Logo Burberry" loading="lazy">
+    <p>BURBERRY</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/acnestudios/ffffff"
+         alt="Logo Acne Studios" loading="lazy">
+    <p>ACNE STUDIOS</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/fendi/ffffff"
+         alt="Logo Fendi" loading="lazy">
+    <p>FENDI</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/balenciaga/ffffff"
+         alt="Logo Balenciaga" loading="lazy">
+    <p>BALENCIAGA</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/chromehearts/ffffff"
+         alt="Logo Chrome Hearts" loading="lazy">
+    <p>CHROME HEARTS</p>
+  </article>
+
+  <article class="brand">
+    <img src="https://cdn.simpleicons.org/loewe/ffffff"
+         alt="Logo Loewe" loading="lazy">
+    <p>LOEWE</p>
+  </article>
+
+</section>
+
+<div class="contact">
+  <a href="https://t.me/og_luxury"
+     target="_blank" rel="noopener">
+    CONTACT TELEGRAM
+  </a>
+</div>
+</main>
+
+<footer>OG LUXURY · Collections homme</footer>
 </body>
 </html>
