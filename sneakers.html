@@ -1,52 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sneakers | OG LUXURY</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:white;font-family:Arial,sans-serif;background:radial-gradient(ellipse at top,#281039,#100b16 48%,#050507)}
-header{text-align:center;padding:32px 15px 24px}
-.back{display:inline-block;padding:10px 16px;margin-bottom:25px;border:1px solid #8c4bc0;border-radius:30px;color:#e7caff;text-decoration:none;font-size:13px}
-h1{margin:0;font-size:clamp(30px,8vw,52px);letter-spacing:5px;text-shadow:0 0 22px #9d42ff}
-.subtitle{margin-top:12px;color:#b9a6c8;font-size:12px;letter-spacing:3px}
-main{width:min(920px,calc(100% - 28px));margin:20px auto 45px}
-.brands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.brand{min-height:105px;padding:16px 10px;display:flex;justify-content:center;align-items:center;text-align:center;border:1px solid #be7eff55;border-radius:14px;background:linear-gradient(145deg,#21152d,#0b0a10);font-family:Georgia,serif;font-size:16px;font-weight:bold;letter-spacing:1px;transition:.25s}
-.brand:hover{transform:translateY(-3px);border-color:#d7a7ff;box-shadow:0 0 22px #8b36c533}
-.contact{text-align:center;margin:35px 0}
-.contact a{display:inline-block;padding:14px 24px;border-radius:30px;background:linear-gradient(90deg,#6827a0,#a34dff);color:white;text-decoration:none;font-weight:bold;font-size:13px}
-footer{padding:20px;text-align:center;border-top:1px solid #ffffff15;color:#92849d;font-size:12px}
-@media(min-width:600px){.brands{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(min-width:850px){.brands{grid-template-columns:repeat(4,minmax(0,1fr))}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08060d">
+  <title>Sneakers | OG LUXURY</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: #f7f2ff;
+      background: radial-gradient(ellipse at top, #29103d, #08060d 60%);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .container { max-width: 850px; margin: auto; }
+    .back { display: inline-block; margin-bottom: 35px; color: #d8b4fe; font-size: 11px; letter-spacing: 2px; }
+    header { text-align: center; margin-bottom: 35px; }
+    .eyebrow { color: #c084fc; font-size: 10px; letter-spacing: 5px; margin-bottom: 12px; }
+    h1 {
+      font-size: clamp(30px, 7vw, 52px);
+      letter-spacing: 4px;
+      background: linear-gradient(#fff, #9d91aa);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .intro { margin-top: 14px; color: #b9afc7; font-size: 13px; line-height: 1.8; }
+    .line { width: 70px; height: 1px; margin: 25px auto; background: linear-gradient(90deg, transparent, #c084fc, transparent); }
+    .brands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .brand {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 85px; padding: 15px 10px; text-align: center;
+      border: 1px solid #a855f733; border-radius: 12px;
+      background: linear-gradient(145deg, #241430, #0c0911);
+      color: #f7f2ff; font-size: 12px; font-weight: bold; letter-spacing: 1.5px;
+      transition: .25s;
+    }
+    .brand:hover { transform: translateY(-3px); border-color: #c084fc; box-shadow: 0 8px 25px #a855f722; }
+    .contact { margin-top: 35px; padding: 25px 15px; border: 1px solid #a855f733; border-radius: 14px; text-align: center; background: #100a18; }
+    .contact h2 { font-size: 13px; letter-spacing: 3px; }
+    .contact p { margin: 12px auto 18px; max-width: 480px; color: #b9afc7; font-size: 12px; line-height: 1.8; }
+    .button { display: inline-block; padding: 13px 20px; border: 1px solid #a855f7; border-radius: 25px; background: #321746; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+    footer { margin-top: 30px; color: #786d83; text-align: center; font-size: 9px; letter-spacing: 3px; }
+    @media (max-width: 380px) { .brand { font-size: 10px; letter-spacing: 1px; } }
+  </style>
 </head>
 <body>
-<header>
-<a class="back" href="index.html" onclick="if(document.referrer && new URL(document.referrer).origin===location.origin && history.length>1){event.preventDefault();history.back()}">← RETOUR</a>
-<h1>SNEAKERS</h1>
-<div class="subtitle">OG LUXURY · COLLECTIONS HOMME</div>
-</header>
-<main>
-<section class="brands">
-<div class="brand">LOUIS VUITTON</div>
-<div class="brand">HERMÈS</div>
-<div class="brand">PRADA</div>
-<div class="brand">DIOR</div>
-<div class="brand">GUCCI</div>
-<div class="brand">ASICS</div>
-<div class="brand">SAUCONY</div>
-<div class="brand">NIKE</div>
-<div class="brand">SALOMON</div>
-<div class="brand">MAISON MARGIELA</div>
-<div class="brand">CHANEL</div>
-<div class="brand">BOTTEGA VENETA</div>
-<div class="brand">BALENCIAGA</div>
-<div class="brand">LORO PIANA × ZEGNA</div>
-</section>
-<div class="contact"><a href="https://t.me/og_luxury" target="_blank" rel="noopener">CONTACT TELEGRAM</a></div>
-</main>
-<footer>OG LUXURY · Collections homme</footer>
+  <div class="container">
+    <a class="back" href="index.html?retour=1">← RETOUR À L’ACCUEIL</a>
+
+    <header>
+      <div class="eyebrow">OG LUXURY COLLECTIONS</div>
+      <h1>SNEAKERS</h1>
+      <p class="intro">Découvrez notre sélection de sneakers et chaussures premium.</p>
+      <div class="line"></div>
+    </header>
+
+    <main class="brands">
+      <div class="brand">LOUIS VUITTON</div>
+      <div class="brand">HERMÈS</div>
+      <div class="brand">PRADA</div>
+      <div class="brand">DIOR</div>
+      <div class="brand">GUCCI</div>
+      <div class="brand">ASICS</div>
+      <div class="brand">SAUCONY</div>
+      <div class="brand">NIKE</div>
+      <div class="brand">SALOMON</div>
+      <div class="brand">MAISON MARGIELA</div>
+      <div class="brand">CHANEL</div>
+      <div class="brand">BOTTEGA VENETA</div>
+      <div class="brand">BALENCIAGA</div>
+      <div class="brand">LORO PIANA × ZEGNA</div>
+    </main>
+
+    <section class="contact">
+      <h2>UNE PAIRE EN TÊTE ?</h2>
+      <p>Contactez-nous sur Telegram pour connaître les tarifs, les disponibilités ou demander un modèle particulier.</p>
+      <a class="button" href="https://t.me/og_luxury" target="_blank" rel="noopener noreferrer">CONTACT TELEGRAM</a>
+    </section>
+
+    <footer>OG LUXURY · COLLECTIONS HOMME</footer>
+  </div>
 </body>
 </html>
