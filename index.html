@@ -4,45 +4,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08040f">
-  <meta name="description" content="OG LUXURY — Découvrez nos collections homme : vêtements, sneakers, casquettes et maroquineries.">
+  <meta name="theme-color" content="#09070d">
+  <meta name="description" content="OG LUXURY — Découvrez nos collections homme et nos marques premium.">
   <title>OG LUXURY | Boutique homme</title>
 
   <style>
     :root {
-      --bg: #08040f;
-      --purple: #a94dff;
-      --purple-light: #dfbaff;
-      --silver: #e9e4f2;
-      --text: #f4efff;
-      --muted: #c8bdd7;
+      --bg: #09070d;
+      --panel: rgba(22, 16, 30, .83);
+      --purple: #a855f7;
+      --purple-light: #d8b4fe;
+      --text: #f8f5fc;
+      --muted: #b8adca;
+      --border: rgba(192, 132, 252, .25);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
       color: var(--text);
       background:
-        radial-gradient(ellipse at 50% 0%, #28103d 0%, transparent 45%),
-        radial-gradient(ellipse at 10% 45%, #170824 0%, transparent 45%),
-        var(--bg);
-      font-family: Arial, Helvetica, sans-serif;
+        radial-gradient(ellipse at 50% 0%, rgba(91, 33, 140, .22), transparent 45%),
+        linear-gradient(180deg, #0b0811, #08060b 60%, #100919);
+      font-family: "Helvetica Neue", Arial, sans-serif;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-    }
+    body, button, a { -webkit-tap-highlight-color: transparent; }
 
-    #luxury-particles {
+    a { color: inherit; text-decoration: none; }
+
+    button { font: inherit; }
+
+    #cosmos {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -51,714 +51,568 @@
       pointer-events: none;
     }
 
-    header, main, footer {
+    .site {
       position: relative;
       z-index: 1;
     }
 
-    /* INTRO VIDEO */
-    #intro {
+    .intro {
       position: fixed;
       inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #05020a;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      background: #050408;
       transition: opacity .7s ease, visibility .7s ease;
     }
 
-    #intro.hidden {
+    .intro.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
-    #intro video {
+    .intro video {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: .78;
     }
 
-    #skip-intro {
+    .intro-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(5,3,9,.7));
+    }
+
+    .skip-intro {
       position: absolute;
       right: 20px;
-      bottom: 24px;
-      padding: 12px 20px;
+      bottom: 25px;
+      z-index: 2;
       color: white;
-      background: rgba(13, 5, 22, .8);
-      border: 1px solid var(--purple-light);
+      background: rgba(17, 11, 25, .7);
+      border: 1px solid rgba(216,180,254,.7);
+      padding: 12px 19px;
       border-radius: 30px;
-      letter-spacing: 2px;
       font-size: 11px;
+      letter-spacing: 2px;
       cursor: pointer;
-      box-shadow: 0 0 18px rgba(169, 77, 255, .45);
+      backdrop-filter: blur(10px);
     }
 
-    /* HEADER */
+    .skip-intro:hover {
+      background: rgba(168,85,247,.35);
+    }
+
     header {
+      width: 100%;
+      padding: 20px 6%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 26px 20px 20px;
-      border-bottom: 1px solid rgba(169, 77, 255, .35);
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(8, 6, 12, .55);
+      backdrop-filter: blur(14px);
     }
 
-    .brand {
-      color: var(--silver);
-      text-decoration: none;
-      font-family: Georgia, serif;
-      font-size: clamp(25px, 5vw, 42px);
-      letter-spacing: 9px;
-      text-shadow: 0 0 15px rgba(198, 135, 255, .6);
+    .mini-logo {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      background: linear-gradient(110deg, #fff 15%, #aaa4b7 38%, #fff 52%, #9d91ac 75%, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    /* HERO */
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: #d3c9df;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--purple-light); }
+
     .hero {
-      padding: 65px 20px 45px;
+      min-height: 440px;
+      padding: 100px 22px 75px;
       text-align: center;
-      border-bottom: 1px solid rgba(169, 77, 255, .3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .eyebrow {
       margin: 0 0 18px;
-      color: #e4c8ff;
-      font-family: Georgia, serif;
-      letter-spacing: 10px;
-      font-size: 13px;
+      color: var(--purple-light);
+      font-size: 10px;
+      letter-spacing: 6px;
     }
 
     .hero h1 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 9vw, 94px);
-      font-weight: 400;
-      letter-spacing: clamp(3px, 1.4vw, 13px);
-      background: linear-gradient(
-        180deg,
-        #fff 0%,
-        #d8d4e2 20%,
-        #fff 35%,
-        #8f849f 49%,
-        #f9f5ff 62%,
-        #aaa1b9 80%,
-        #fff 100%
-      );
+      font-size: clamp(40px, 9vw, 86px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: clamp(4px, 1.3vw, 13px);
+      background: linear-gradient(115deg, #77717f, #fff 20%, #b8b2c1 34%, #fff 49%, #8b8496 65%, #fdfaff 78%, #77717f);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 0 15px rgba(173, 93, 255, .5));
+      filter: drop-shadow(0 0 20px rgba(192,132,252,.13));
+      animation: chrome-shine 8s linear infinite;
     }
 
-    .hero-description {
-      max-width: 650px;
-      margin: 22px auto 0;
-      color: #e1d8ed;
-      font-family: Georgia, serif;
-      font-size: 16px;
+    @keyframes chrome-shine {
+      to { background-position: 200% center; }
+    }
+
+    .hero p {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      margin: 24px auto 0;
+    }
+
+    .hero-line {
+      width: 65px;
+      height: 1px;
+      margin-top: 28px;
+      background: linear-gradient(90deg, transparent, var(--purple-light), transparent);
+      box-shadow: 0 0 15px var(--purple);
+    }
+
+    main {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin: 20px 0 32px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      font-size: clamp(21px, 4vw, 30px);
+      letter-spacing: 4px;
+      font-weight: 700;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 12px;
       line-height: 1.8;
     }
 
-    /* CATEGORIES */
     .categories {
-      padding: 38px 20px 46px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      margin: 0 0 32px;
-      text-align: center;
-      color: #f4eaff;
-      font-family: Georgia, serif;
-      font-size: clamp(22px, 4.8vw, 36px);
-      font-weight: 400;
-      letter-spacing: clamp(3px, 1vw, 7px);
-      text-shadow: 0 0 14px rgba(176, 72, 255, .65);
-    }
-
-    .section-title::before,
-    .section-title::after {
-      content: "";
-      width: min(10vw, 65px);
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--purple-light));
-    }
-
-    .section-title::after {
-      transform: rotate(180deg);
-    }
-
-    .category-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      max-width: 1100px;
-      margin: 0 auto;
+      gap: 15px;
+      margin-bottom: 85px;
     }
 
     .category-card {
       position: relative;
-      min-height: 220px;
-      padding: 25px 12px;
       display: flex;
+      min-height: 165px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 23px;
+      gap: 17px;
+      padding: 22px 10px;
       overflow: hidden;
-      text-decoration: none;
-      color: var(--text);
-      background: linear-gradient(145deg,
-        rgba(29, 12, 48, .8),
-        rgba(5, 3, 12, .96));
-      border: 1px solid rgba(177, 91, 255, .65);
-      border-radius: 16px;
-      box-shadow:
-        0 0 14px rgba(145, 45, 255, .12),
-        inset 0 0 22px rgba(115, 39, 180, .05);
-      transition: border-color .3s ease,
-                  box-shadow .3s ease,
-                  transform .3s ease;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(40,25,55,.85), rgba(12,9,17,.92));
+      transition: transform .3s, border-color .3s, box-shadow .3s;
     }
 
-    /* Reflet discret au survol */
     .category-card::after {
       content: "";
       position: absolute;
-      inset: -60%;
+      top: -80%;
+      left: -65%;
+      width: 35%;
+      height: 260%;
+      transform: rotate(25deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      transition: left .7s ease;
       pointer-events: none;
-      background: linear-gradient(
-        115deg,
-        transparent 42%,
-        rgba(255, 255, 255, .11) 49%,
-        rgba(209, 174, 255, .22) 50%,
-        transparent 57%
-      );
-      transform: translateX(-80%);
-      transition: transform .65s ease;
     }
 
     .category-card:hover::after {
-      transform: translateX(80%);
-    }
-
-    .category-icon {
-      position: relative;
-      z-index: 1;
-      width: 112px;
-      height: 100px;
-      overflow: visible;
-      color: #eadbff;
-      filter:
-        drop-shadow(0 0 3px #b55aff)
-        drop-shadow(0 0 9px rgba(140, 50, 255, .6));
-      transition: filter .3s ease, transform .3s ease;
-    }
-
-    .category-card span {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      font-family: Georgia, serif;
-      font-size: 14px;
-      letter-spacing: 2px;
+      left: 135%;
     }
 
     .category-card:hover {
-      transform: translateY(-4px);
-      border-color: #ead1ff;
-      box-shadow:
-        0 0 24px rgba(161, 58, 255, .3),
-        inset 0 0 18px rgba(177, 91, 255, .08);
+      transform: translateY(-5px);
+      border-color: rgba(216,180,254,.8);
+      box-shadow: 0 10px 35px rgba(126,34,206,.15);
     }
 
-    .category-card:hover .category-icon {
-      transform: scale(1.06);
-      filter:
-        drop-shadow(0 0 4px #fff)
-        drop-shadow(0 0 13px #a94dff);
+    .category-card svg {
+      width: 39px;
+      height: 39px;
+      stroke: #e9d5ff;
+      stroke-width: 1.25;
+      fill: none;
     }
 
-    /* CONTACT */
-    .contact {
-      max-width: 1080px;
-      margin: 0 auto 28px;
-      padding: 35px 24px 28px;
+    .category-card span {
+      font-size: 11px;
+      letter-spacing: 2px;
       text-align: center;
-      background: linear-gradient(
-        145deg,
-        rgba(24, 8, 42, .55),
-        rgba(4, 3, 12, .8)
-      );
-      border: 1px solid rgba(153, 67, 255, .65);
-      border-radius: 20px;
-      box-shadow: inset 0 0 35px rgba(100, 32, 160, .06);
+      text-transform: uppercase;
+    }
+
+    .brand-section {
+      margin: 0 0 75px;
+      scroll-margin-top: 35px;
+    }
+
+    .brand-section .section-heading {
+      margin-bottom: 24px;
+    }
+
+    .brand-section .section-heading h2 {
+      font-size: 22px;
+      letter-spacing: 3px;
+    }
+
+    .brand-count {
+      display: inline-block;
+      margin-top: 4px;
+      color: #c4a2e8;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .brand-card {
+      min-width: 0;
+      min-height: 100px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 12px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 10px;
+      background: linear-gradient(145deg, rgba(28,22,36,.88), rgba(12,10,16,.9));
+      transition: border-color .25s, transform .25s, background .25s;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(192,132,252,.6);
+      background: linear-gradient(145deg, rgba(46,29,62,.94), rgba(13,10,18,.96));
+    }
+
+    .brand-logo {
+      display: block;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      max-height: 43px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(0) invert(1);
+    }
+
+    .brand-name {
+      font-family: "Times New Roman", Georgia, serif;
+      font-size: clamp(12px, 1.6vw, 16px);
+      line-height: 1.5;
+      letter-spacing: 1px;
+      color: #f2edf7;
+      overflow-wrap: anywhere;
+    }
+
+    .brand-name.compact {
+      font-size: 11px;
+      letter-spacing: .5px;
+    }
+
+    .contact {
+      margin: 15px 0 45px;
+      padding: 40px 25px;
+      text-align: center;
+      border: 1px solid rgba(192,132,252,.28);
+      border-radius: 15px;
+      background: radial-gradient(ellipse at top, rgba(126,34,206,.14), transparent 70%), rgba(12,9,17,.8);
     }
 
     .contact h2 {
-      margin: 0 0 10px;
-      color: var(--silver);
-      font-family: Georgia, serif;
-      font-size: clamp(30px, 6vw, 45px);
-      font-weight: 400;
-      letter-spacing: 7px;
-      text-shadow: 0 0 14px rgba(198, 135, 255, .5);
-    }
-
-    .contact-label {
       margin: 0 0 20px;
-      color: #e4c8ff;
-      letter-spacing: 7px;
-      font-size: 12px;
+      font-size: 26px;
+      letter-spacing: 5px;
     }
 
-    .contact-description {
-      max-width: 650px;
-      margin: 0 auto 20px;
-      color: #ded4eb;
-      font-family: Georgia, serif;
-      font-size: 15px;
-      line-height: 1.8;
+    .contact h3 {
+      margin: 26px 0 10px;
+      color: var(--purple-light);
+      font-size: 11px;
+      letter-spacing: 3px;
     }
 
-    .request-box {
-      max-width: 650px;
-      margin: 20px auto 0;
-      padding: 22px 18px;
-      border: 1px solid rgba(169, 77, 255, .7);
-      border-radius: 12px;
-      background: rgba(4, 2, 10, .48);
-    }
-
-    .request-box h3 {
-      margin: 0 0 12px;
-      color: #ead8ff;
-      font-family: Georgia, serif;
+    .contact p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--muted);
       font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 4px;
-    }
-
-    .request-box p {
-      margin: 0 auto 18px;
-      color: #ded4eb;
-      font-family: Georgia, serif;
-      font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
     .telegram-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      color: #e7caff;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      text-shadow: 0 0 12px rgba(169, 77, 255, .8);
-      transition: color .2s ease, text-shadow .2s ease;
+      gap: 9px;
+      margin-top: 20px;
+      padding: 13px 22px;
+      border: 1px solid rgba(216,180,254,.55);
+      border-radius: 30px;
+      color: white;
+      background: rgba(126,34,206,.18);
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: background .25s, transform .25s;
     }
 
     .telegram-link:hover {
-      color: white;
-      text-shadow: 0 0 18px #a94dff;
+      background: rgba(126,34,206,.4);
+      transform: translateY(-2px);
     }
 
-    .telegram-icon {
-      width: 23px;
-      height: 23px;
+    .telegram-link svg {
+      width: 17px;
+      height: 17px;
       fill: currentColor;
     }
 
-    /* FOOTER */
     footer {
-      padding: 22px 15px 30px;
+      padding: 23px 15px 30px;
       text-align: center;
-      color: #c4a5e8;
-      font-family: Georgia, serif;
-      font-size: 11px;
-      letter-spacing: 5px;
+      color: #81768e;
+      font-size: 10px;
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(255,255,255,.06);
     }
 
-    footer::before {
-      content: "";
-      display: block;
-      width: 100px;
-      height: 1px;
-      margin: 0 auto 20px;
-      background: linear-gradient(90deg, transparent, #a94dff, transparent);
-    }
-
-    /* MOBILE */
-    @media (max-width: 700px) {
-      header {
-        padding: 23px 12px 18px;
-      }
-
-      .brand {
-        letter-spacing: 6px;
-      }
-
-      .hero {
-        padding: 52px 18px 36px;
-      }
-
-      .eyebrow {
-        letter-spacing: 6px;
-      }
-
-      .hero-description {
-        font-size: 14px;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .category-card {
-        min-height: 170px;
-        padding: 18px 8px;
-        gap: 14px;
-      }
-
-      .category-icon {
-        width: 94px;
-        height: 82px;
-      }
-
-      .category-card span {
-        font-size: 11px;
-        letter-spacing: 1.2px;
-      }
-
-      .contact {
-        margin: 0 12px 20px;
-        padding: 28px 14px 22px;
-      }
-
-      .contact-label {
-        letter-spacing: 4px;
-      }
-
-      .request-box {
-        padding: 20px 12px;
-      }
-
-      footer {
-        letter-spacing: 3px;
-        font-size: 10px;
-      }
+    @media (max-width: 760px) {
+      header { padding: 18px 5%; }
+      nav { gap: 12px; }
+      nav a { font-size: 9px; letter-spacing: 1px; }
+      .categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brands-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brand-card { min-height: 90px; }
+      .hero { min-height: 370px; padding-top: 80px; }
     }
 
     @media (max-width: 360px) {
-      .category-card span {
-        font-size: 10px;
-        letter-spacing: .7px;
-      }
-
-      .section-title {
-        letter-spacing: 2px;
-        gap: 10px;
-      }
+      .mini-logo { letter-spacing: 2px; font-size: 12px; }
+      nav { gap: 8px; }
+      nav a { font-size: 8px; }
+      .brand-card { padding: 14px 8px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
       *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
       }
+      #cosmos { display: none; }
     }
   </style>
 </head>
 
 <body>
-  <canvas id="luxury-particles" aria-hidden="true"></canvas>
+  <canvas id="cosmos" aria-hidden="true"></canvas>
 
-  <!-- INTRO VIDEO -->
-  <div id="intro">
-    <video id="intro-video" autoplay muted playsinline>
+  <div class="intro" id="intro">
+    <video id="introVideo" autoplay muted playsinline preload="auto">
       <source src="1000050603.mp4" type="video/mp4">
     </video>
-    <button id="skip-intro" type="button">PASSER L’INTRO</button>
+    <div class="intro-shade"></div>
+    <button class="skip-intro" id="skipIntro" type="button">PASSER L’INTRO</button>
   </div>
 
-  <!-- HEADER -->
-  <header>
-    <a class="brand" href="#accueil">OG LUXURY</a>
-  </header>
+  <div class="site">
+    <header>
+      <a class="mini-logo" href="#accueil">OG LUXURY</a>
+      <nav aria-label="Navigation principale">
+        <a href="#vetements">Vêtements</a>
+        <a href="#sneakers">Sneakers</a>
+        <a href="#casquettes">Casquettes</a>
+        <a href="#maroquineries">Maroquineries</a>
+      </nav>
+    </header>
 
-  <main>
-    <!-- ACCUEIL -->
     <section class="hero" id="accueil">
       <p class="eyebrow">WELCOME TO</p>
       <h1>OG LUXURY</h1>
-      <p class="hero-description">
-        Découvrez notre univers et explorez nos différentes collections
-        en qualité boutique 1.1
-      </p>
+      <p>Découvrez notre univers et explorez nos différentes collections en qualité boutique 1.1</p>
+      <div class="hero-line"></div>
     </section>
 
-    <!-- CATÉGORIES -->
-    <section class="categories" id="categories">
-      <h2 class="section-title">NOS CATÉGORIES</h2>
+    <main>
+      <section aria-labelledby="collections-title">
+        <div class="section-heading">
+          <h2 id="collections-title">NOS COLLECTIONS</h2>
+          <p>Explorez nos univers et découvrez les marques proposées.</p>
+        </div>
 
-      <div class="category-grid">
+        <div class="categories">
+          <a class="category-card" href="#vetements">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M18 10a6 6 0 0 0 12 0"/>
+              <path d="M18 10 8 17l5 7 5-3v17h16V21l5 3 5-7-10-7"/>
+              <path d="M18 10c0-3 2-5 6-5s6 2 6 5"/>
+            </svg>
+            <span>Vêtements</span>
+          </a>
 
-        <!-- VÊTEMENTS : CINTRE MINIMALISTE -->
-        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie vêtements">
-          <svg class="category-icon" viewBox="0 0 120 100"
-               fill="none" stroke="currentColor"
-               stroke-width="1.8" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M60 18 C60 12 66 10 70 14 C75 19 67 24 63 29 L63 35"/>
-            <path d="M60 35 L15 69 Q10 74 17 77 L103 77 Q110 74 104 69 L60 35Z"/>
-          </svg>
-          <span>VÊTEMENTS</span>
-        </a>
+          <a class="category-card" href="#sneakers">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M6 30c5 0 9-2 12-7l4-7 5 5c3 3 6 5 10 6l5 2c2 1 3 3 3 5v4H6z"/>
+              <path d="M6 34h39M19 25l7 2m-4-6 7 3m-3-7 5 5"/>
+            </svg>
+            <span>Sneakers</span>
+          </a>
 
-        <!-- SNEAKERS : CONTOUR DE BASKET -->
-        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie sneakers">
-          <svg class="category-icon" viewBox="0 0 120 100"
-               fill="none" stroke="currentColor"
-               stroke-width="1.8" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M15 64 Q25 62 35 53 L49 39 Q53 36 57 42 L68 52 Q78 59 94 59 L104 61 Q110 64 108 72 L106 78 L15 78 Q9 76 15 64Z"/>
-            <path d="M15 70 Q37 73 56 70 Q83 67 108 71"/>
-            <path d="M43 49 L54 54 M48 44 L60 51 M55 42 L65 49"/>
-            <path d="M18 79 L106 79"/>
-          </svg>
-          <span>SNEAKERS</span>
-        </a>
+          <a class="category-card" href="#casquettes">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M9 29c0-11 7-19 17-19s15 8 15 19"/>
+              <path d="M9 29c-3 0-5 2-5 4s5 4 13 4h10c9 0 17-3 17-6 0-2-3-3-8-3H9z"/>
+              <path d="M26 11v13"/>
+            </svg>
+            <span>Casquettes</span>
+          </a>
 
-        <!-- CASQUETTES : CONTOUR DE CASQUETTE -->
-        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie casquettes">
-          <svg class="category-icon" viewBox="0 0 120 100"
-               fill="none" stroke="currentColor"
-               stroke-width="1.8" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M25 64 Q27 39 47 29 Q65 20 81 32 Q92 41 93 58"/>
-            <path d="M25 64 Q14 66 10 74 Q9 78 17 77 L48 72"/>
-            <path d="M48 72 Q70 76 91 63 Q98 59 103 63 Q106 67 97 72 Q75 85 48 72Z"/>
-            <path d="M61 27 Q68 43 66 65"/>
-          </svg>
-          <span>CASQUETTES</span>
-        </a>
+          <a class="category-card" href="#maroquineries">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="7" y="18" width="34" height="24" rx="3"/>
+              <path d="M17 18v-5a7 7 0 0 1 14 0v5M7 27h34M21 27v4h6v-4"/>
+            </svg>
+            <span>Maroquineries</span>
+          </a>
+        </div>
+      </section>
 
-        <!-- MAROQUINERIES : CONTOUR DE SAC -->
-        <a class="category-card" href="#contact" aria-label="Découvrir la catégorie maroquineries">
-          <svg class="category-icon" viewBox="0 0 120 100"
-               fill="none" stroke="currentColor"
-               stroke-width="1.8" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M39 36 Q39 15 60 15 Q81 15 81 36"/>
-            <path d="M28 35 L92 35 Q98 35 100 43 L106 75 Q107 82 98 82 L22 82 Q13 82 14 75 L20 43 Q22 35 28 35Z"/>
-            <path d="M21 48 L99 48"/>
-            <rect x="54" y="57" width="12" height="11" rx="2"/>
-          </svg>
-          <span>MAROQUINERIES</span>
-        </a>
+      <section class="brand-section" id="vetements">
+        <div class="section-heading">
+          <h2>VÊTEMENTS</h2>
+          <span class="brand-count">12 MARQUES</span>
+        </div>
+        <div class="brands-grid">
+          <div class="brand-card" data-brand="Louis Vuitton"><span class="brand-name">Louis Vuitton</span></div>
+          <div class="brand-card" data-brand="Gucci"><span class="brand-name">GUCCI</span></div>
+          <div class="brand-card" data-brand="Dior"><span class="brand-name">DIOR</span></div>
+          <div class="brand-card" data-brand="Prada"><span class="brand-name">PRADA</span></div>
+          <div class="brand-card" data-brand="Stone Island x C.P. Company"><span class="brand-name compact">Stone Island × C.P. Company</span></div>
+          <div class="brand-card" data-brand="Moncler"><span class="brand-name">MONCLER</span></div>
+          <div class="brand-card" data-brand="Burberry"><span class="brand-name">BURBERRY</span></div>
+          <div class="brand-card" data-brand="Acne Studios"><span class="brand-name">Acne Studios</span></div>
+          <div class="brand-card" data-brand="Fendi"><span class="brand-name">FENDI</span></div>
+          <div class="brand-card" data-brand="Balenciaga"><span class="brand-name">BALENCIAGA</span></div>
+          <div class="brand-card" data-brand="Chrome Hearts"><span class="brand-name">Chrome Hearts</span></div>
+          <div class="brand-card" data-brand="Loewe"><span class="brand-name">LOEWE</span></div>
+        </div>
+      </section>
 
-      </div>
-    </section>
+      <section class="brand-section" id="sneakers">
+        <div class="section-heading">
+          <h2>SNEAKERS</h2>
+          <span class="brand-count">14 MARQUES</span>
+        </div>
+        <div class="brands-grid">
+          <div class="brand-card" data-brand="Louis Vuitton"><span class="brand-name">Louis Vuitton</span></div>
+          <div class="brand-card" data-brand="Hermès"><span class="brand-name">HERMÈS</span></div>
+          <div class="brand-card" data-brand="Prada"><span class="brand-name">PRADA</span></div>
+          <div class="brand-card" data-brand="Dior"><span class="brand-name">DIOR</span></div>
+          <div class="brand-card" data-brand="Gucci"><span class="brand-name">GUCCI</span></div>
+          <div class="brand-card" data-brand="Asics"><span class="brand-name">ASICS</span></div>
+          <div class="brand-card" data-brand="Saucony"><span class="brand-name">SAUCONY</span></div>
+          <div class="brand-card" data-brand="Nike"><span class="brand-name">NIKE</span></div>
+          <div class="brand-card" data-brand="Salomon"><span class="brand-name">SALOMON</span></div>
+          <div class="brand-card" data-brand="Maison Margiela"><span class="brand-name compact">Maison Margiela</span></div>
+          <div class="brand-card" data-brand="Chanel"><span class="brand-name">CHANEL</span></div>
+          <div class="brand-card" data-brand="Bottega Veneta"><span class="brand-name compact">Bottega Veneta</span></div>
+          <div class="brand-card" data-brand="Balenciaga"><span class="brand-name">BALENCIAGA</span></div>
+          <div class="brand-card" data-brand="Loro Piana x Zegna"><span class="brand-name compact">Loro Piana × Zegna</span></div>
+        </div>
+      </section>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <h2>OG LUXURY</h2>
-      <p class="contact-label">CONTACT TELEGRAM</p>
+      <section class="brand-section" id="casquettes">
+        <div class="section-heading">
+          <h2>CASQUETTES</h2>
+          <span class="brand-count">13 MARQUES</span>
+        </div>
+        <div class="brands-grid">
+          <div class="brand-card" data-brand="Louis Vuitton"><span class="brand-name">Louis Vuitton</span></div>
+          <div class="brand-card" data-brand="Gucci"><span class="brand-name">GUCCI</span></div>
+          <div class="brand-card" data-brand="Prada"><span class="brand-name">PRADA</span></div>
+          <div class="brand-card" data-brand="Burberry"><span class="brand-name">BURBERRY</span></div>
+          <div class="brand-card" data-brand="Chrome Hearts"><span class="brand-name">Chrome Hearts</span></div>
+          <div class="brand-card" data-brand="Stone Island x C.P. Company"><span class="brand-name compact">Stone Island × C.P. Company</span></div>
+          <div class="brand-card" data-brand="Hermès"><span class="brand-name">HERMÈS</span></div>
+          <div class="brand-card" data-brand="Loro Piana"><span class="brand-name">Loro Piana</span></div>
+          <div class="brand-card" data-brand="Chanel"><span class="brand-name">CHANEL</span></div>
+          <div class="brand-card" data-brand="Dior"><span class="brand-name">DIOR</span></div>
+          <div class="brand-card" data-brand="Fendi"><span class="brand-name">FENDI</span></div>
+          <div class="brand-card" data-brand="Celine"><span class="brand-name">CÉLINE</span></div>
+          <div class="brand-card" data-brand="Balenciaga"><span class="brand-name">BALENCIAGA</span></div>
+        </div>
+      </section>
 
-      <p class="contact-description">
-        Les prix sont communiqués sur demande. Contactez-nous pour connaître
-        les tarifs et les disponibilités.
-      </p>
+      <section class="brand-section" id="maroquineries">
+        <div class="section-heading">
+          <h2>MAROQUINERIES</h2>
+          <span class="brand-count">14 MARQUES</span>
+        </div>
+        <div class="brands-grid">
+          <div class="brand-card" data-brand="Louis Vuitton"><span class="brand-name">Louis Vuitton</span></div>
+          <div class="brand-card" data-brand="Gucci"><span class="brand-name">GUCCI</span></div>
+          <div class="brand-card" data-brand="Dior"><span class="brand-name">DIOR</span></div>
+          <div class="brand-card" data-brand="Prada"><span class="brand-name">PRADA</span></div>
+          <div class="brand-card" data-brand="Hermès"><span class="brand-name">HERMÈS</span></div>
+          <div class="brand-card" data-brand="Loro Piana"><span class="brand-name">Loro Piana</span></div>
+          <div class="brand-card" data-brand="Goyard"><span class="brand-name">GOYARD</span></div>
+          <div class="brand-card" data-brand="Chanel"><span class="brand-name">CHANEL</span></div>
+          <div class="brand-card" data-brand="Fendi"><span class="brand-name">FENDI</span></div>
+          <div class="brand-card" data-brand="Bottega Veneta"><span class="brand-name compact">Bottega Veneta</span></div>
+          <div class="brand-card" data-brand="Yves Saint Laurent"><span class="brand-name compact">Yves Saint Laurent</span></div>
+          <div class="brand-card" data-brand="Loewe"><span class="brand-name">LOEWE</span></div>
+          <div class="brand-card" data-brand="Balenciaga"><span class="brand-name">BALENCIAGA</span></div>
+          <div class="brand-card" data-brand="Celine"><span class="brand-name">CÉLINE</span></div>
+        </div>
+      </section>
 
-      <div class="request-box">
-        <h3>UN ARTICLE EN TÊTE ?</h3>
-        <p>
-          Vous ne trouvez pas votre bonheur ? Contactez-nous !
-          Nous étudierons la possibilité de rechercher l’article
-          auprès de nos fournisseurs.
-        </p>
-
-        <a class="telegram-link"
-           href="https://t.me/og_luxury"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Contacter OG LUXURY sur Telegram">
-
-          <svg class="telegram-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21.8 3.2a1.3 1.3 0 0 0-1.4-.2L2.1 10.1c-1.3.5-1.2 1.5-.2 1.8l4.7 1.5 1.8 5.6c.2.6.4.8.8.8.3 0 .6-.2.9-.5l2.7-2.6 4.9 3.6c.9.5 1.5.2 1.7-.8l3.1-14.7c.2-.8-.1-1.3-.7-1.6ZM8 13l10.5-6.6c.5-.3.9-.1.5.2l-8.7 7.9-.4 3.6L8 13Z"/>
-          </svg>
-
-          @og_luxury
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>OG LUXURY · COLLECTIONS HOMME</footer>
-
-  <script>
-    /* INTRO VIDÉO */
-    (() => {
-      const intro = document.getElementById("intro");
-      const video = document.getElementById("intro-video");
-      const skip = document.getElementById("skip-intro");
-      let closed = false;
-
-      function closeIntro() {
-        if (closed) return;
-        closed = true;
-        intro.classList.add("hidden");
-
-        try {
-          video.pause();
-        } catch (e) {}
-      }
-
-      skip.addEventListener("click", closeIntro);
-      video.addEventListener("ended", closeIntro);
-      video.addEventListener("error", closeIntro);
-
-      const playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {
-          setTimeout(closeIntro, 3500);
-        });
-      }
-
-      setTimeout(closeIntro, 15000);
-    })();
-
-    /* FOND ANIMÉ : PARTICULES VIOLETTES ET ÉTOILES FILANTES */
-    (() => {
-      const canvas = document.getElementById("luxury-particles");
-      const ctx = canvas.getContext("2d");
-
-      if (!ctx || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        canvas.style.display = "none";
-        return;
-      }
-
-      let width = 0;
-      let height = 0;
-      let dpr = 1;
-      let particles = [];
-      let stars = [];
-      let nextStarTime = 0;
-      let lastTime = 0;
-
-      const random = (min, max) => Math.random() * (max - min) + min;
-
-      function resize() {
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
-        width = window.innerWidth;
-        height = window.innerHeight;
-
-        canvas.width = Math.round(width * dpr);
-        canvas.height = Math.round(height * dpr);
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        const count = Math.min(100, Math.max(35, Math.floor(width / 10)));
-        particles = Array.from({ length: count }, () => ({
-          x: random(0, width),
-          y: random(0, height),
-          r: random(.6, 1.9),
-          speed: random(5, 18),
-          phase: random(0, Math.PI * 2),
-          twinkle: random(1.2, 3.5),
-          alpha: random(.25, .8)
-        }));
-      }
-
-      function spawnStar() {
-        if (stars.length >= 3) return;
-
-        const fromLeft = Math.random() < .5;
-        const x = fromLeft ? random(-width * .1, width * .55)
-                           : random(width * .45, width * 1.1);
-        const y = random(0, height * .75);
-        const angle = fromLeft ? random(.25, .75) : random(2.35, 2.9);
-
-        stars.push({
-          x, y,
-          vx: Math.cos(angle) * random(450, 700),
-          vy: Math.sin(angle) * random(450, 700),
-          life: 0,
-          duration: random(.65, 1.05),
-          length: random(110, 200),
-          width: random(1.5, 2.5)
-        });
-      }
-
-      function drawParticle(p, time, dt) {
-        p.y -= p.speed * dt;
-
-        if (p.y < -5) {
-          p.y = height + 5;
-          p.x = random(0, width);
-        }
-
-        const pulse = .35 + .65 * (0.5 + 0.5 *
-          Math.sin(time * p.twinkle + p.phase));
-        const alpha = p.alpha * pulse;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(194, 119, 255, ${alpha})`;
-        ctx.shadowColor = "#a94dff";
-        ctx.shadowBlur = 9;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-
-      function drawStar(star, dt) {
-        star.life += dt;
-
-        const progress = star.life / star.duration;
-        if (progress >= 1) return false;
-
-        const x1 = star.x;
-        const y1 = star.y;
-
-        star.x += star.vx * dt;
-        star.y += star.vy * dt;
-
-        const speed = Math.hypot(star.vx, star.vy);
-        const tailX = star.x - star.vx / speed * star.length;
-        const tailY = star.y - star.vy / speed * star.length;
-        const fade = Math.sin(Math.PI * progress);
-
-        const gradient = ctx.createLinearGradient(
-          tailX, tailY, star.x, star.y
-        );
-
-        gradient.addColorStop(0, "rgba(153, 55, 255, 0)");
-        gradient.addColorStop(.55, `rgba(157, 70, 255, ${.45 * fade})`);
-        gradient.addColorStop(.88, `rgba(231, 205, 255, ${.9 * fade})`);
-        gradient.addColorStop(1, `rgba(255, 255, 255, ${fade})`);
-
-        ctx.save();
-        ctx.lineCap = "round";
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = star.width;
-        ctx.shadowColor = "#a94dff";
-        ctx.shadowBlur = 18;
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(star.x, star.y);
-        ctx.stroke();
-
-        ctx.fillStyle = `rgba(255,255,255,${fade})`;
-        ctx.shadowColo
+      <section class="contact" id="contact">
+        <h2>OG LUXURY</h2>
+        <h3>CONTACT TELEGRAM</h3>
+        <p>Les prix sont communiqués sur demande. Contactez-nous pour connaître les tarifs et les dispon
