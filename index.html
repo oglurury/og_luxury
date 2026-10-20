@@ -4,212 +4,335 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#03050a">
+<meta name="theme-color" content="#080510">
 <title>OG LUXURY | Boutique homme</title>
 
 <style>
 :root {
-  --bg:#03050a;
-  --blue:#42caff;
-  --purple:#7047ff;
-  --text:#f1f6ff;
+  --bg: #07050d;
+  --panel: #100b1c;
+  --panel-light: #19102b;
+  --purple: #8b5cff;
+  --purple-bright: #b58aff;
+  --violet-dark: #4a20a8;
+  --text: #f6f0ff;
+  --muted: #c0b3d8;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin:0;
-  background:radial-gradient(ellipse at top,#101d3b,var(--bg) 55%);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+  margin: 0;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 0%, #281345 0%, transparent 42%),
+    linear-gradient(180deg, #10091b 0%, #07050d 48%, #030207 100%);
+  background-attachment: fixed;
 }
-a { color:inherit; }
 
+a {
+  color: inherit;
+}
+
+/* HEADER */
 header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:18px 5%;
-  background:#050811;
-  border-bottom:1px solid #263b70;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 5%;
+  background: rgba(7, 5, 13, 0.94);
+  border-bottom: 1px solid #55318d;
+  box-shadow: 0 4px 25px #6c32c522;
 }
+
 .logo {
-  font-weight:900;
-  letter-spacing:4px;
-  color:#dff8ff;
-  text-shadow:0 0 15px #168bff;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #f5eaff;
+  text-shadow: 0 0 8px #a56aff, 0 0 22px #702cff88;
+  text-decoration: none;
 }
-nav { display:flex; gap:15px; font-size:13px; }
-nav a { text-decoration:none; }
-nav a:hover { color:var(--blue); }
 
+nav {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+}
+
+nav a {
+  text-decoration: none;
+  transition: color .2s;
+}
+
+nav a:hover {
+  color: var(--purple-bright);
+}
+
+/* INTRO VIDEO */
 .intro {
-  position:fixed;
-  inset:0;
-  z-index:100;
-  background:#02040a;
-  transition:opacity .5s,visibility .5s;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #030207;
+  transition: opacity .5s, visibility .5s;
 }
+
 .intro video {
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
 .intro.hidden {
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
+
 .skip {
-  position:absolute;
-  z-index:2;
-  bottom:35px;
-  left:50%;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  border:1px solid var(--blue);
-  background:#060b18e8;
-  color:white;
-  padding:13px 24px;
-  border-radius:30px;
-  letter-spacing:2px;
-  cursor:pointer;
+  position: absolute;
+  z-index: 2;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  border: 1px solid var(--purple-bright);
+  background: #10091eeF;
+  color: white;
+  padding: 13px 24px;
+  border-radius: 30px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #8b5cff44;
+  transition: .25s;
 }
 
+.skip:hover {
+  background: #281345;
+  box-shadow: 0 0 25px #8b5cff99;
+}
+
+/* HERO */
 .hero {
-  padding:65px 18px 45px;
-  text-align:center;
-  background:linear-gradient(140deg,#101a32,#03050a);
-  border-bottom:1px solid var(--purple);
+  padding: 65px 18px 45px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #241039 0%, #10091b 48%, transparent 100%);
+  border-bottom: 1px solid #7047b8;
 }
+
 .hero .welcome {
-  font-family:Georgia,serif;
-  letter-spacing:8px;
-  font-size:clamp(18px,3vw,30px);
-  margin:0 0 5px;
+  font-family: Georgia, serif;
+  letter-spacing: 8px;
+  font-size: clamp(18px, 3vw, 30px);
+  margin: 0 0 10px;
+  color: #e3d0ff;
 }
+
 h1 {
-  margin:0;
-  font-size:clamp(36px,9vw,90px);
-  font-weight:900;
-  letter-spacing:2px;
-  background:linear-gradient(#fff,#77dfff,#197dff,#e4f8ff);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  filter:drop-shadow(0 0 12px #168bff88);
+  margin: 0;
+  font-size: clamp(36px, 9vw, 90px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #f6eaff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 12px #d9b5ff,
+    0 0 25px #a45cff,
+    0 0 45px #792cff,
+    0 0 75px #6120cc;
 }
+
 .hero p {
-  max-width:650px;
-  margin:20px auto 0;
-  color:#d4e5ff;
-  line-height:1.7;
+  max-width: 650px;
+  margin: 20px auto 0;
+  color: #d8c9ef;
+  line-height: 1.8;
 }
 
+/* CATEGORIES */
 section.content {
-  max-width:1200px;
-  padding:35px 18px;
-  margin:auto;
-}
-.section-title {
-  text-align:center;
-  font-family:Georgia,serif;
-  font-size:clamp(22px,4vw,32px);
-  letter-spacing:5px;
-  font-weight:400;
-  margin:0 0 25px;
-}
-.categories {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:13px;
-}
-.category {
-  min-height:150px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  padding:20px 5px;
-  text-align:center;
-  text-decoration:none;
-  border:1px solid #293b69;
-  border-radius:8px;
-  background:linear-gradient(145deg,#172440,#05070d);
-  font-family:Georgia,serif;
-  font-size:19px;
-  transition:.2s;
-}
-.category:hover {
-  border-color:var(--blue);
-  box-shadow:0 0 18px #168bff33;
+  max-width: 1200px;
+  padding: 35px 18px;
+  margin: auto;
 }
 
+.section-title {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 4vw, 32px);
+  letter-spacing: 5px;
+  font-weight: 400;
+  margin: 0 0 25px;
+  color: #eadcff;
+  text-shadow: 0 0 14px #8b5cff55;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.category {
+  min-height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px 5px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #55318d;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at top, #281440 0%, transparent 75%),
+    linear-gradient(145deg, #19102b, #08060e);
+  font-family: Georgia, serif;
+  font-size: 19px;
+  color: #f4eaff;
+  box-shadow: inset 0 0 18px #8b5cff0a;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+
+.category:hover {
+  border-color: var(--purple-bright);
+  box-shadow: 0 0 20px #8b5cff44, inset 0 0 18px #8b5cff15;
+  transform: translateY(-3px);
+}
+
+/* CONTACT */
 .contact {
-  max-width:1150px;
-  margin:10px auto 30px;
-  padding:35px 18px;
-  border:1px solid #34477c;
-  border-radius:12px;
-  text-align:center;
-  background:radial-gradient(ellipse at top,#111d3c,#05070d 70%);
+  max-width: 1150px;
+  margin: 10px auto 30px;
+  padding: 35px 18px;
+  border: 1px solid #7047a8;
+  border-radius: 12px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, #24133b, #10091a 55%, #07050d 100%);
+  box-shadow: 0 0 28px #6b32b51c;
 }
+
 .contact-logo {
-  font-size:clamp(32px,6vw,55px);
-  font-weight:900;
-  letter-spacing:5px;
-  color:#dff8ff;
-  text-shadow:0 0 12px #168bff;
+  font-size: clamp(32px, 6vw, 55px);
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: #f6eaff;
+  text-shadow:
+    0 0 6px #fff,
+    0 0 15px #bd8aff,
+    0 0 32px #873bff;
 }
+
 .contact h2 {
-  font-size:14px;
-  letter-spacing:5px;
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: #d8bcff;
 }
+
 .contact p {
-  color:#c4d1e8;
-  line-height:1.7;
-  font-size:14px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
 }
+
 .request {
-  max-width:800px;
-  margin:25px auto 0;
-  padding:20px;
-  border:1px solid var(--purple);
-  border-radius:9px;
+  max-width: 800px;
+  margin: 25px auto 0;
+  padding: 20px;
+  border: 1px solid #8050c9;
+  border-radius: 9px;
+  background: #0b0714aa;
 }
+
 .request h3 {
-  font-family:Georgia,serif;
-  letter-spacing:2px;
-  font-weight:400;
+  font-family: Georgia, serif;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #eadbff;
 }
+
 .telegram {
-  display:inline-block;
-  color:#54f5ff;
-  font-size:21px;
-  font-weight:bold;
-  text-decoration:none;
-  margin-top:10px;
+  display: inline-block;
+  color: #d2a8ff;
+  font-size: 21px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+  text-shadow: 0 0 12px #8b5cff55;
+  transition: .25s;
 }
-.telegram:hover { text-shadow:0 0 12px var(--blue); }
+
+.telegram:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #fff, 0 0 24px #a45cff;
+}
 
 footer {
-  padding:0 15px 25px;
-  text-align:center;
-  color:#7585a3;
-  font-size:12px;
+  padding: 0 15px 25px;
+  text-align: center;
+  color: #8e7ba8;
+  font-size: 12px;
 }
 
-@media(max-width:700px) {
-  header { flex-wrap:wrap; }
-  nav { gap:12px; }
-  .categories { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .category { min-height:125px; }
+/* MOBILE */
+@media (max-width: 700px) {
+  header {
+    flex-wrap: wrap;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category {
+    min-height: 125px;
+  }
+
+  .hero {
+    padding: 55px 15px 38px;
+  }
+
+  .hero .welcome {
+    letter-spacing: 5px;
+  }
+
+  h1 {
+    letter-spacing: 1px;
+  }
+
+  .contact {
+    margin: 10px 12px 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO VIDEO -->
+<!-- INTRO VIDEO : fichier 1000050603.mp4 à côté de index.html -->
 <div class="intro" id="intro">
   <video id="introVideo" autoplay muted playsinline preload="auto">
     <source src="1000050603.mp4" type="video/mp4">
@@ -218,7 +341,7 @@ footer {
 </div>
 
 <header>
-  <a class="logo" href="#accueil" style="text-decoration:none">OG LUXURY</a>
+  <a class="logo" href="#accueil">OG LUXURY</a>
   <nav>
     <a href="#accueil">Accueil</a>
     <a href="#categories">Catégories</a>
@@ -231,7 +354,10 @@ footer {
   <section class="hero">
     <p class="welcome">WELCOME TO</p>
     <h1>OG LUXURY</h1>
-    <p>Découvrez notre univers et explorez nos différentes collections en qualité boutique 1.1</p>
+    <p>
+      Découvrez notre univers et explorez nos différentes collections
+      en qualité boutique 1.1
+    </p>
   </section>
 
   <section class="content" id="categories">
@@ -245,7 +371,6 @@ footer {
     </div>
   </section>
 
-  <!-- CONTACT CONSERVÉ -->
   <section class="contact" id="contact">
     <div class="contact-logo">OG LUXURY</div>
     <h2>CONTACT TELEGRAM</h2>
@@ -262,6 +387,7 @@ footer {
         Nous étudierons la possibilité de rechercher l’article
         auprès de nos fournisseurs.
       </p>
+
       <a class="telegram"
          href="https://t.me/og_luxury"
          target="_blank"
@@ -274,13 +400,13 @@ footer {
 <footer>OG LUXURY · Collections homme</footer>
 
 <script>
-(function(){
+(function() {
   const intro = document.getElementById('intro');
   const video = document.getElementById('introVideo');
   let closed = false;
 
-  function closeIntro(){
-    if(closed) return;
+  function closeIntro() {
+    if (closed) return;
     closed = true;
     intro.classList.add('hidden');
     video.pause();
@@ -291,14 +417,14 @@ footer {
 
   video.addEventListener('ended', closeIntro);
 
-  video.addEventListener('error', function(){
-    setTimeout(closeIntro, 1500);
+  video.addEventListener('error', function() {
+    closeIntro();
   });
 
   const play = video.play();
 
-  if(play && play.catch){
-    play.catch(function(){
+  if (play && play.catch) {
+    play.catch(function() {
       setTimeout(closeIntro, 3500);
     });
   }
