@@ -10,11 +10,9 @@
 <style>
 :root {
   --bg:#03050a;
-  --panel:#090e19;
   --blue:#42caff;
   --purple:#7047ff;
   --text:#f1f6ff;
-  --muted:#a8bad6;
 }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -25,6 +23,7 @@ body {
   font-family:Arial,Helvetica,sans-serif;
 }
 a { color:inherit; }
+
 header {
   display:flex;
   justify-content:space-between;
@@ -76,6 +75,7 @@ nav a:hover { color:var(--blue); }
   letter-spacing:2px;
   cursor:pointer;
 }
+
 .hero {
   padding:65px 18px 45px;
   text-align:center;
@@ -105,6 +105,7 @@ h1 {
   color:#d4e5ff;
   line-height:1.7;
 }
+
 section.content {
   max-width:1200px;
   padding:35px 18px;
@@ -136,71 +137,13 @@ section.content {
   background:linear-gradient(145deg,#172440,#05070d);
   font-family:Georgia,serif;
   font-size:19px;
+  transition:.2s;
 }
 .category:hover {
   border-color:var(--blue);
   box-shadow:0 0 18px #168bff33;
 }
-.group {
-  padding:16px;
-  margin-bottom:18px;
-  background:linear-gradient(145deg,#0b1120,#04060b);
-  border:1px solid #263b70;
-  border-radius:10px;
-  scroll-margin-top:20px;
-}
-.group h2 {
-  font-size:14px;
-  font-weight:500;
-  letter-spacing:3px;
-  color:#cceaff;
-  margin:0 0 17px;
-}
-.products {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-}
-.product { min-width:0; text-align:center; }
-.photo {
-  min-height:150px;
-  aspect-ratio:1/1;
-  border:1px solid #1b2a49;
-  border-radius:7px;
-  background:radial-gradient(ellipse,#17243a,#060910 75%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-.photo img {
-  display:block;
-  width:100%;
-  height:100%;
-  aspect-ratio:1/1;
-  object-fit:contain;
-}
-.placeholder {
-  padding:12px;
-  color:#a9c8f0;
-  font-size:12px;
-  line-height:1.6;
-}
-.product h3 {
-  margin:10px 0 5px;
-  font-size:14px;
-  font-weight:500;
-}
-.ref {
-  color:#9bc8ff;
-  font-size:11px;
-  overflow-wrap:anywhere;
-}
-.note {
-  color:#a8bad6;
-  font-size:11px;
-  margin-top:6px;
-}
+
 .contact {
   max-width:1150px;
   margin:10px auto 30px;
@@ -246,29 +189,27 @@ section.content {
   text-decoration:none;
   margin-top:10px;
 }
+.telegram:hover { text-shadow:0 0 12px var(--blue); }
+
 footer {
   padding:0 15px 25px;
   text-align:center;
   color:#7585a3;
   font-size:12px;
 }
+
 @media(max-width:700px) {
   header { flex-wrap:wrap; }
   nav { gap:12px; }
   .categories { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .category { min-height:125px; }
-  .products { gap:7px; }
-  .photo { min-height:0; }
-  .group { padding:10px; }
-  .product h3 { font-size:12px; }
-  .ref,.note { font-size:10px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO : place la vidéo à côté de index.html -->
+<!-- INTRO VIDEO -->
 <div class="intro" id="intro">
   <video id="introVideo" autoplay muted playsinline preload="auto">
     <source src="1000050603.mp4" type="video/mp4">
@@ -286,6 +227,7 @@ footer {
 </header>
 
 <main id="accueil">
+
   <section class="hero">
     <p class="welcome">WELCOME TO</p>
     <h1>OG LUXURY</h1>
@@ -294,111 +236,39 @@ footer {
 
   <section class="content" id="categories">
     <h2 class="section-title">NOS CATÉGORIES</h2>
+
     <div class="categories">
-      <a class="category" href="#vetements">Vêtements</a>
-      <a class="category" href="#sneakers">Sneakers</a>
-      <a class="category" href="#casquettes">Casquettes</a>
-      <a class="category" href="#maroquineries">Maroquineries</a>
+      <a class="category" href="#contact">Vêtements</a>
+      <a class="category" href="#contact">Sneakers</a>
+      <a class="category" href="#contact">Casquettes</a>
+      <a class="category" href="#contact">Maroquineries</a>
     </div>
   </section>
 
-  <section class="content">
-
-    <div class="group" id="vetements">
-      <h2>1. VÊTEMENTS HOMME</h2>
-      <div class="products">
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Louis Vuitton à ajouter</div></div>
-          <h3>Louis Vuitton</h3><div class="ref">1AK6ZM</div>
-          <div class="note">Genre et modèle à vérifier</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Prada à ajouter</div></div>
-          <h3>Prada</h3><div class="ref">LR-HX026</div>
-          <div class="note">Genre et modèle à vérifier</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Gucci à ajouter</div></div>
-          <h3>Gucci</h3><div class="ref">862532 XKFG6 1060</div>
-          <div class="note">Pull en laine · à confirmer</div>
-        </article>
-      </div>
-    </div>
-
-    <div class="group" id="sneakers">
-      <h2>2. SNEAKERS HOMME</h2>
-      <div class="products">
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Chanel à ajouter</div></div>
-          <h3>Chanel</h3><div class="ref">G39792-Y56368-K5451</div>
-          <div class="note">Genre à confirmer</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Prada à ajouter</div></div>
-          <h3>Prada America's Cup</h3><div class="ref">4E3400_93W_F05MJ_F_G000</div>
-          <div class="note">Référence à vérifier</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Hermès à ajouter</div></div>
-          <h3>Hermès</h3><div class="ref">H242810ZH02415</div>
-          <div class="note">Genre et modèle à vérifier</div>
-        </article>
-      </div>
-    </div>
-
-    <div class="group" id="casquettes">
-      <h2>3. CASQUETTES HOMME</h2>
-      <div class="products">
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Louis Vuitton à ajouter</div></div>
-          <h3>Louis Vuitton</h3><div class="ref">M76529</div>
-          <div class="note">Genre à confirmer</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Loro Piana à ajouter</div></div>
-          <h3>Loro Piana</h3><div class="ref">FXM0372</div>
-          <div class="note">Coloris à confirmer</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Gucci à ajouter</div></div>
-          <h3>Gucci</h3><div class="ref">872632 4HBJO 9666</div>
-          <div class="note">Référence à vérifier</div>
-        </article>
-      </div>
-    </div>
-
-    <div class="group" id="maroquineries">
-      <h2>4. MAROQUINERIES HOMME</h2>
-      <div class="products">
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Louis Vuitton à ajouter</div></div>
-          <h3>Louis Vuitton</h3><div class="ref">M29190</div>
-          <div class="note">Keepall Bandoulière 50</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Hermès à ajouter</div></div>
-          <h3>Hermès</h3><div class="ref">H085066CKN4</div>
-          <div class="note">Sac Hac à dos PM · à confirmer</div>
-        </article>
-        <article class="product">
-          <div class="photo"><div class="placeholder">Photo originale Gucci à ajouter</div></div>
-          <h3>Gucci</h3><div class="ref">211131 KGDIG 8588</div>
-          <div class="note">Type d'article à confirmer</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
+  <!-- CONTACT CONSERVÉ -->
   <section class="contact" id="contact">
     <div class="contact-logo">OG LUXURY</div>
     <h2>CONTACT TELEGRAM</h2>
-    <p>Les prix sont communiqués sur demande. Contactez-nous pour connaître les tarifs et les disponibilités.</p>
+
+    <p>
+      Les prix sont communiqués sur demande.
+      Contactez-nous pour connaître les tarifs et les disponibilités.
+    </p>
+
     <div class="request">
       <h3>UN ARTICLE EN TÊTE ?</h3>
-      <p>Vous ne trouvez pas votre bonheur ? Contactez-nous ! Nous étudierons la possibilité de rechercher l’article auprès de nos fournisseurs.</p>
-      <a class="telegram" href="https://t.me/og_luxury" target="_blank" rel="noopener">@og_luxury</a>
+      <p>
+        Vous ne trouvez pas votre bonheur ? Contactez-nous !
+        Nous étudierons la possibilité de rechercher l’article
+        auprès de nos fournisseurs.
+      </p>
+      <a class="telegram"
+         href="https://t.me/og_luxury"
+         target="_blank"
+         rel="noopener">@og_luxury</a>
     </div>
   </section>
+
 </main>
 
 <footer>OG LUXURY · Collections homme</footer>
@@ -416,17 +286,26 @@ footer {
     video.pause();
   }
 
-  document.getElementById('skip').addEventListener('click',closeIntro);
-  video.addEventListener('ended',closeIntro);
-  video.addEventListener('error',function(){setTimeout(closeIntro,1500);});
+  document.getElementById('skip')
+    .addEventListener('click', closeIntro);
+
+  video.addEventListener('ended', closeIntro);
+
+  video.addEventListener('error', function(){
+    setTimeout(closeIntro, 1500);
+  });
 
   const play = video.play();
+
   if(play && play.catch){
-    play.catch(function(){setTimeout(closeIntro,3500);});
+    play.catch(function(){
+      setTimeout(closeIntro, 3500);
+    });
   }
 
-  setTimeout(closeIntro,15000);
+  setTimeout(closeIntro, 15000);
 })();
 </script>
+
 </body>
 </html>
