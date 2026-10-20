@@ -6,12 +6,13 @@
 <title>Vêtements | OG LUXURY</title>
 <style>
 *{box-sizing:border-box}
-:root{--violet:#a855f7;--bg:#08060d;--panel:#15101d;--text:#f7f2ff}
+:root{--violet:#a855f7;--text:#f7f2ff}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at top,#261137 0%,#0b0710 48%,#050408 100%);color:var(--text);min-height:100vh}
 header{text-align:center;padding:35px 16px 20px}
 .logo{font-size:clamp(30px,7vw,54px);font-weight:900;letter-spacing:5px;text-shadow:0 0 20px #a855f788}
 .subtitle{color:#c8a9e9;letter-spacing:4px;font-size:12px;margin-top:10px}
-.back{display:inline-block;margin:8px 0 20px;padding:12px 18px;border:1px solid #8b5bb7;border-radius:30px;color:white;text-decoration:none;font-size:12px;letter-spacing:1px}
+.back{display:inline-block;margin:8px 0 20px;padding:12px 18px;border:1px solid #8b5bb7;border-radius:30px;color:white;text-decoration:none;font-size:12px;letter-spacing:1px;transition:.25s}
+.back:hover{background:#a855f722;box-shadow:0 0 18px #a855f744}
 h1{text-align:center;font-size:clamp(25px,5vw,38px);letter-spacing:3px;margin:10px 0}
 .intro{text-align:center;color:#c9bfd4;font-size:14px;padding:0 20px;margin-bottom:30px}
 main{max-width:1100px;margin:auto;padding:0 18px 55px}
@@ -23,7 +24,8 @@ main{max-width:1100px;margin:auto;padding:0 18px 55px}
 .contact{text-align:center;margin:38px auto 0;padding:25px 18px;border:1px solid #8b5bb766;border-radius:18px;background:#120c1c}
 .contact h2{letter-spacing:2px;font-size:20px}
 .contact p{color:#c9bfd4;font-size:14px;line-height:1.7}
-.telegram{display:inline-block;margin-top:10px;padding:14px 23px;background:linear-gradient(90deg,#7e22ce,#a855f7);border-radius:30px;color:white;text-decoration:none;font-weight:bold;letter-spacing:1px}
+.telegram{display:inline-block;margin-top:10px;padding:14px 23px;background:linear-gradient(90deg,#7e22ce,#a855f7);border-radius:30px;color:white;text-decoration:none;font-weight:bold;letter-spacing:1px;transition:.25s}
+.telegram:hover{transform:translateY(-2px);box-shadow:0 0 20px #a855f766}
 footer{text-align:center;color:#82758e;font-size:11px;letter-spacing:2px;padding:25px 12px}
 @media(max-width:400px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.brand{font-size:12px;min-height:90px}}
 </style>
@@ -34,8 +36,10 @@ footer{text-align:center;color:#82758e;font-size:11px;letter-spacing:2px;padding
 <div class="subtitle">COLLECTION HOMME</div>
 <a class="back" href="index.html?retour=1">← RETOUR À L’ACCUEIL</a>
 </header>
+
 <h1>VÊTEMENTS</h1>
 <p class="intro">Découvrez nos marques et explorez notre sélection.</p>
+
 <main>
 <div class="grid">
 <div class="brand">LOUIS VUITTON</div>
@@ -51,12 +55,15 @@ footer{text-align:center;color:#82758e;font-size:11px;letter-spacing:2px;padding
 <div class="brand">CHROME HEARTS</div>
 <div class="brand">LOEWE</div>
 </div>
+
 <section class="contact">
 <h2>UN ARTICLE EN TÊTE ?</h2>
-<p>Les prix sont communiqués sur demande.<br>Vous ne trouvez pas votre bonheur ? Contactez-nous ! Nous étudierons la possibilité de rechercher l’article auprès de nos fournisseurs.</p>
+<p>Les prix sont communiqués sur demande.<br>
+Vous ne trouvez pas votre bonheur ? Contactez-nous ! Nous étudierons la possibilité de rechercher l’article auprès de nos fournisseurs.</p>
 <a class="telegram" href="https://t.me/og_luxury" target="_blank" rel="noopener">CONTACT TELEGRAM · @og_luxury</a>
 </section>
 </main>
+
 <footer>OG LUXURY · COLLECTIONS HOMME</footer>
 </body>
 </html>
