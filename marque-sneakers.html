@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08060d">
+<title>Collection Sneakers | OG LUXURY</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#f7f2ff;background:radial-gradient(ellipse at top,#261137 0%,#0b0710 48%,#050408 100%)}
+header{text-align:center;padding:35px 16px 20px}
+.logo{font-size:clamp(30px,7vw,54px);font-weight:900;letter-spacing:5px;text-shadow:0 0 20px #a855f788}
+.subtitle{color:#c8a9e9;letter-spacing:4px;font-size:12px;margin-top:10px}
+.back{display:inline-block;margin:25px 0 20px;padding:12px 18px;border:1px solid #8b5bb7;border-radius:30px;color:white;text-decoration:none;font-size:12px;letter-spacing:1px;transition:.25s}
+.back:hover{background:#a855f722;box-shadow:0 0 18px #a855f744}
+main{max-width:1000px;margin:auto;padding:15px 20px 55px;text-align:center}
+h1{font-size:clamp(27px,6vw,42px);letter-spacing:3px;margin:12px 0}
+.description{color:#c9bfd4;font-size:14px;line-height:1.8}
+.empty{margin:35px auto;padding:45px 20px;border:1px solid #6e398a66;border-radius:18px;background:linear-gradient(145deg,#1b1425,#0d0a12);max-width:650px}
+.empty-icon{font-size:38px;margin-bottom:12px;color:#c084fc}
+.empty h2{font-size:19px;letter-spacing:2px}
+.empty p{font-size:14px;line-height:1.8;color:#c9bfd4}
+.telegram{display:inline-block;margin-top:15px;padding:14px 22px;background:linear-gradient(90deg,#7e22ce,#a855f7);border-radius:30px;color:white;text-decoration:none;font-weight:bold;font-size:12px;letter-spacing:1px;transition:.25s}
+.telegram:hover{transform:translateY(-2px);box-shadow:0 0 20px #a855f766}
+footer{text-align:center;color:#82758e;font-size:11px;letter-spacing:2px;padding:25px 12px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">OG LUXURY</div>
+<div class="subtitle">COLLECTION HOMME</div>
+<a class="back" href="sneakers.html">← RETOUR AUX SNEAKERS</a>
+</header>
+
+<main>
+<h1 id="brand">COLLECTION</h1>
+<p class="description">Découvrez notre sélection de sneakers.</p>
+
+<section class="empty">
+<div class="empty-icon">✦</div>
+<h2>COLLECTION EN PRÉPARATION</h2>
+<p>Notre sélection pour cette marque sera bientôt disponible.</p>
+<p>Les prix et les disponibilités sont communiqués sur demande.</p>
+<a class="telegram" href="https://t.me/og_luxury" target="_blank" rel="noopener">DEMANDER DES INFORMATIONS</a>
+</section>
+</main>
+
+<footer>OG LUXURY · COLLECTIONS HOMME</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const nom = params.get("marque");
+const titre = document.getElementById("brand");
+
+if (nom && nom.trim()) {
+  const marque = nom.trim().slice(0, 80);
+  titre.textContent = marque.toLocaleUpperCase("fr-FR");
+  document.title = marque + " | OG LUXURY";
+}
+</script>
+</body>
+</html>
